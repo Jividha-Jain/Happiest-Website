@@ -28,9 +28,9 @@ export default function Cta({ scrollTo }: CtaProps) {
       img: "/images/creator-custom.png",
     },
     {
-      name: "Tim Ferriss",
-      role: "Entrepreneur",
-      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      name: "Creator 2",
+      role: "Community Leader",
+      img: "/images/creator-custom-2.png",
     },
     {
       name: "Dr. Becky",
