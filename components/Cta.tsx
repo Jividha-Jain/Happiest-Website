@@ -54,12 +54,13 @@ export default function Cta({ scrollTo }: CtaProps) {
     },
   ];
 
-  // Start at -90deg so first card is at the top
+  // Start at -90deg so first card is at the top, radius at 38% so cards are fully INSIDE the circle
   const getPos = (index: number, total: number) => {
     const angle = (index * 360) / total - 90;
     const rad = (angle * Math.PI) / 180;
-    const x = parseFloat((50 + 46 * Math.cos(rad)).toFixed(4));
-    const y = parseFloat((50 + 46 * Math.sin(rad)).toFixed(4));
+    const radius = 37.5; // Positions all cards completely inside the outer circle
+    const x = parseFloat((50 + radius * Math.cos(rad)).toFixed(4));
+    const y = parseFloat((50 + radius * Math.sin(rad)).toFixed(4));
     return { top: `${y}%`, left: `${x}%`, transform: "translate(-50%, -50%)" };
   };
 
@@ -68,23 +69,23 @@ export default function Cta({ scrollTo }: CtaProps) {
   return (
     <section
       id="cta"
-      className="relative w-full min-h-[700px] md:min-h-[780px] lg:min-h-[860px] flex items-center justify-center select-none py-24 md:py-32 overflow-hidden bg-[#04040c]"
+      className="relative w-full min-h-[750px] sm:min-h-[860px] lg:min-h-[920px] flex items-center justify-center select-none py-20 sm:py-28 lg:py-36 overflow-hidden bg-[#04040c]"
     >
       {/* Deep radial bg */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(100,60,255,0.18),transparent_70%)] pointer-events-none" />
 
-      {/* Concentric rings */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[680px] sm:w-[860px] sm:h-[860px] lg:w-[1020px] lg:h-[1020px] rounded-full border border-white/[0.06] pointer-events-none z-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[460px] sm:w-[580px] sm:h-[580px] lg:w-[700px] lg:h-[700px] rounded-full border border-purple-500/10 pointer-events-none z-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] sm:w-[340px] sm:h-[340px] lg:w-[420px] lg:h-[420px] rounded-full border border-indigo-500/10 pointer-events-none z-0" />
+      {/* Concentric rings - Outer ring encloses all cards */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] sm:w-[920px] sm:h-[920px] lg:w-[1080px] lg:h-[1080px] rounded-full border border-purple-500/15 pointer-events-none z-0 shadow-[0_0_80px_rgba(124,92,255,0.08)]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[540px] h-[540px] sm:w-[700px] sm:h-[700px] lg:w-[840px] lg:h-[840px] rounded-full border border-white/[0.06] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[440px] sm:h-[440px] lg:w-[540px] lg:h-[540px] rounded-full border border-indigo-500/10 pointer-events-none z-0" />
 
       {/* Central glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-purple-600/20 rounded-full blur-[130px] pointer-events-none z-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-indigo-400/25 rounded-full blur-[60px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] bg-indigo-400/25 rounded-full blur-[70px] pointer-events-none z-0" />
 
       {/* Orbiting creator cards */}
       <div
-        className="absolute top-1/2 left-1/2 w-[680px] h-[680px] sm:w-[860px] sm:h-[860px] lg:w-[1020px] lg:h-[1020px] rounded-full pointer-events-none z-10"
+        className="absolute top-1/2 left-1/2 w-[720px] h-[720px] sm:w-[920px] sm:h-[920px] lg:w-[1080px] lg:h-[1080px] rounded-full pointer-events-none z-10"
         style={{
           transform: "translate(-50%, -50%)",
           animation: "ctaPolaroidOrbit 55s linear infinite",
