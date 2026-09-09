@@ -23,9 +23,9 @@ export default function Cta({ scrollTo }: CtaProps) {
 
   const creatorCards = [
     {
-      name: "Jay Shetty",
-      role: "Podcast Host",
-      img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
+      name: "Creator",
+      role: "Community Founder",
+      img: "/images/creator-custom.png",
     },
     {
       name: "Tim Ferriss",
