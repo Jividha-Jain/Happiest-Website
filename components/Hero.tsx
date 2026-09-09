@@ -164,7 +164,7 @@ export default function Hero({ scrollTo }: HeroProps) {
                 animate="visible"
                 className="hero-h1 inline-block font-extrabold font-display
                   tracking-[-0.038em] leading-[1.25] py-2 -my-2"
-                style={{ fontSize: "clamp(2.25rem, 5.2vw, 4rem)" }}
+                style={{ fontSize: "clamp(1.85rem, 5.2vw, 4rem)" }}
               >
                 {w}
               </motion.span>
@@ -182,7 +182,7 @@ export default function Hero({ scrollTo }: HeroProps) {
                 animate="visible"
                 className="gradient-text inline-block font-extrabold font-display
                   tracking-[-0.038em] leading-[1.25] py-2 -my-2"
-                style={{ fontSize: "clamp(2.25rem, 5.2vw, 4rem)" }}
+                style={{ fontSize: "clamp(1.85rem, 5.2vw, 4rem)" }}
               >
                 {w}
               </motion.span>

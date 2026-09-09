@@ -220,26 +220,26 @@ export default function Discovery() {
             style={{ background: "#ffffff", boxShadow: "0 20px 60px rgba(0,0,0,0.05)" }}
           >
             {/* Window chrome bar */}
-            <div className="flex items-center gap-3 px-5 py-3.5 shrink-0 z-20 relative"
+            <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2.5 sm:py-3.5 shrink-0 z-20 relative"
               style={{ background: "linear-gradient(180deg, #f8faff 0%, #f1f4fd 100%)", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
               {/* Traffic lights */}
-              <div className="flex items-center gap-1.5 shrink-0 w-[80px]">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f57] shadow-[0_0_0_0.5px_rgba(0,0,0,0.12)] cursor-pointer" onClick={() => goToSlide(0)} />
-                <div className="w-3 h-3 rounded-full bg-[#febc2e] shadow-[0_0_0_0.5px_rgba(0,0,0,0.12)] cursor-pointer" onClick={() => goToSlide(1)} />
-                <div className="w-3 h-3 rounded-full bg-[#28c840] shadow-[0_0_0_0.5px_rgba(0,0,0,0.12)] cursor-pointer" onClick={() => goToSlide(2)} />
+              <div className="flex items-center gap-1.5 shrink-0">
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f57] shadow-[0_0_0_0.5px_rgba(0,0,0,0.12)] cursor-pointer" onClick={() => goToSlide(0)} />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#febc2e] shadow-[0_0_0_0.5px_rgba(0,0,0,0.12)] cursor-pointer" onClick={() => goToSlide(1)} />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#28c840] shadow-[0_0_0_0.5px_rgba(0,0,0,0.12)] cursor-pointer" onClick={() => goToSlide(2)} />
               </div>
 
               {/* URL bar */}
-              <div className="flex-1 flex justify-center">
-                <div className="flex items-center bg-white rounded-lg px-4 py-1.5 border border-slate-200/80 shadow-sm w-full max-w-[400px]">
-                  <span className="text-[11.5px] text-slate-500 font-medium w-full text-center tracking-[-0.01em]">
-                    happiest.team<span className="text-[#6D4AFF] font-semibold">{slideNames[currentSlide]}</span>
+              <div className="flex-1 flex justify-center px-1 sm:px-0">
+                <div className="flex items-center bg-white rounded-lg px-2.5 sm:px-4 py-1 sm:py-1.5 border border-slate-200/80 shadow-xs w-full max-w-[400px]">
+                  <span className="text-[10px] sm:text-[11.5px] text-slate-500 font-medium w-full text-center tracking-[-0.01em] truncate">
+                    happiest.team<span className="text-[#2E1065] font-semibold">{slideNames[currentSlide]}</span>
                   </span>
                 </div>
               </div>
 
               {/* Nav icons */}
-              <div className="flex items-center justify-end gap-2 shrink-0 w-[80px]">
+              <div className="hidden sm:flex items-center justify-end gap-2 shrink-0 w-[80px]">
                 {["←","→","↻"].map(s => (
                   <span key={s} className="text-[13px] text-slate-400 w-6 h-6 flex items-center justify-center cursor-pointer hover:bg-slate-100 rounded">{s}</span>
                 ))}
@@ -247,7 +247,7 @@ export default function Discovery() {
             </div>
 
             {/* App Content Slider */}
-            <div className="flex-1 relative overflow-hidden bg-white">
+            <div className="flex-1 relative overflow-hidden bg-white min-h-[340px] sm:min-h-[460px] md:min-h-[560px]">
               <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                   key={currentSlide}

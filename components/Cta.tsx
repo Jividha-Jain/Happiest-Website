@@ -125,20 +125,18 @@ export default function Cta({ scrollTo }: CtaProps) {
       </div>
 
       {/* Center content */}
-      <div className="relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-xl mx-auto gap-6">
-
-
+      <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 sm:px-6 max-w-xl mx-auto gap-5 sm:gap-6">
 
         {/* Headline */}
-        <h2 className="text-[32px] sm:text-[44px] lg:text-[54px] font-black text-white tracking-tight leading-[1.08]">
+        <h2 className="text-[26px] sm:text-[44px] lg:text-[54px] font-black text-white tracking-tight leading-[1.1]">
           Build your community.{" "}
-          <span className="bg-gradient-to-r from-[#7C5CFF] via-[#a78bfa] to-[#c4b5fd] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-purple-400 via-purple-300 to-indigo-200 bg-clip-text text-transparent">
             Grow your business.
           </span>
         </h2>
 
         {/* Subtext */}
-        <p className="text-slate-400 text-sm sm:text-base font-normal leading-relaxed max-w-sm -mt-1">
+        <p className="text-slate-400 text-xs sm:text-base font-normal leading-relaxed max-w-sm">
           Join thousands of creators and businesses already growing with Happiest Team.
         </p>
 
@@ -146,7 +144,7 @@ export default function Cta({ scrollTo }: CtaProps) {
         <div className="w-full max-w-md">
           <form
             onSubmit={handleSubmit}
-            className="flex items-center bg-white rounded-full p-1.5 shadow-[0_8px_40px_rgba(124,92,255,0.28)] border border-white/20"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center bg-white rounded-2xl sm:rounded-full p-2 sm:p-1.5 shadow-[0_8px_40px_rgba(46,16,101,0.28)] border border-white/20 gap-2 sm:gap-0"
           >
             <input
               type="email"
@@ -154,11 +152,11 @@ export default function Cta({ scrollTo }: CtaProps) {
               placeholder="Enter your email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-transparent px-5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 font-medium outline-none"
+              className="flex-1 bg-transparent px-4 sm:px-5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 font-medium outline-none text-center sm:text-left"
             />
             <button
               type="submit"
-              className="bg-gradient-to-r from-[#2E1065] via-[#3B137E] to-[#4C1D95] hover:from-[#1e0a45] hover:to-[#3B137E] border border-purple-700/50 text-white text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-200 shrink-0 cursor-pointer hover:scale-[1.02] shadow-[0_4px_20px_rgba(46,16,101,0.5)]"
+              className="bg-gradient-to-r from-[#2E1065] via-[#3B137E] to-[#4C1D95] hover:from-[#1e0a45] hover:to-[#3B137E] border border-purple-700/50 text-white text-xs sm:text-sm font-bold px-5 sm:px-6 py-2.5 sm:py-2.5 rounded-xl sm:rounded-full transition-all duration-200 shrink-0 cursor-pointer hover:scale-[1.02] shadow-[0_4px_20px_rgba(46,16,101,0.5)]"
             >
               Start for free
             </button>

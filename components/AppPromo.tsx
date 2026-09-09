@@ -106,13 +106,13 @@ export default function AppPromo() {
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: 0.05 }}
             >
-              <h2 className="text-[44px] md:text-[52px] font-black text-slate-900 tracking-tight leading-[1.1] mb-1">
+              <h2 className="text-[28px] sm:text-[40px] md:text-[52px] font-black text-slate-900 tracking-tight leading-[1.1] mb-1">
                 Everything Your
               </h2>
               <h2
-                className="text-[44px] md:text-[52px] font-black tracking-tight leading-[1.1]"
+                className="text-[28px] sm:text-[40px] md:text-[52px] font-black tracking-tight leading-[1.1]"
                 style={{
-                  background: "linear-gradient(90deg, #4f46e5, #7c3aed)",
+                  background: "linear-gradient(90deg, #2E1065, #6D28D9)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -127,14 +127,14 @@ export default function AppPromo() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-slate-600 text-[15.5px] font-medium leading-relaxed max-w-md"
+              className="text-slate-600 text-sm sm:text-[15.5px] font-medium leading-relaxed max-w-md"
             >
-              Launch, grow and monetize your community —<br />all from one powerful platform.
+              Launch, grow and monetize your community — all from one powerful platform.
             </motion.p>
 
             {/* Points — 2-col bento grid */}
             <div 
-              className="grid grid-cols-2 gap-4 max-h-[490px] overflow-y-auto no-scrollbar pr-2 pt-3 pb-3 px-1.5 text-left"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-h-[420px] sm:max-h-[490px] overflow-y-auto no-scrollbar pr-1 sm:pr-2 pt-2 sm:pt-3 pb-3 px-1 text-left"
               style={{ scrollSnapType: "y mandatory", scrollBehavior: "smooth" }}
             >
               {points.map((pt, idx) => {

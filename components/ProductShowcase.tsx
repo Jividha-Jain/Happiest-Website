@@ -12,38 +12,38 @@ export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
   return (
     <section
       id="product-showcase"
-      className="relative bg-white py-20 md:py-28 overflow-hidden select-none"
+      className="relative bg-white py-14 sm:py-20 md:py-28 overflow-hidden select-none"
     >
       {/* Background subtle glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-purple-100 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-12">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-8 sm:gap-12">
 
         {/* ── TOP: Text Content ── */}
-        <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-5">
-          <span className="inline-flex items-center gap-2 text-[11px] font-black tracking-[0.18em] text-[#2E1065] uppercase">
-            <span className="w-5 h-px bg-[#2E1065]" />
+        <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-4 sm:gap-5">
+          <span className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-black tracking-[0.18em] text-[#2E1065] uppercase">
+            <span className="w-4 sm:w-5 h-px bg-[#2E1065]" />
             See it in action
-            <span className="w-5 h-px bg-[#2E1065]" />
+            <span className="w-4 sm:w-5 h-px bg-[#2E1065]" />
           </span>
 
-          <h2 className="text-3xl sm:text-4xl md:text-[48px] font-black text-[#2E1065] tracking-tight leading-[1.1]">
+          <h2 className="text-2xl sm:text-4xl md:text-[48px] font-black text-[#2E1065] tracking-tight leading-[1.15]">
             Everything your community needs,{" "}
             <span className="bg-gradient-to-r from-[#2E1065] via-[#4C1D95] to-[#7C3AED] bg-clip-text text-transparent">
               in one place.
             </span>
           </h2>
 
-          <p className="text-slate-500 text-sm sm:text-base font-normal leading-relaxed max-w-lg">
+          <p className="text-slate-500 text-xs sm:text-base font-normal leading-relaxed max-w-lg">
             From bookings and events to member feeds and loyalty — Happiest Team gives you a fully branded home for your community.
           </p>
 
           <button
             onClick={() => scrollTo("pricing")}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2E1065] via-[#3B137E] to-[#4C1D95] hover:from-[#1e0a45] hover:to-[#3B137E] border border-purple-800/30 text-white text-sm font-bold px-6 py-3 rounded-full transition-all duration-200 hover:scale-[1.02] shadow-[0_6px_25px_rgba(46,16,101,0.35)] cursor-pointer"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2E1065] via-[#3B137E] to-[#4C1D95] hover:from-[#1e0a45] hover:to-[#3B137E] border border-purple-800/30 text-white text-xs sm:text-sm font-bold px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-200 hover:scale-[1.02] shadow-[0_6px_25px_rgba(46,16,101,0.35)] cursor-pointer"
           >
             Get started free
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
           </button>
         </div>
 
