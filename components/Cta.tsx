@@ -52,6 +52,11 @@ export default function Cta({ scrollTo }: CtaProps) {
       role: "Creator",
       img: "/images/creator-custom-6.jpg",
     },
+    {
+      name: "Creator 7",
+      role: "Creator",
+      img: "/images/creator-custom-7.jpg",
+    },
   ];
 
   const [orbitAngle, setOrbitAngle] = useState(0);
