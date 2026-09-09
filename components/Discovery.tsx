@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, MapPin, Bell, ShoppingCart, ChevronDown, Users, ShieldCheck, ArrowRight,
@@ -91,14 +91,76 @@ function HgptAssistantPanel() {
 }
 
 function FeedPanel() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    let animId: number;
+    let pos = 0;
+    let direction = 1;
+    let isPaused = false;
+
+    const onEnter = () => { isPaused = true; };
+    const onLeave = () => { isPaused = false; };
+
+    el.addEventListener("mouseenter", onEnter);
+    el.addEventListener("mouseleave", onLeave);
+
+    let lastTime = performance.now();
+
+    const scrollLoop = (time: number) => {
+      const delta = (time - lastTime) / 1000;
+      lastTime = time;
+
+      if (!isPaused && el) {
+        const maxScroll = el.scrollHeight - el.clientHeight;
+        if (maxScroll > 10) {
+          pos += 45 * delta * direction;
+          if (pos >= maxScroll) {
+            pos = maxScroll;
+            direction = -1;
+          } else if (pos <= 0) {
+            pos = 0;
+            direction = 1;
+          }
+          el.scrollTop = pos;
+        }
+      }
+      animId = requestAnimationFrame(scrollLoop);
+    };
+
+    animId = requestAnimationFrame(scrollLoop);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      if (el) {
+        el.removeEventListener("mouseenter", onEnter);
+        el.removeEventListener("mouseleave", onLeave);
+      }
+    };
+  }, []);
+
   return (
-    <div className="w-full h-full overflow-y-auto no-scrollbar bg-white">
-      <img
-        src="/images/Slide-2.png"
-        alt="Feeds Screenshot"
-        className="w-full h-auto block" decoding="async"
-        style={{ display: "block", maxWidth: "100%" }}
-      />
+    <div
+      ref={containerRef}
+      className="w-full h-full overflow-y-auto no-scrollbar bg-[#f8fafc] scroll-smooth select-none"
+    >
+      <div className="w-full flex flex-col items-center">
+        <img
+          src="/images/Slide-2.png"
+          alt="Feeds Screenshot"
+          className="w-full h-auto block min-w-full"
+          decoding="async"
+        />
+        <img
+          src="/images/Interactive-Feeds.png"
+          alt="Interactive Feeds Stream"
+          className="w-full max-w-[920px] h-auto block my-3 rounded-2xl shadow-sm border border-slate-100"
+          decoding="async"
+        />
+      </div>
     </div>
   );
 }
@@ -117,7 +179,7 @@ function BookNowPanel() {
 }
 
 export default function Discovery() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(1);
   const [direction, setDirection] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const SLIDE_COUNT = 8;
@@ -127,7 +189,7 @@ export default function Discovery() {
     const interval = setInterval(() => {
       setDirection(1);
       setCurrentSlide(s => (s + 1) % SLIDE_COUNT);
-    }, 3000);
+    }, 7000);
     return () => clearInterval(interval);
   }, [isHovered]);
 
