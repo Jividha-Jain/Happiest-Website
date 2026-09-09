@@ -1,16 +1,69 @@
 "use client";
 
-import React from "react";
-import { ArrowRight } from "lucide-react";
+import React, { useRef, useState, useEffect } from "react";
+import { ArrowRight, Play } from "lucide-react";
 
 interface ProductShowcaseProps {
   scrollTo: (id: string) => void;
 }
 
 export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const hasPlayedOnceRef = useRef(false);
+  const hasScrolledAwayRef = useRef(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const section = sectionRef.current;
+    if (!video || !section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+            // Only autoplay on the very first time entering the view
+            if (!hasScrolledAwayRef.current && !hasPlayedOnceRef.current) {
+              video.play().then(() => {
+                setIsPlaying(true);
+                hasPlayedOnceRef.current = true;
+              }).catch(() => {
+                setIsPlaying(false);
+              });
+            }
+          } else if (!entry.isIntersecting || entry.intersectionRatio < 0.15) {
+            // When user scrolls down/away past the video, stop it and mark scrolled away
+            if (hasPlayedOnceRef.current) {
+              hasScrolledAwayRef.current = true;
+              video.pause();
+              setIsPlaying(false);
+            }
+          }
+        });
+      },
+      { threshold: [0, 0.2, 0.4, 0.8] }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  const handlePlayToggle = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      video.play().then(() => setIsPlaying(true));
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
 
   return (
     <section
+      ref={sectionRef}
       id="product-showcase"
       className="relative bg-white py-14 sm:py-20 md:py-28 overflow-hidden select-none"
     >
@@ -69,16 +122,41 @@ export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
             </div>
 
             {/* Dashboard video */}
-            <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900">
+            <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900 group/vid">
               <video
+                ref={videoRef}
                 src="/images/Video/Final-V1.mp4"
-                autoPlay
-                loop
                 muted
                 playsInline
-                controls
-                className="w-full h-full object-cover"
+                controls={isPlaying}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onEnded={() => {
+                  setIsPlaying(false);
+                  hasScrolledAwayRef.current = true;
+                }}
+                className="w-full h-full object-cover cursor-pointer"
+                onClick={handlePlayToggle}
               />
+
+              {/* Play button overlay when paused / stopped */}
+              {!isPlaying && (
+                <div
+                  onClick={handlePlayToggle}
+                  className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center cursor-pointer transition-all duration-300"
+                  aria-label="Play Video"
+                >
+                  <div className="relative flex items-center justify-center group/play">
+                    {/* Glowing pulse ring */}
+                    <div className="absolute w-20 h-20 rounded-full bg-purple-500/30 animate-ping pointer-events-none" />
+                    
+                    {/* Play button badge */}
+                    <div className="relative w-16 h-16 rounded-full bg-[#2E1065] border-2 border-purple-400/50 text-white shadow-[0_0_30px_rgba(46,16,101,0.85)] flex items-center justify-center transition-all duration-300 group-hover/play:scale-110 group-hover/play:bg-[#3B137E]">
+                      <Play className="w-6 h-6 fill-white ml-1" />
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -86,9 +164,8 @@ export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
           <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-purple-200/60 blur-[40px] pointer-events-none" />
         </div>
 
-
-
       </div>
     </section>
   );
 }
+
