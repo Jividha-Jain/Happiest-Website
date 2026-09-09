@@ -300,11 +300,6 @@ export default function Discovery() {
             Explore Communities
             <ArrowRight className="w-4 h-4" />
           </button>
-          <div className="flex items-center gap-3 text-[13px] text-slate-600 font-medium">
-            <div className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-600" /><span>Free to join</span></div>
-            <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span>No credit card required</span>
-          </div>
         </motion.div>
       </div>
     </section>
