@@ -38,9 +38,9 @@ export default function Cta({ scrollTo }: CtaProps) {
       img: "/images/creator-custom-3.png",
     },
     {
-      name: "Ali Abdaal",
-      role: "Productivity",
-      img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+      name: "Creator 4",
+      role: "Creator",
+      img: "/images/creator-custom-4.png",
     },
     {
       name: "Lara Acosta",
