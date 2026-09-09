@@ -129,7 +129,7 @@ export default function Cta({ scrollTo }: CtaProps) {
 
         {/* Headline */}
         <h2 className="text-[26px] sm:text-[44px] lg:text-[54px] font-black text-white tracking-tight leading-[1.1]">
-          Build your community.{" "}
+          Build your own community.{" "}
           <span className="bg-gradient-to-r from-purple-400 via-purple-300 to-indigo-200 bg-clip-text text-transparent">
             Grow your business.
           </span>
