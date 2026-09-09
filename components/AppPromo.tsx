@@ -172,8 +172,8 @@ export default function AppPromo() {
               })}
             </div>
 
-            {/* Badges */}
-            <motion.div
+            {/* Badges (Commented out) */}
+            {/* <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -182,7 +182,7 @@ export default function AppPromo() {
             >
               <GooglePlayBadge />
               <AppStoreBadge />
-            </motion.div>
+            </motion.div> */}
           </div>
 
           {/* ── RIGHT — Dynamic App Image with Seamless Background Integration ── */}
