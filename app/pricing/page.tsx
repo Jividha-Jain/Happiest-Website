@@ -2,7 +2,6 @@
 
 import React from "react";
 import Loader from "@/components/Loader";
-import Navbar from "@/components/Navbar";
 import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
@@ -20,11 +19,8 @@ export default function PricingPage() {
       {/* 1. Page Entrance Loader */}
       <Loader />
 
-      {/* 2. Frosted sticky navigation header */}
-      <Navbar scrollTo={scrollTo} />
-
       {/* 3. Main Pricing Container */}
-      <main className="flex-1 flex flex-col pt-20 sm:pt-24">
+      <main className="flex-1 flex flex-col pt-8 sm:pt-12">
         <Pricing scrollTo={scrollTo} />
       </main>
 

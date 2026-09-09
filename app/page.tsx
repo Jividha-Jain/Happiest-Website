@@ -2,7 +2,6 @@
 
 import React, { useCallback } from "react";
 import Loader from "@/components/Loader";
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 
 import Discovery from "@/components/Discovery";
@@ -37,8 +36,7 @@ export default function Home() {
       {/* 1. Page Entrance Loader */}
       <Loader />
 
-      {/* 2. Frosted sticky navigation header */}
-      <Navbar scrollTo={scrollTo} />
+
 
       {/* -- Normal scrolling sections -- */}
       <main>

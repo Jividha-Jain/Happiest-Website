@@ -72,7 +72,7 @@ export default function Hero({ scrollTo }: HeroProps) {
       id="hero"
       className="hero-animated-bg relative min-h-screen flex flex-col items-center justify-center
         select-none text-center overflow-hidden
-        px-5 pt-32 pb-24"
+        px-5 py-20 sm:py-24"
     >
       {/* -- BG orbs -- */}
       <div className="hero-orb-1" />
