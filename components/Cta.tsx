@@ -48,9 +48,9 @@ export default function Cta({ scrollTo }: CtaProps) {
       img: "/images/creator-custom-5.jpg",
     },
     {
-      name: "Brendon Burchard",
-      role: "Performance Coach",
-      img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+      name: "Creator 6",
+      role: "Creator",
+      img: "/images/creator-custom-6.jpg",
     },
   ];
 
