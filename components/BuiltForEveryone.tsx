@@ -284,7 +284,7 @@ export default function BuiltForEveryone() {
             <div className="space-y-3">
               
               {/* Feature Item 1: Get Discovered */}
-              <div className="bg-purple-50/60 border border-purple-100 hover:border-purple-200 hover:bg-purple-50 rounded-2xl p-4 flex items-center gap-4 transition-colors cursor-pointer">
+              <div className="bg-purple-50/60 border border-purple-100 rounded-2xl p-4 flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-purple-100 border border-purple-200/60 text-[#2E1065] flex items-center justify-center shrink-0">
                   <Search className="w-4.5 h-4.5" />
                 </div>
@@ -295,7 +295,7 @@ export default function BuiltForEveryone() {
               </div>
 
               {/* Feature Item 2: Take Bookings */}
-              <div className="bg-purple-50/60 border border-purple-100 hover:border-purple-200 hover:bg-purple-50 rounded-2xl p-4 flex items-center gap-4 transition-colors cursor-pointer">
+              <div className="bg-purple-50/60 border border-purple-100 rounded-2xl p-4 flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-purple-100 border border-purple-200/60 text-[#2E1065] flex items-center justify-center shrink-0">
                   <Calendar className="w-4.5 h-4.5" />
                 </div>
@@ -306,7 +306,7 @@ export default function BuiltForEveryone() {
               </div>
 
               {/* Feature Item 3: Build Your Community */}
-              <div className="bg-purple-50/60 border border-purple-100 hover:border-purple-200 hover:bg-purple-50 rounded-2xl p-4 flex items-center gap-4 transition-colors cursor-pointer">
+              <div className="bg-purple-50/60 border border-purple-100 rounded-2xl p-4 flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-purple-100 border border-purple-200/60 text-[#2E1065] flex items-center justify-center shrink-0">
                   <Users className="w-4.5 h-4.5" />
                 </div>
@@ -317,7 +317,7 @@ export default function BuiltForEveryone() {
               </div>
 
               {/* Feature Item 4: Grow Your Revenue */}
-              <div className="bg-purple-50/60 border border-purple-100 hover:border-purple-200 hover:bg-purple-50 rounded-2xl p-4 flex items-center gap-4 transition-colors cursor-pointer">
+              <div className="bg-purple-50/60 border border-purple-100 rounded-2xl p-4 flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-purple-100 border border-purple-200/60 text-[#2E1065] flex items-center justify-center shrink-0">
                   <TrendingUp className="w-4.5 h-4.5" />
                 </div>
