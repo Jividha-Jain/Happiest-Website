@@ -110,14 +110,6 @@ export default function Cta({ scrollTo }: CtaProps) {
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
                   unoptimized
                 />
-                <div className="absolute inset-x-0 bottom-0 pt-8 pb-2 px-2 bg-gradient-to-t from-black/85 via-black/30 to-transparent z-10 text-center">
-                  <p className="text-[9.5px] sm:text-[10.5px] font-bold text-white leading-tight tracking-tight">
-                    {creator.name}
-                  </p>
-                  <p className="text-[7px] sm:text-[7.5px] text-slate-300/90 font-medium leading-tight mt-0.5">
-                    {creator.role}
-                  </p>
-                </div>
                 <div className="absolute inset-0 rounded-[16px] ring-0 group-hover:ring-2 group-hover:ring-purple-400/50 transition-all duration-300 z-20 pointer-events-none" />
               </div>
             </div>
