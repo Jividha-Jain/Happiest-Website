@@ -83,12 +83,11 @@ export default function Cta({ scrollTo }: CtaProps) {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none z-0" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] bg-indigo-400/25 rounded-full blur-[70px] pointer-events-none z-0" />
 
-      {/* Orbiting creator cards */}
+      {/* Creator cards placed cleanly inside the circle (always 100% upright/straight) */}
       <div
         className="absolute top-1/2 left-1/2 w-[720px] h-[720px] sm:w-[920px] sm:h-[920px] lg:w-[1080px] lg:h-[1080px] rounded-full pointer-events-none z-10"
         style={{
           transform: "translate(-50%, -50%)",
-          animation: "ctaPolaroidOrbit 55s linear infinite",
         }}
       >
         {creatorCards.map((creator, idx) => {
@@ -96,21 +95,21 @@ export default function Cta({ scrollTo }: CtaProps) {
           return (
             <div key={creator.name} className="absolute pointer-events-auto" style={pos}>
               <div
-                className="w-[82px] sm:w-[96px] md:w-[108px] h-[104px] sm:h-[122px] md:h-[138px] rounded-[16px] overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_50px_rgba(124,92,255,0.45)]"
+                className="w-[82px] sm:w-[96px] md:w-[108px] h-[104px] sm:h-[122px] md:h-[138px] rounded-[18px] overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_50px_rgba(124,92,255,0.5)] bg-slate-900"
                 style={{
-                  animation: "ctaPolaroidCounterOrbit 55s linear infinite",
-                  border: "1.5px solid rgba(255,255,255,0.15)",
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.75)",
+                  border: "1.5px solid rgba(255,255,255,0.18)",
+                  boxShadow: "0 10px 35px rgba(0,0,0,0.8)",
+                  animation: `ctaCardFloat 4s ease-in-out infinite alternate ${idx * 0.6}s`,
                 }}
               >
                 <Image
                   src={creator.img}
                   alt={creator.name}
                   fill
-                  className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   unoptimized
                 />
-                <div className="absolute inset-0 rounded-[16px] ring-0 group-hover:ring-2 group-hover:ring-purple-400/50 transition-all duration-300 z-20 pointer-events-none" />
+                <div className="absolute inset-0 rounded-[18px] ring-0 group-hover:ring-2 group-hover:ring-purple-400/60 transition-all duration-300 z-20 pointer-events-none" />
               </div>
             </div>
           );
@@ -176,13 +175,9 @@ export default function Cta({ scrollTo }: CtaProps) {
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes ctaPolaroidOrbit {
-          from { transform: translate(-50%, -50%) rotate(0deg); }
-          to   { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-        @keyframes ctaPolaroidCounterOrbit {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(-360deg); }
+        @keyframes ctaCardFloat {
+          0%   { transform: translateY(0px); }
+          100% { transform: translateY(-8px); }
         }
       `}} />
     </section>
