@@ -125,18 +125,26 @@ export default function Cta({ scrollTo }: CtaProps) {
       </div>
 
       {/* Center content */}
-      <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 sm:px-6 max-w-xl mx-auto gap-5 sm:gap-6">
+      <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 sm:px-6 max-w-3xl mx-auto gap-4 sm:gap-6">
+
+        {/* Top Badge */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-400/20 text-purple-300 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase backdrop-blur-md">
+          <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+          Ready to launch?
+        </div>
 
         {/* Headline */}
-        <h2 className="text-[26px] sm:text-[44px] lg:text-[54px] font-black text-white tracking-tight leading-[1.1]">
-          Build your own community.{" "}
-          <span className="bg-gradient-to-r from-purple-400 via-purple-300 to-indigo-200 bg-clip-text text-transparent">
+        <h2 className="text-3xl sm:text-5xl lg:text-[56px] font-black tracking-tight leading-[1.15] font-display">
+          <span className="block text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+            Build your own community.
+          </span>
+          <span className="block mt-1 sm:mt-2 bg-gradient-to-r from-[#c4b5fd] via-[#a78bfa] to-[#818cf8] bg-clip-text text-transparent drop-shadow-[0_2px_20px_rgba(167,139,250,0.35)]">
             Grow your business.
           </span>
         </h2>
 
         {/* Subtext */}
-        <p className="text-slate-400 text-xs sm:text-base font-normal leading-relaxed max-w-sm">
+        <p className="text-slate-300/90 text-xs sm:text-base font-normal leading-relaxed max-w-md">
           Join thousands of creators and businesses already growing with Happiest Team.
         </p>
 
