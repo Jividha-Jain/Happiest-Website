@@ -145,22 +145,15 @@ function FeedPanel() {
   return (
     <div
       ref={containerRef}
-      className="w-full h-full overflow-y-auto no-scrollbar bg-[#f8fafc] scroll-smooth select-none"
+      className="w-full h-full overflow-y-auto no-scrollbar bg-white scroll-smooth select-none"
     >
-      <div className="w-full flex flex-col items-center">
-        <img
-          src="/images/Slide-2.png"
-          alt="Feeds Screenshot"
-          className="w-full h-auto block min-w-full"
-          decoding="async"
-        />
-        <img
-          src="/images/Interactive-Feeds.png"
-          alt="Interactive Feeds Stream"
-          className="w-full max-w-[920px] h-auto block my-3 rounded-2xl shadow-sm border border-slate-100"
-          decoding="async"
-        />
-      </div>
+      <img
+        src="/images/Slide-2.png"
+        alt="Feeds Screenshot"
+        className="w-full h-auto block"
+        decoding="async"
+        style={{ display: "block", maxWidth: "100%" }}
+      />
     </div>
   );
 }
