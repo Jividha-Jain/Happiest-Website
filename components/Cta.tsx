@@ -43,9 +43,9 @@ export default function Cta({ scrollTo }: CtaProps) {
       img: "/images/creator-custom-4.png",
     },
     {
-      name: "Lara Acosta",
-      role: "LinkedIn Creator",
-      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+      name: "Creator 5",
+      role: "Creator",
+      img: "/images/creator-custom-5.jpg",
     },
     {
       name: "Brendon Burchard",
