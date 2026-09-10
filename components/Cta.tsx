@@ -195,7 +195,7 @@ export default function Cta({ scrollTo }: CtaProps) {
       </div>
 
       {/* ═══════════════ MOBILE ONLY VIEW (< sm) ═══════════════ */}
-      <div className="flex sm:hidden relative z-20 flex-col items-center justify-center text-center px-4 max-w-sm mx-auto gap-4">
+      <div className="flex sm:hidden relative z-20 flex-col items-center justify-center text-center px-4 max-w-sm mx-auto gap-4 w-full">
         {/* Top Badge */}
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-purple-500/15 border border-purple-400/25 text-purple-300 text-[10px] font-bold tracking-wider uppercase backdrop-blur-md">
           <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
