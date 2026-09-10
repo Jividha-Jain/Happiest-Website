@@ -129,25 +129,20 @@ export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
               {!isPlaying && (
                 <div
                   onClick={handlePlayToggle}
-                  className="absolute inset-0 bg-black/45 backdrop-blur-[2px] flex items-center justify-center cursor-pointer transition-all duration-300 z-20 group/overlay"
+                  className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center cursor-pointer transition-all duration-300 z-20 group/overlay"
                   aria-label="Play Video"
                 >
-                  <div className="relative flex flex-col items-center justify-center gap-3.5 group/play transition-transform duration-300 group-hover/overlay:scale-105">
+                  <div className="relative flex items-center justify-center group/play transition-transform duration-300 group-hover/overlay:scale-105">
                     {/* Glowing pulse ring */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-purple-500/30 animate-ping pointer-events-none" />
                     
-                    {/* Large Play button badge */}
+                    {/* Clean Large Play button badge */}
                     <button
                       type="button"
                       className="relative w-20 h-20 sm:w-22 sm:h-22 rounded-full bg-gradient-to-br from-[#6D4AFF] via-[#4C1D95] to-[#2E1065] border-2 border-purple-300/60 text-white shadow-[0_0_40px_rgba(109,74,255,0.7)] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
                     >
                       <Play className="w-8 h-8 sm:w-9 sm:h-9 fill-white text-white ml-1.5" />
                     </button>
-
-                    {/* Pill label */}
-                    <span className="bg-black/70 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
-                      Watch Video Demo
-                    </span>
                   </div>
                 </div>
               )}
