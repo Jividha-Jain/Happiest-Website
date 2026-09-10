@@ -220,8 +220,8 @@ export default function Discovery() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* ── Tab Bar Above Mockup ── */}
-        <div className="flex justify-center mb-10 relative z-30 max-w-full">
-          <div className="flex bg-[#121829]/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-xs overflow-x-auto no-scrollbar max-w-full">
+        <div className="flex justify-center mb-6 sm:mb-10 relative z-30 max-w-full">
+          <div className="flex bg-[#121829]/90 backdrop-blur-md p-1 sm:p-1.5 rounded-2xl border border-white/10 shadow-xs overflow-x-auto no-scrollbar max-w-full">
             {[
               { id: 0, label: "Discover Club", icon: Compass },
               { id: 1, label: "Feed", icon: Newspaper },
@@ -238,11 +238,11 @@ export default function Discovery() {
                 <button
                   key={tab.id}
                   onClick={() => goToSlide(tab.id)}
-                  className={`group relative flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl transition-all duration-300 cursor-pointer shrink-0 z-10 ${
+                  className={`group relative flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-bold rounded-xl transition-all duration-300 cursor-pointer shrink-0 z-10 ${
                     isActive ? "text-white" : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  <Icon className={`w-4 h-4 transition-colors ${isActive ? "text-white" : "text-slate-400 group-hover:text-slate-200"}`} />
+                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-colors ${isActive ? "text-white" : "text-slate-400 group-hover:text-slate-200"}`} />
                   <span>{tab.label}</span>
                   {isActive && (
                     <motion.div
@@ -274,7 +274,7 @@ export default function Discovery() {
 
           {/* Main card */}
           <div
-            className="relative rounded-[20px] overflow-hidden flex flex-col h-[620px]"
+            className="relative rounded-[20px] overflow-hidden flex flex-col h-[460px] sm:h-[540px] md:h-[620px]"
             style={{ background: "#ffffff", boxShadow: "0 20px 60px rgba(0,0,0,0.05)" }}
           >
             {/* Window chrome bar */}
