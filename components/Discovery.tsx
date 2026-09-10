@@ -42,7 +42,7 @@ function ProductsPanel() {
   return (
     <div className="w-full h-full overflow-y-auto no-scrollbar bg-white">
       <img
-        src="/images/Product.png"
+        src="/images/Slide.png"
         alt="Products Screenshot"
         className="w-full h-auto block" decoding="async"
         style={{ display: "block", maxWidth: "100%" }}
@@ -222,7 +222,7 @@ export default function Discovery() {
   return (
     <section
       id="discover"
-      className="relative py-16 sm:py-24 md:py-32 overflow-hidden z-20 font-sans bg-[#0B0F1A]"
+      className="relative py-10 sm:py-20 md:py-32 overflow-hidden z-20 font-sans bg-[#0B0F1A]"
     >
       {/* ── Glowing Top Section Divider Line ── */}
       <div className="absolute top-0 left-0 right-0 w-full flex items-center justify-center pointer-events-none z-30">
@@ -283,15 +283,15 @@ export default function Discovery() {
           <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-20 pointer-events-none"
             style={{ background: "radial-gradient(ellipse at center, rgba(109,74,255,0.12) 0%, transparent 70%)", filter: "blur(24px)" }} />
 
-          <div className="absolute -inset-px rounded-[20px] pointer-events-none border border-slate-200/80" />
+          <div className="absolute -inset-px rounded-[16px] sm:rounded-[20px] pointer-events-none border border-slate-200/80" />
 
           {/* Main card */}
           <div
-            className="relative rounded-[20px] overflow-hidden flex flex-col h-[480px] sm:h-[540px] md:h-[620px]"
+            className="relative rounded-[16px] sm:rounded-[20px] overflow-hidden flex flex-col aspect-[16/10] sm:aspect-[16/9.5] md:aspect-auto md:h-[580px] lg:h-[620px]"
             style={{ background: "#ffffff", boxShadow: "0 20px 60px rgba(0,0,0,0.05)" }}
           >
             {/* Window chrome bar */}
-            <div className="flex items-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-2.5 sm:py-3.5 shrink-0 z-20 relative"
+            <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 shrink-0 z-20 relative"
               style={{ background: "linear-gradient(180deg, #f8faff 0%, #f1f4fd 100%)", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
               {/* Traffic lights */}
               <div className="flex items-center gap-1.5 shrink-0">
@@ -380,7 +380,7 @@ export default function Discovery() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, ease }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-5 mt-10 sm:mt-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 mt-6 sm:mt-12"
         >
           <button
             className="flex items-center gap-2.5 px-8 py-4 rounded-full text-[13.5px] font-bold text-white cursor-pointer transition-all duration-300 hover:scale-[1.03] bg-[#6D4AFF] shadow-md hover:bg-[#5A38F0]"
