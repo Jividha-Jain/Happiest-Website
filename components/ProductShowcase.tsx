@@ -123,7 +123,7 @@ export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
                 poster="/images/Product.png"
                 muted
                 playsInline
-                controls={isPlaying}
+                controls
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onEnded={() => {
@@ -137,7 +137,7 @@ export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
               {!isPlaying && (
                 <div
                   onClick={handlePlayToggle}
-                  className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center cursor-pointer transition-all duration-300"
+                  className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center cursor-pointer transition-all duration-300 z-10"
                   aria-label="Play Video"
                 >
                   <div className="relative flex items-center justify-center group/play">
