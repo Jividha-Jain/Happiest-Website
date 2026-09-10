@@ -61,6 +61,16 @@ export default function Cta({ scrollTo }: CtaProps) {
 
   const [orbitAngle, setOrbitAngle] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     let animId: number;
@@ -84,26 +94,26 @@ export default function Cta({ scrollTo }: CtaProps) {
   return (
     <section
       id="cta"
-      className="relative w-full min-h-[750px] sm:min-h-[860px] lg:min-h-[920px] flex items-center justify-center select-none py-20 sm:py-28 lg:py-36 overflow-hidden bg-[#04040c]"
+      className="relative w-full min-h-[640px] sm:min-h-[860px] lg:min-h-[920px] flex items-center justify-center select-none py-14 sm:py-28 lg:py-36 overflow-hidden bg-[#04040c]"
     >
       {/* Deep radial bg */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(100,60,255,0.18),transparent_70%)] pointer-events-none" />
 
       {/* Concentric rings - Outer ring encloses all cards */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] sm:w-[800px] sm:h-[800px] lg:w-[1080px] lg:h-[1080px] rounded-full border border-purple-500/15 pointer-events-none z-0 shadow-[0_0_80px_rgba(124,92,255,0.08)]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] sm:w-[600px] sm:h-[600px] lg:w-[840px] lg:h-[840px] rounded-full border border-white/[0.06] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[540px] h-[540px] sm:w-[800px] sm:h-[800px] lg:w-[1080px] lg:h-[1080px] rounded-full border border-purple-500/15 pointer-events-none z-0 shadow-[0_0_80px_rgba(124,92,255,0.08)]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[390px] h-[390px] sm:w-[600px] sm:h-[600px] lg:w-[840px] lg:h-[840px] rounded-full border border-white/[0.06] pointer-events-none z-0" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] sm:w-[400px] sm:h-[400px] lg:w-[540px] lg:h-[540px] rounded-full border border-indigo-500/10 pointer-events-none z-0" />
 
       {/* Central glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[520px] sm:h-[520px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none z-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] bg-indigo-400/25 rounded-full blur-[70px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] sm:w-[520px] sm:h-[520px] bg-purple-600/20 rounded-full blur-[120px] sm:blur-[140px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160px] h-[160px] sm:w-[240px] sm:h-[240px] bg-indigo-400/25 rounded-full blur-[60px] sm:blur-[70px] pointer-events-none z-0" />
 
       {/* Orbiting creator cards (always 100% upright/straight with ZERO tilt) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] sm:w-[800px] sm:h-[800px] lg:w-[1080px] lg:h-[1080px] rounded-full pointer-events-none z-10">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] sm:w-[800px] sm:h-[800px] lg:w-[1080px] lg:h-[1080px] rounded-full pointer-events-none z-10">
         {creatorCards.map((creator, idx) => {
           const angle = (orbitAngle + (idx * 360) / creatorCards.length - 90) % 360;
           const rad = (angle * Math.PI) / 180;
-          const radius = 37.5; // Positions all cards completely inside the outer circle
+          const radius = isMobile ? 43 : 37.5; // Wider on mobile to completely clear center text
           const x = 50 + radius * Math.cos(rad);
           const y = 50 + radius * Math.sin(rad);
 
@@ -120,7 +130,7 @@ export default function Cta({ scrollTo }: CtaProps) {
               onMouseLeave={() => setIsHovered(false)}
             >
               <div
-                className="w-[62px] sm:w-[92px] md:w-[108px] h-[78px] sm:h-[116px] md:h-[138px] rounded-[14px] sm:rounded-[18px] overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_50px_rgba(124,92,255,0.5)] bg-slate-900"
+                className="w-[46px] sm:w-[92px] md:w-[108px] h-[58px] sm:h-[116px] md:h-[138px] rounded-[11px] sm:rounded-[18px] overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_50px_rgba(124,92,255,0.5)] bg-slate-900"
                 style={{
                   border: "1.5px solid rgba(255,255,255,0.18)",
                   boxShadow: "0 10px 35px rgba(0,0,0,0.8)",
@@ -133,7 +143,7 @@ export default function Cta({ scrollTo }: CtaProps) {
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   unoptimized
                 />
-                <div className="absolute inset-0 rounded-[18px] ring-0 group-hover:ring-2 group-hover:ring-purple-400/60 transition-all duration-300 z-20 pointer-events-none" />
+                <div className="absolute inset-0 rounded-[11px] sm:rounded-[18px] ring-0 group-hover:ring-2 group-hover:ring-purple-400/60 transition-all duration-300 z-20 pointer-events-none" />
               </div>
             </div>
           );
@@ -141,16 +151,16 @@ export default function Cta({ scrollTo }: CtaProps) {
       </div>
 
       {/* Center content */}
-      <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 sm:px-6 max-w-3xl mx-auto gap-4 sm:gap-6">
+      <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 sm:px-6 max-w-[330px] sm:max-w-3xl mx-auto gap-3.5 sm:gap-6">
 
         {/* Top Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-400/20 text-purple-300 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase backdrop-blur-md">
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-purple-500/10 border border-purple-400/20 text-purple-300 text-[9.5px] sm:text-[11px] font-bold tracking-wider uppercase backdrop-blur-md">
           <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
           Ready to launch?
         </div>
 
         {/* Headline */}
-        <h2 className="text-3xl sm:text-5xl lg:text-[56px] font-black tracking-tight leading-[1.15] font-display">
+        <h2 className="text-[26px] sm:text-5xl lg:text-[56px] font-black tracking-tight leading-[1.18] font-display">
           <span className="block text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
             Build your own community.
           </span>
@@ -160,15 +170,15 @@ export default function Cta({ scrollTo }: CtaProps) {
         </h2>
 
         {/* Subtext */}
-        <p className="text-slate-300/90 text-xs sm:text-base font-normal leading-relaxed max-w-md">
+        <p className="text-slate-300/90 text-xs sm:text-base font-normal leading-relaxed max-w-[280px] sm:max-w-md">
           Join thousands of creators and businesses already growing with Happiest Team.
         </p>
 
         {/* Email form */}
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-[310px] sm:max-w-md">
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center bg-white rounded-2xl sm:rounded-full p-2 sm:p-1.5 shadow-[0_8px_40px_rgba(46,16,101,0.28)] border border-white/20 gap-2 sm:gap-0"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center bg-white rounded-2xl sm:rounded-full p-1.5 shadow-[0_8px_40px_rgba(46,16,101,0.28)] border border-white/20 gap-1.5 sm:gap-0"
           >
             <input
               type="email"
@@ -176,11 +186,11 @@ export default function Cta({ scrollTo }: CtaProps) {
               placeholder="Enter your email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-transparent px-4 sm:px-5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 font-medium outline-none text-center sm:text-left"
+              className="flex-1 bg-transparent px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 font-medium outline-none text-center sm:text-left"
             />
             <button
               type="submit"
-              className="bg-gradient-to-r from-[#2E1065] via-[#3B137E] to-[#4C1D95] hover:from-[#1e0a45] hover:to-[#3B137E] border border-purple-700/50 text-white text-xs sm:text-sm font-bold px-5 sm:px-6 py-2.5 sm:py-2.5 rounded-xl sm:rounded-full transition-all duration-200 shrink-0 cursor-pointer hover:scale-[1.02] shadow-[0_4px_20px_rgba(46,16,101,0.5)]"
+              className="bg-gradient-to-r from-[#2E1065] via-[#3B137E] to-[#4C1D95] hover:from-[#1e0a45] hover:to-[#3B137E] border border-purple-700/50 text-white text-xs sm:text-sm font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl sm:rounded-full transition-all duration-200 shrink-0 cursor-pointer hover:scale-[1.02] shadow-[0_4px_20px_rgba(46,16,101,0.5)]"
             >
               Start for free
             </button>
