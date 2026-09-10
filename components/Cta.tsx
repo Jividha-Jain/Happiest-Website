@@ -89,17 +89,17 @@ export default function Cta({ scrollTo }: CtaProps) {
       {/* Deep radial bg */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(100,60,255,0.18),transparent_70%)] pointer-events-none" />
 
-      {/* Concentric rings - (Desktop: 100% untouched) */}
-      <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:w-[800px] sm:h-[800px] lg:w-[1080px] lg:h-[1080px] rounded-full border border-purple-500/15 pointer-events-none z-0 shadow-[0_0_80px_rgba(124,92,255,0.08)]" />
-      <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:w-[600px] sm:h-[600px] lg:w-[840px] lg:h-[840px] rounded-full border border-white/[0.06] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:w-[400px] sm:h-[400px] lg:w-[540px] lg:h-[540px] rounded-full border border-indigo-500/10 pointer-events-none z-0" />
+      {/* Concentric rings - (Desktop: 100% untouched: hidden md:block) */}
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:w-[800px] md:h-[800px] lg:w-[1080px] lg:h-[1080px] rounded-full border border-purple-500/15 pointer-events-none z-0 shadow-[0_0_80px_rgba(124,92,255,0.08)]" />
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:w-[600px] md:h-[600px] lg:w-[840px] lg:h-[840px] rounded-full border border-white/[0.06] pointer-events-none z-0" />
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:w-[400px] md:h-[400px] lg:w-[540px] lg:h-[540px] rounded-full border border-indigo-500/10 pointer-events-none z-0" />
 
       {/* Central glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[520px] sm:h-[520px] bg-purple-600/20 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none z-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] bg-indigo-400/25 rounded-full blur-[60px] sm:blur-[70px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] md:w-[520px] md:h-[520px] bg-purple-600/20 rounded-full blur-[100px] md:blur-[140px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] md:w-[240px] md:h-[240px] bg-indigo-400/25 rounded-full blur-[60px] md:blur-[70px] pointer-events-none z-0" />
 
-      {/* Orbiting creator cards (DESKTOP ONLY: 100% untouched original) */}
-      <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:w-[800px] sm:h-[800px] lg:w-[1080px] lg:h-[1080px] rounded-full pointer-events-none z-10">
+      {/* Orbiting creator cards (DESKTOP ONLY: hidden md:block - 100% untouched original) */}
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:w-[800px] md:h-[800px] lg:w-[1080px] lg:h-[1080px] rounded-full pointer-events-none z-10">
         {creatorCards.map((creator, idx) => {
           const angle = (orbitAngle + (idx * 360) / creatorCards.length - 90) % 360;
           const rad = (angle * Math.PI) / 180;
@@ -141,7 +141,7 @@ export default function Cta({ scrollTo }: CtaProps) {
       </div>
 
       {/* ═══════════════ DESKTOP ONLY VIEW (100% UNTOUCHED ORIGINAL) ═══════════════ */}
-      <div className="hidden sm:flex relative z-20 flex-col items-center justify-center text-center px-6 max-w-3xl mx-auto gap-6">
+      <div className="hidden md:flex relative z-20 flex-col items-center justify-center text-center px-6 max-w-3xl mx-auto gap-6">
         {/* Top Badge */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-400/20 text-purple-300 text-[11px] font-bold tracking-wider uppercase backdrop-blur-md">
           <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
@@ -194,8 +194,8 @@ export default function Cta({ scrollTo }: CtaProps) {
         </div>
       </div>
 
-      {/* ═══════════════ MOBILE ONLY VIEW (< sm) ═══════════════ */}
-      <div className="flex sm:hidden relative z-20 flex-col items-center justify-center text-center px-4 max-w-sm mx-auto gap-4 w-full">
+      {/* ═══════════════ MOBILE ONLY VIEW (< md) ═══════════════ */}
+      <div className="flex md:hidden relative z-20 flex-col items-center justify-center text-center px-4 max-w-sm mx-auto gap-4 w-full">
         {/* Top Badge */}
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-purple-500/15 border border-purple-400/25 text-purple-300 text-[10px] font-bold tracking-wider uppercase backdrop-blur-md">
           <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
