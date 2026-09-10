@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const font = Plus_Jakarta_Sans({
   variable: "--font-primary",
@@ -23,10 +24,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${font.variable} h-full antialiased`}
-      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col font-[var(--font-primary)] bg-white text-slate-900 selection:bg-indigo-100 selection:text-indigo-900">{children}</body>
+      <body className="min-h-full flex flex-col font-[var(--font-primary)] bg-white text-slate-900 selection:bg-indigo-100 selection:text-indigo-900">
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }
