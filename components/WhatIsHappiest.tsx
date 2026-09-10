@@ -28,6 +28,7 @@ import {
   Check,
   Sun,
   Moon,
+  SlidersHorizontal,
 } from "lucide-react";
 
 interface WhatIsHappiestProps {
@@ -72,37 +73,37 @@ interface MemberItem {
       bio: "Loves morning runs and good coffee ☕",
       role: "Pacer",
       category: "Admins",
-      badgeStyle: "bg-[#6329be] text-purple-100 font-semibold",
+      badgeStyle: "bg-purple-100 text-purple-700 font-semibold",
       avatar:
         "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
     },
     {
-      name: "Rahul Menon",
-      joined: "Joined Mar 2026",
+      name: "Aarav Mehta",
+      joined: "Joined Jan 2026",
       bio: "Marathon enthusiast | Believes in progress",
-      role: "Volunteer",
-      category: "Volunteers",
-      badgeStyle: "bg-[#48b97b] text-[#061e11] font-bold",
+      role: "Runner",
+      category: "Members",
+      badgeStyle: "bg-sky-100 text-sky-800 font-bold",
       avatar:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
     },
     {
-      name: "Aisha Khan",
-      joined: "Joined last week",
+      name: "Sneha Kapoor",
+      joined: "Joined Jan 2026",
       bio: "Running towards a healthier me ✨",
-      role: "New",
-      category: "New This Week",
-      badgeStyle: "bg-[#e5af4b] text-[#281800] font-bold",
+      role: "Volunteer",
+      category: "Volunteers",
+      badgeStyle: "bg-emerald-100 text-emerald-800 font-bold",
       avatar:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
     },
     {
-      name: "Dev Sharma",
-      joined: "Joined Feb 2026",
+      name: "Rohan Desai",
+      joined: "Joined Jan 2026",
       bio: "Runs for the stories 💼",
-      role: "Member",
+      role: "Runner",
       category: "Members",
-      badgeStyle: "bg-[#2a2b4b] text-purple-200 font-medium",
+      badgeStyle: "bg-sky-100 text-sky-800 font-medium",
       avatar:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
     },
@@ -452,55 +453,98 @@ interface MemberItem {
                   })}
                 </div>
               </div>
-            </div>
-
-            {/* MAIN CONTENT PANEL (Screen view + Mobile Top Tabs) */}
-            <div
-              className={`md:col-span-8 lg:col-span-8 p-4 sm:p-7 flex flex-col gap-5 text-left transition-colors duration-300 ${
-                isLightTheme ? "bg-white" : "bg-[#070314]"
-              }`}
-            >
-              {/* MOBILE TOP HEADER & HORIZONTAL TABS (Mobile only: flex md:hidden) */}
+{/* MOBILE TOP HEADER & HORIZONTAL TABS (Mobile only: flex md:hidden) */}
               <div
                 className={`flex md:hidden flex-col gap-3.5 pb-4 border-b transition-colors ${
                   isLightTheme ? "border-purple-100" : "border-white/[0.08]"
                 }`}
               >
-                {/* Mobile Club Identity Card */}
+                {/* Mobile Club Community Card */}
                 <div
-                  className={`flex items-center gap-3 p-3 rounded-2xl border transition-all ${
+                  className={`p-3.5 sm:p-4 rounded-3xl border transition-all ${
                     isLightTheme
-                      ? "bg-gradient-to-r from-purple-50/90 via-white to-purple-50/50 border-purple-200/80 shadow-xs"
-                      : "bg-gradient-to-r from-[#160d32]/90 via-[#0e0724] to-[#160d32]/60 border-purple-500/20 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+                      ? "bg-white border-purple-100/90 shadow-[0_4px_20px_rgba(100,50,200,0.05)]"
+                      : "bg-[#100828] border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
                   }`}
                 >
-                  <div
-                    className={`w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#5430f8] via-[#7c44ff] to-[#a253ff] flex items-center justify-center text-white shrink-0 shadow-md ${
-                      isLightTheme ? "ring-2 ring-purple-200/80" : "ring-2 ring-purple-500/30"
-                    }`}
-                  >
-                    <span className="text-xl leading-none select-none">🏃</span>
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <h4
-                        className={`text-xs sm:text-sm font-extrabold tracking-tight font-display ${
-                          isLightTheme ? "text-[#1e1239]" : "text-white"
+                  <div className="flex items-start gap-3.5">
+                    {/* Left Running Woman Thumbnail */}
+                    <div className="w-18 h-18 sm:w-22 sm:h-22 rounded-2xl overflow-hidden shrink-0 shadow-sm border border-purple-100 dark:border-white/10 relative">
+                      <img
+                        src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=300&q=80"
+                        alt="Sunday Runners Club"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    {/* Middle Info */}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-bold text-purple-700 bg-purple-50 dark:bg-purple-950/60 dark:text-purple-300 px-2 py-0.5 rounded-full">
+                          Community
+                        </span>
+                        <button className="text-slate-400 hover:text-purple-900 p-0.5">
+                          <MoreVertical className="w-4 h-4" />
+                        </button>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 mt-1">
+                        <h4
+                          className={`text-sm sm:text-base font-extrabold tracking-tight truncate font-display ${
+                            isLightTheme ? "text-[#1e1239]" : "text-white"
+                          }`}
+                        >
+                          SUNDAY RUNNERS CLUB
+                        </h4>
+                        <span className="w-3.5 h-3.5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[8px] font-bold shrink-0 shadow-xs">
+                          ✓
+                        </span>
+                      </div>
+
+                      <p
+                        className={`text-[11px] font-semibold mt-0.5 tracking-wide truncate ${
+                          isLightTheme ? "text-[#675b83]" : "text-slate-400"
                         }`}
                       >
-                        SUNDAY RUNNERS CLUB
-                      </h4>
-                      <span className="w-3.5 h-3.5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[8px] font-bold shrink-0 shadow-xs">
-                        ✓
-                      </span>
+                        1.2k runners · Run · Connect · Grow
+                      </p>
+
+                      {/* Avatar Overlap Stack + View Community Button */}
+                      <div className="flex items-center justify-between mt-2 pt-0.5">
+                        <div className="flex items-center">
+                          <div className="flex items-center -space-x-1.5">
+                            <img
+                              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+                              alt=""
+                              className="w-5 h-5 rounded-full border border-white dark:border-[#100828] object-cover"
+                            />
+                            <img
+                              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+                              alt=""
+                              className="w-5 h-5 rounded-full border border-white dark:border-[#100828] object-cover"
+                            />
+                            <img
+                              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"
+                              alt=""
+                              className="w-5 h-5 rounded-full border border-white dark:border-[#100828] object-cover"
+                            />
+                            <img
+                              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
+                              alt=""
+                              className="w-5 h-5 rounded-full border border-white dark:border-[#100828] object-cover"
+                            />
+                          </div>
+                          <span className="text-[9.5px] font-bold text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/60 px-1.5 py-0.5 rounded-full ml-1">
+                            +1.2k
+                          </span>
+                        </div>
+
+                        <button className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-purple-50 hover:bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 transition-all cursor-pointer">
+                          <span>View Community</span>
+                          <span className="text-xs leading-none">→</span>
+                        </button>
+                      </div>
                     </div>
-                    <p
-                      className={`text-[11px] font-semibold tracking-wide ${
-                        isLightTheme ? "text-[#675b83]" : "text-slate-300"
-                      }`}
-                    >
-                      1.2k runners · Run · Connect · Grow
-                    </p>
                   </div>
                 </div>
 
@@ -508,7 +552,7 @@ interface MemberItem {
                 <div
                   className={`flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1.5 rounded-2xl border ${
                     isLightTheme
-                      ? "bg-[#f3effa]/90 border-purple-100"
+                      ? "bg-[#f5effb]/90 border-purple-100/80"
                       : "bg-[#0c0520] border-white/[0.08]"
                   }`}
                 >
@@ -521,17 +565,15 @@ interface MemberItem {
                         onClick={() => setActiveNav(item.name)}
                         className={`group relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shrink-0 transition-all duration-200 cursor-pointer active:scale-95 ${
                           isActive
-                            ? isLightTheme
-                              ? "bg-gradient-to-r from-[#6b25c2] to-[#8233e8] text-white shadow-md"
-                              : "bg-gradient-to-r from-[#7C5CFF] to-[#9369FF] text-white shadow-[0_0_15px_rgba(124,92,255,0.45)]"
+                            ? "bg-[#6b25c2] text-white shadow-md font-extrabold"
                             : isLightTheme
                             ? "text-[#4a3b6e] hover:text-[#1e1239] hover:bg-white/70"
                             : "text-slate-300 hover:text-white hover:bg-white/[0.06]"
                         }`}
                       >
                         <IconComp
-                          className={`w-3.5 h-3.5 shrink-0 transition-transform ${
-                            isActive ? "scale-110 text-white" : ""
+                          className={`w-3.5 h-3.5 shrink-0 ${
+                            isActive ? "text-white" : ""
                           }`}
                         />
                         <span>{item.name}</span>
@@ -551,78 +593,77 @@ interface MemberItem {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.25 }}
-                    className="space-y-5 w-full"
+                    className="space-y-4 sm:space-y-5 w-full"
                   >
                     {/* Header Row */}
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-center justify-between gap-3">
                       <div>
                         <h2
-                          className={`text-2xl sm:text-3xl font-extrabold tracking-tight ${
+                          className={`text-2xl sm:text-3xl font-extrabold tracking-tight font-display ${
                             isLightTheme ? "text-[#1e1239]" : "text-white"
                           }`}
                         >
                           Members
                         </h2>
                         <p
-                          className={`text-xs font-semibold mt-1 ${
+                          className={`text-xs font-semibold mt-0.5 ${
                             isLightTheme ? "text-[#675b83]" : "text-slate-400"
                           }`}
                         >
-                          128 members · 12 new this week
+                          128 members · <span className="text-emerald-500 font-bold">12 new this week</span>
                         </p>
                       </div>
 
-                      <button className="bg-[#6b25c2] hover:bg-[#7b32d6] text-white font-bold text-xs px-5 py-2.5 rounded-full shadow-md flex items-center gap-1.5 transition-all cursor-pointer self-start sm:self-center shrink-0">
-                        <Plus className="w-4 h-4 stroke-[3]" />
+                      <button className="bg-[#6b25c2] hover:bg-[#7b32d6] text-white font-bold text-xs px-4 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-md flex items-center gap-1.5 transition-all cursor-pointer shrink-0">
+                        <Plus className="w-3.5 h-3.5 stroke-[3]" />
                         <span>Invite Members</span>
                       </button>
                     </div>
 
-                    {/* Sub-Filter Tabs & Search */}
+                    {/* Sub-Filter Tabs */}
                     <div
-                      className={`flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-3 ${
+                      className={`flex items-center gap-6 text-xs font-semibold border-b pb-2 ${
                         isLightTheme ? "border-purple-100" : "border-white/[0.08]"
                       }`}
                     >
-                      {/* Sub-tabs */}
-                      <div className="flex items-center gap-5 sm:gap-6 text-xs font-semibold flex-wrap">
-                        {["All Members", "Admins", "Volunteers", "New This Week"].map((subTab) => {
-                          const isSubActive = activeSubTab === subTab;
-                          return (
-                            <button
-                              key={subTab}
-                              onClick={() => setActiveSubTab(subTab)}
-                              className={`relative pb-2 transition-colors cursor-pointer ${
-                                isSubActive
-                                  ? isLightTheme
-                                    ? "text-purple-900 font-extrabold"
-                                    : "text-white font-bold"
-                                  : isLightTheme
-                                  ? "text-[#675b83] hover:text-[#1e1239]"
-                                  : "text-slate-400 hover:text-slate-200"
-                              }`}
-                            >
-                              <span>{subTab}</span>
-                              {isSubActive && (
-                                <motion.div
-                                  layoutId="subTabUnderline"
-                                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-600 rounded-full"
-                                />
-                              )}
-                            </button>
-                          );
-                        })}
-                      </div>
+                      {["All Members", "Admins", "Volunteers"].map((subTab) => {
+                        const isSubActive = activeSubTab === subTab;
+                        return (
+                          <button
+                            key={subTab}
+                            onClick={() => setActiveSubTab(subTab)}
+                            className={`relative pb-2 transition-colors cursor-pointer ${
+                              isSubActive
+                                ? isLightTheme
+                                  ? "text-purple-900 font-extrabold"
+                                  : "text-white font-bold"
+                                : isLightTheme
+                                ? "text-[#675b83] hover:text-[#1e1239]"
+                                : "text-slate-400 hover:text-slate-200"
+                            }`}
+                          >
+                            <span>{subTab}</span>
+                            {isSubActive && (
+                              <motion.div
+                                layoutId="subTabUnderline"
+                                className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6b25c2] rounded-full"
+                              />
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
 
-                      {/* Right Search Box */}
+                    {/* Search Input Bar + Filter Button */}
+                    <div className="flex items-center gap-2.5">
                       <div
-                        className={`flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs min-w-[190px] border ${
+                        className={`flex items-center gap-2.5 rounded-2xl px-3.5 py-2.5 text-xs flex-1 border transition-colors ${
                           isLightTheme
-                            ? "bg-[#f5f2fa] border-purple-100 text-[#1e1239]"
+                            ? "bg-[#f8f6fc] border-purple-100/90 text-[#1e1239]"
                             : "bg-[#120a2a] border-white/10 text-white"
                         }`}
                       >
-                        <Search className="w-3.5 h-3.5 text-purple-500 shrink-0" />
+                        <Search className="w-4 h-4 text-purple-600 shrink-0 opacity-80" />
                         <input
                           type="text"
                           placeholder="Search members..."
@@ -631,21 +672,39 @@ interface MemberItem {
                           className="bg-transparent text-xs outline-none w-full placeholder:text-[#8274a5]"
                         />
                       </div>
+
+                      <button
+                        className={`w-10 h-10 rounded-2xl flex items-center justify-center border transition-colors shrink-0 ${
+                          isLightTheme
+                            ? "bg-[#f8f6fc] border-purple-100/90 text-purple-800 hover:bg-purple-100"
+                            : "bg-[#120a2a] border-white/10 text-slate-300 hover:bg-white/10"
+                        }`}
+                      >
+                        <SlidersHorizontal className="w-4 h-4" />
+                      </button>
                     </div>
 
-                    {/* Members List Container */}
-                    <div
-                      className={`rounded-2xl border overflow-hidden divide-y ${
-                        isLightTheme
-                          ? "bg-white border-purple-200/80 divide-purple-100 shadow-[0_4px_20px_rgba(124,58,237,0.04)]"
-                          : "bg-[#0e0724] border-white/[0.08] divide-white/[0.04]"
-                      }`}
-                    >
+                    {/* Section Sub-header */}
+                    <div className="flex items-center justify-between pt-1">
+                      <h4
+                        className={`text-xs sm:text-sm font-extrabold ${
+                          isLightTheme ? "text-[#1e1239]" : "text-white"
+                        }`}
+                      >
+                        New This Week (12)
+                      </h4>
+                      <button className="text-xs font-bold text-purple-600 hover:text-purple-700 flex items-center gap-1">
+                        <span>See all</span>
+                        <span>→</span>
+                      </button>
+                    </div>
+
+                    {/* Members List Container - Clean Individual Spaced Rounded Cards */}
+                    <div className="space-y-2.5">
                       {membersList
                         .filter((m) => {
                           if (activeSubTab === "Admins") return m.category === "Admins" || m.role === "Pacer";
                           if (activeSubTab === "Volunteers") return m.role === "Volunteer";
-                          if (activeSubTab === "New This Week") return m.role === "New";
                           return true;
                         })
                         .filter((m) =>
@@ -655,51 +714,46 @@ interface MemberItem {
                           let roleBadgeClass = "";
                           if (member.role === "Pacer") {
                             roleBadgeClass = isLightTheme
-                              ? "bg-purple-100/90 text-purple-700 border border-purple-200/90 font-extrabold"
-                              : "bg-purple-500/20 text-purple-300 border border-purple-500/30 font-bold";
+                              ? "bg-purple-100 text-purple-800 font-bold"
+                              : "bg-purple-500/20 text-purple-300 font-bold";
                           } else if (member.role === "Volunteer") {
                             roleBadgeClass = isLightTheme
-                              ? "bg-emerald-100/90 text-emerald-800 border border-emerald-200/90 font-extrabold"
-                              : "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold";
-                          } else if (member.role === "New") {
-                            roleBadgeClass = isLightTheme
-                              ? "bg-amber-100/90 text-amber-800 border border-amber-200/90 font-extrabold"
-                              : "bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold";
+                              ? "bg-emerald-100 text-emerald-800 font-bold"
+                              : "bg-emerald-500/20 text-emerald-300 font-bold";
                           } else {
                             roleBadgeClass = isLightTheme
-                              ? "bg-slate-100 text-slate-700 border border-slate-200/80 font-semibold"
-                              : "bg-slate-800/80 text-slate-300 border border-slate-700/60 font-semibold";
+                              ? "bg-sky-100 text-sky-800 font-bold"
+                              : "bg-sky-500/20 text-sky-300 font-bold";
                           }
 
                           return (
                             <div
                               key={member.name}
-                              className={`px-4 py-3.5 sm:px-5 sm:py-4 flex items-center justify-between gap-4 transition-colors ${
-                                isLightTheme ? "hover:bg-purple-50/40" : "hover:bg-white/[0.02]"
+                              className={`p-3 sm:px-4 sm:py-3.5 rounded-2xl border flex items-center justify-between gap-3 transition-all ${
+                                isLightTheme
+                                  ? "bg-white border-purple-100/80 shadow-[0_2px_8px_rgba(100,50,200,0.03)] hover:border-purple-200"
+                                  : "bg-[#120a28]/90 border-white/[0.08] hover:border-purple-500/30"
                               }`}
                             >
-                              <div className="flex items-center gap-3.5 flex-1 min-w-0">
-                                {member.avatar ? (
+                              <div className="flex items-center gap-3 flex-1 min-w-0">
+                                <div className="relative shrink-0">
                                   <img
                                     src={member.avatar}
                                     alt={member.name}
-                                    className="w-10 h-10 rounded-full object-cover border border-purple-200/60 shrink-0 shadow-xs"
+                                    className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border border-purple-200/60 shadow-xs"
                                   />
-                                ) : (
-                                  <div className="w-10 h-10 rounded-full bg-purple-100 border border-purple-200 text-purple-800 font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
-                                    {member.initials}
-                                  </div>
-                                )}
+                                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-[#120a28]" />
+                                </div>
                                 <div className="min-w-0">
                                   <h4
-                                    className={`text-sm font-bold leading-snug ${
+                                    className={`text-xs sm:text-sm font-extrabold leading-snug truncate ${
                                       isLightTheme ? "text-[#1a0c36]" : "text-white"
                                     }`}
                                   >
                                     {member.name}
                                   </h4>
                                   <p
-                                    className={`text-xs font-medium ${
+                                    className={`text-[11px] font-semibold ${
                                       isLightTheme ? "text-[#675b83]" : "text-slate-400"
                                     }`}
                                   >
@@ -709,17 +763,17 @@ interface MemberItem {
                               </div>
 
                               {/* Role Badge & Action Dots */}
-                              <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+                              <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                                 <span
-                                  className={`text-[11px] sm:text-xs px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full shadow-xs ${roleBadgeClass}`}
+                                  className={`text-xs px-3.5 py-1 rounded-full ${roleBadgeClass}`}
                                 >
                                   {member.role}
                                 </span>
                                 <button
-                                  className={`p-1.5 rounded-lg cursor-pointer transition-colors ${
+                                  className={`p-1 rounded-lg cursor-pointer transition-colors ${
                                     isLightTheme
-                                      ? "text-slate-400 hover:text-purple-900 hover:bg-purple-100/60"
-                                      : "text-slate-400 hover:text-white hover:bg-white/10"
+                                      ? "text-slate-400 hover:text-purple-900"
+                                      : "text-slate-400 hover:text-white"
                                   }`}
                                 >
                                   <MoreVertical className="w-4 h-4" />
