@@ -243,30 +243,10 @@ const ease = [0.22, 1, 0.36, 1] as [number,number,number,number];
    ════════════════════════════════════════════════ */
 export default function Feed() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const waveRef1 = useRef<HTMLDivElement>(null);
-  const waveRef2 = useRef<HTMLDivElement>(null);
 
   // Selected flow diagram step for modal explanation
   const [selectedStep, setSelectedStep] = useState<FlowStep | null>(null);
   const [popoverStyle, setPopoverStyle] = useState<React.CSSProperties>({});
-
-  // Animated wave using requestAnimationFrame
-  useEffect(() => {
-    let p1 = 0;
-    let p2 = -50;
-    let raf: number;
-    const tick = () => {
-      p1 -= 0.05;
-      p2 += 0.03;
-      if (p1 <= -50) p1 = 0;
-      if (p2 >= 0)   p2 = -50;
-      if (waveRef1.current) waveRef1.current.style.transform = `translateX(${p1}%)`;
-      if (waveRef2.current) waveRef2.current.style.transform = `translateX(${p2}%)`;
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
 
   const closeTimerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -368,6 +348,9 @@ export default function Feed() {
       className="relative py-24 md:py-32 z-20 font-sans overflow-x-hidden"
       style={{ background: "linear-gradient(160deg, #181735 0%, #0e1029 45%, #090d22 100%)" }}
     >
+      {/* Subtle top ambient glow for smooth color harmony */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-32 bg-purple-500/10 blur-[100px] pointer-events-none" />
+
       <div className="relative max-w-[1300px] mx-auto px-6 sm:px-20 lg:px-24">
 
         {/* -- Header -- */}
