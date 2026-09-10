@@ -239,41 +239,6 @@ export default function Cta({ scrollTo }: CtaProps) {
           )}
         </div>
 
-        {/* Reassurance text */}
-        <p className="text-[11px] text-slate-400 font-medium -mt-1 sm:-mt-2">
-          Free 14-day trial · No credit card required
-        </p>
-
-        {/* ── 3 Column Stats Grid (Matches mockup bottom) ── */}
-        <div className="grid grid-cols-3 gap-2 w-full max-w-[360px] sm:max-w-md pt-3 sm:pt-4 border-t border-white/10 mt-1">
-          {/* Stat 1 */}
-          <div className="flex flex-col items-center text-center pr-1 border-r border-white/10">
-            <div className="w-8 h-8 rounded-xl bg-purple-900/40 border border-purple-500/20 text-purple-300 flex items-center justify-center mb-1.5">
-              <Users className="w-4 h-4" />
-            </div>
-            <p className="text-xs sm:text-sm font-extrabold text-white leading-tight font-display">10K+</p>
-            <p className="text-[9.5px] sm:text-[10.5px] text-slate-400 font-medium mt-0.5">Active Communities</p>
-          </div>
-
-          {/* Stat 2 */}
-          <div className="flex flex-col items-center text-center px-1 border-r border-white/10">
-            <div className="w-8 h-8 rounded-xl bg-purple-900/40 border border-purple-500/20 text-purple-300 flex items-center justify-center mb-1.5">
-              <TrendingUp className="w-4 h-4" />
-            </div>
-            <p className="text-xs sm:text-sm font-extrabold text-white leading-tight font-display">3x</p>
-            <p className="text-[9.5px] sm:text-[10.5px] text-slate-400 font-medium mt-0.5">Faster Growth</p>
-          </div>
-
-          {/* Stat 3 */}
-          <div className="flex flex-col items-center text-center pl-1">
-            <div className="w-8 h-8 rounded-xl bg-purple-900/40 border border-purple-500/20 text-purple-300 flex items-center justify-center mb-1.5">
-              <Heart className="w-4 h-4" />
-            </div>
-            <p className="text-xs sm:text-sm font-extrabold text-white leading-tight font-display">Trusted</p>
-            <p className="text-[9.5px] sm:text-[10.5px] text-slate-400 font-medium mt-0.5">By 5K+ Creators</p>
-          </div>
-        </div>
-
       </div>
     </section>
   );
