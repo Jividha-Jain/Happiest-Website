@@ -287,7 +287,7 @@ export default function Discovery() {
 
           {/* Main card */}
           <div
-            className="relative rounded-[16px] sm:rounded-[20px] overflow-hidden flex flex-col aspect-[16/10] sm:aspect-[16/9.5] md:aspect-auto md:h-[580px] lg:h-[620px]"
+            className="relative rounded-[16px] sm:rounded-[20px] overflow-hidden flex flex-col h-[320px] sm:h-[420px] md:h-[560px] lg:h-[620px]"
             style={{ background: "#ffffff", boxShadow: "0 20px 60px rgba(0,0,0,0.05)" }}
           >
             {/* Window chrome bar */}
