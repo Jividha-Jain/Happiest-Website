@@ -18,7 +18,7 @@ function DiscoverClubsPanel() {
       <img
         src="/images/Club.png"
         alt="Discover Clubs Screenshot"
-        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        className="w-full h-full object-contain object-top block"
         decoding="async"
       />
     </div>
@@ -31,7 +31,7 @@ function CoursesPanel() {
       <img
         src="/images/Slide-4.png"
         alt="Courses Screenshot"
-        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        className="w-full h-full object-contain object-top block"
         decoding="async"
       />
     </div>
@@ -44,7 +44,7 @@ function ProductsPanel() {
       <img
         src="/images/Slide.png"
         alt="Products Screenshot"
-        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        className="w-full h-full object-contain object-top block"
         decoding="async"
       />
     </div>
@@ -57,7 +57,7 @@ function ChannelPanel() {
       <img
         src="/images/Slide-7.png"
         alt="Club Notifications Screenshot"
-        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        className="w-full h-full object-contain object-top block"
         decoding="async"
       />
     </div>
@@ -70,7 +70,7 @@ function MetaIntegrationPanel() {
       <img
         src="/images/Slide-6.png"
         alt="Social Media Screenshot"
-        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        className="w-full h-full object-contain object-top block"
         decoding="async"
       />
     </div>
@@ -83,7 +83,7 @@ function HgptAssistantPanel() {
       <img
         src="/images/Slide-3.png"
         alt="HGPT Screenshot"
-        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        className="w-full h-full object-contain object-top block"
         decoding="async"
       />
     </div>
@@ -164,7 +164,7 @@ function BookNowPanel() {
       <img
         src="/images/Booking.png"
         alt="Booking Screenshot"
-        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        className="w-full h-full object-contain object-top block"
         decoding="async"
       />
     </div>
@@ -287,7 +287,7 @@ export default function Discovery() {
 
           {/* Main card */}
           <div
-            className="relative rounded-[16px] sm:rounded-[20px] overflow-hidden flex flex-col h-[320px] sm:h-[420px] md:h-[560px] lg:h-[620px]"
+            className="relative rounded-[16px] sm:rounded-[20px] overflow-hidden flex flex-col aspect-[185/96] sm:aspect-auto sm:h-[460px] md:h-[560px] lg:h-[620px]"
             style={{ background: "#ffffff", boxShadow: "0 20px 60px rgba(0,0,0,0.05)" }}
           >
             {/* Window chrome bar */}
