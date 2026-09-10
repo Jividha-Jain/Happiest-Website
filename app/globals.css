@@ -110,6 +110,25 @@ h1, h2, h3, h4, h5, h6 {
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+/* ─ Custom sleek scrollbar for inner scroll areas ─ */
+.custom-scroll-area {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.3) transparent;
+}
+.custom-scroll-area::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.25);
+  border-radius: 10px;
+}
+.custom-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
 /* ─ Shared surface components ─ */
 .glass-panel        { background: #FFFFFF; border: 1px solid rgba(15,23,42,0.08); }
 .glass-panel-light  { background: #FFFFFF; border: 1px solid rgba(15,23,42,0.08); }

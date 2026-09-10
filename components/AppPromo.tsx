@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Users, BookOpen, Radio, ShoppingBag,
@@ -47,6 +47,21 @@ const points = [
 
 export default function AppPromo() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Ensure inner scrolling works smoothly with trackpad and mouse wheel
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+
+    const canScrollDown = el.scrollTop < el.scrollHeight - el.clientHeight - 1;
+    const canScrollUp = el.scrollTop > 1;
+
+    if ((e.deltaY > 0 && canScrollDown) || (e.deltaY < 0 && canScrollUp)) {
+      e.stopPropagation();
+      el.scrollTop += e.deltaY;
+    }
+  };
 
   return (
     <section
@@ -73,9 +88,9 @@ export default function AppPromo() {
       />
 
       <div className="relative max-w-[1360px] mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-[46%_54%] gap-8 lg:gap-14 items-start">
+        <div className="grid lg:grid-cols-[46%_54%] gap-8 lg:gap-14 items-center">
 
-          {/* ── LEFT: Features List ── */}
+          {/* ── LEFT: Features List with Inner Scroll ── */}
           <div className="min-w-0 space-y-7">
 
             {/* Badge */}
@@ -132,42 +147,56 @@ export default function AppPromo() {
               Launch, grow and monetize your community — all from one powerful platform.
             </motion.p>
 
-            {/* Points — 2-col bento grid without any inner scroll trapping */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2 sm:pt-3 pb-2 text-left">
-              {points.map((pt, idx) => {
-                const Icon = pt.icon;
-                const isActive = activeIdx === idx;
-                return (
-                  <motion.div
-                    key={idx}
-                    onClick={() => setActiveIdx(idx)}
-                    onMouseEnter={() => setActiveIdx(idx)}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.35, delay: 0.05 + (idx % 4) * 0.04 }}
-                    className={`group relative flex flex-col gap-3.5 p-5.5 rounded-[24px] border backdrop-blur-md cursor-pointer transition-all duration-300 ${
-                      isActive
-                        ? "bg-white border-indigo-400/80 shadow-[0_24px_48px_rgba(99,102,241,0.15)] ring-2 ring-indigo-500/20 -translate-y-1"
-                        : "border-white/90 bg-gradient-to-br from-white/95 to-white/50 hover:-translate-y-1 hover:from-white hover:to-white hover:border-indigo-200/60 hover:shadow-[0_24px_48px_rgba(99,102,241,0.08)]"
-                    }`}
-                  >
-                    {/* Icon Container */}
-                    <div className="flex items-center">
-                      <div className={`w-11.5 h-11.5 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(0,0,0,0.02)] ${pt.iconBg}`}>
-                        <Icon className={`${pt.iconColor}`} style={{ width: 21, height: 21 }} />
+            {/* Points — Scrollable 2-col bento grid */}
+            <div className="relative">
+              <div
+                ref={scrollContainerRef}
+                onWheel={handleWheel}
+                data-lenis-prevent
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-h-[440px] sm:max-h-[490px] overflow-y-auto custom-scroll-area pr-2 pt-2 sm:pt-3 pb-8 px-1 text-left scroll-smooth touch-pan-y"
+                style={{
+                  overscrollBehavior: "contain",
+                  WebkitOverflowScrolling: "touch",
+                }}
+              >
+                {points.map((pt, idx) => {
+                  const Icon = pt.icon;
+                  const isActive = activeIdx === idx;
+                  return (
+                    <motion.div
+                      key={idx}
+                      onClick={() => setActiveIdx(idx)}
+                      onMouseEnter={() => setActiveIdx(idx)}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.35, delay: 0.05 + (idx % 4) * 0.04 }}
+                      className={`group relative flex flex-col gap-3.5 p-5.5 rounded-[24px] border backdrop-blur-md cursor-pointer transition-all duration-300 ${
+                        isActive
+                          ? "bg-white border-indigo-400/80 shadow-[0_24px_48px_rgba(99,102,241,0.15)] ring-2 ring-indigo-500/20 -translate-y-1"
+                          : "border-white/90 bg-gradient-to-br from-white/95 to-white/50 hover:-translate-y-1 hover:from-white hover:to-white hover:border-indigo-200/60 hover:shadow-[0_24px_48px_rgba(99,102,241,0.08)]"
+                      }`}
+                    >
+                      {/* Icon Container */}
+                      <div className="flex items-center">
+                        <div className={`w-11.5 h-11.5 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(0,0,0,0.02)] ${pt.iconBg}`}>
+                          <Icon className={`${pt.iconColor}`} style={{ width: 21, height: 21 }} />
+                        </div>
                       </div>
-                    </div>
-                    {/* Title + Text */}
-                    <div className="space-y-1">
-                      <h4 className={`text-[15.5px] font-bold tracking-tight leading-snug transition-colors duration-300 ${
-                        isActive ? "text-indigo-600 font-extrabold" : "text-slate-800 group-hover:text-indigo-600"
-                      }`}>{pt.title}</h4>
-                      <p className="text-[13px] text-slate-500 font-medium leading-relaxed">{pt.desc}</p>
-                    </div>
-                  </motion.div>
-                );
-              })}
+                      {/* Title + Text */}
+                      <div className="space-y-1">
+                        <h4 className={`text-[15.5px] font-bold tracking-tight leading-snug transition-colors duration-300 ${
+                          isActive ? "text-indigo-600 font-extrabold" : "text-slate-800 group-hover:text-indigo-600"
+                        }`}>{pt.title}</h4>
+                        <p className="text-[13px] text-slate-500 font-medium leading-relaxed">{pt.desc}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Bottom soft gradient fade indicator */}
+              <div className="pointer-events-none absolute bottom-0 left-0 right-3 h-8 bg-gradient-to-t from-[#f6f2ff] to-transparent rounded-b-[24px]" />
             </div>
           </div>
 
