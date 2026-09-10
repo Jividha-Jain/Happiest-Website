@@ -219,17 +219,6 @@ export default function Discovery() {
     "/social-media"
   ];
 
-  const slideLabels = [
-    "Discover Clubs",
-    "Interactive Feed",
-    "HGPT AI Assistant",
-    "Online Courses",
-    "Instant Booking",
-    "Products & Store",
-    "Club Notifications",
-    "Social Media"
-  ];
-
   return (
     <section
       id="discover"
@@ -384,27 +373,6 @@ export default function Discovery() {
             </div>
           </div>
         </motion.div>
-
-        {/* ── Mobile Slide Navigation & Dots (Shown on Mobile) ── */}
-        <div className="flex md:hidden flex-col items-center gap-2.5 mt-5">
-          <div className="flex items-center gap-1.5 bg-[#121829]/90 border border-white/10 px-3 py-1.5 rounded-full shadow-md">
-            {Array.from({ length: SLIDE_COUNT }).map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => goToSlide(idx)}
-                className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  currentSlide === idx
-                    ? "w-6 h-2 bg-[#7C5CFF] shadow-[0_0_10px_rgba(124,92,255,0.8)]"
-                    : "w-2 h-2 bg-white/20 hover:bg-white/40"
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
-          </div>
-          <span className="text-[11px] font-bold text-purple-300/80 tracking-wide uppercase">
-            {slideLabels[currentSlide]} · Swipe to explore
-          </span>
-        </div>
 
         {/* Bottom CTA */}
         <motion.div
