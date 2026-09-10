@@ -280,19 +280,19 @@ interface MemberItem {
         >
           {/* Top Chrome Header Bar */}
           <div
-            className={`flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b transition-colors duration-300 ${
+            className={`flex items-center justify-between gap-2 sm:gap-3 px-3.5 sm:px-5 py-2.5 sm:py-3.5 border-b transition-colors duration-300 ${
               isLightTheme
                 ? "bg-white border-purple-100"
                 : "bg-[#080417] border-white/[0.08]"
             }`}
           >
             {/* Left: Official happiest.team Brand Logo */}
-            <div className="flex items-center gap-2.5 shrink-0">
+            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 via-indigo-600 to-purple-600 flex items-center justify-center text-white font-extrabold text-sm shadow-[0_0_12px_rgba(99,102,241,0.4)] border border-indigo-400/30 shrink-0">
                 H
               </div>
               <span
-                className={`font-extrabold text-base tracking-tight font-display ${
+                className={`font-extrabold text-sm sm:text-base tracking-tight font-display ${
                   isLightTheme ? "text-[#1e1239]" : "text-white"
                 }`}
               >
@@ -302,7 +302,7 @@ interface MemberItem {
 
             {/* Middle: Top Global Search Bar */}
             <div
-              className={`hidden sm:flex items-center gap-2 rounded-full px-4 py-1.5 text-xs min-w-[240px] md:min-w-[290px] border transition-colors ${
+              className={`hidden md:flex items-center gap-2 rounded-full px-4 py-1.5 text-xs min-w-[240px] lg:min-w-[290px] border transition-colors ${
                 isLightTheme
                   ? "bg-[#f3effa] border-purple-100 text-[#2d214c] placeholder:text-[#8274a5]"
                   : "bg-[#120a2a] border-white/10 text-slate-400"
@@ -315,11 +315,11 @@ interface MemberItem {
             </div>
 
             {/* Right: Theme Toggle + Notifications & User Profile */}
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               {/* Theme Toggle Button (Light / Dark Switcher) */}
               <button
                 onClick={() => setIsLightTheme(!isLightTheme)}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer border ${
+                className={`p-1.5 sm:px-3 sm:py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer border ${
                   isLightTheme
                     ? "bg-purple-100/90 text-purple-900 border-purple-300/80 hover:bg-purple-200/90 shadow-xs"
                     : "bg-white/10 text-slate-200 border-white/15 hover:bg-white/20"
@@ -328,13 +328,13 @@ interface MemberItem {
               >
                 {isLightTheme ? (
                   <>
-                    <Sun className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
-                    <span>Light Theme</span>
+                    <Sun className="w-3.5 h-3.5 text-amber-500 fill-amber-400 shrink-0" />
+                    <span className="hidden sm:inline">Light</span>
                   </>
                 ) : (
                   <>
-                    <Moon className="w-3.5 h-3.5 text-purple-300 fill-purple-300" />
-                    <span>Dark Theme</span>
+                    <Moon className="w-3.5 h-3.5 text-purple-300 fill-purple-300 shrink-0" />
+                    <span className="hidden sm:inline">Dark</span>
                   </>
                 )}
               </button>
@@ -352,14 +352,14 @@ interface MemberItem {
                 <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-purple-600 ring-2 ring-white" />
               </div>
 
-              <div className="flex items-center gap-1.5 cursor-pointer group">
+              <div className="flex items-center gap-1 cursor-pointer group">
                 <img
                   src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
                   alt="User avatar"
                   className="w-7 h-7 rounded-full border border-purple-400/40 object-cover"
                 />
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-colors ${
+                  className={`w-3.5 h-3.5 hidden sm:block transition-colors ${
                     isLightTheme
                       ? "text-slate-500 group-hover:text-purple-900"
                       : "text-slate-400 group-hover:text-white"
@@ -468,52 +468,40 @@ interface MemberItem {
               >
                 {/* Mobile Club Identity Card */}
                 <div
-                  className={`flex items-center justify-between p-3 rounded-2xl border transition-all ${
+                  className={`flex items-center gap-3 p-3 rounded-2xl border transition-all ${
                     isLightTheme
-                      ? "bg-gradient-to-r from-purple-50/80 via-white to-purple-50/40 border-purple-200/70 shadow-xs"
+                      ? "bg-gradient-to-r from-purple-50/90 via-white to-purple-50/50 border-purple-200/80 shadow-xs"
                       : "bg-gradient-to-r from-[#160d32]/90 via-[#0e0724] to-[#160d32]/60 border-purple-500/20 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
                   }`}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div
-                      className={`w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#5430f8] via-[#7c44ff] to-[#a253ff] flex items-center justify-center text-white shrink-0 shadow-md ${
-                        isLightTheme ? "ring-2 ring-purple-200/80" : "ring-2 ring-purple-500/30"
-                      }`}
-                    >
-                      <span className="text-xl leading-none select-none">🏃</span>
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-1.5">
-                        <h4
-                          className={`text-xs sm:text-sm font-extrabold tracking-tight truncate font-display ${
-                            isLightTheme ? "text-[#1e1239]" : "text-white"
-                          }`}
-                        >
-                          SUNDAY RUNNERS CLUB
-                        </h4>
-                        <span className="w-3.5 h-3.5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[8px] font-bold shrink-0 shadow-xs">
-                          ✓
-                        </span>
-                      </div>
-                      <p
-                        className={`text-[10.5px] font-semibold tracking-wide truncate ${
-                          isLightTheme ? "text-[#675b83]" : "text-slate-300"
-                        }`}
-                      >
-                        1.2k runners · Run · Connect · Grow
-                      </p>
-                    </div>
-                  </div>
-
-                  <span
-                    className={`text-[10px] font-bold px-2.5 py-1 rounded-full border shrink-0 ${
-                      isLightTheme
-                        ? "bg-purple-100/90 text-purple-900 border-purple-300/80"
-                        : "bg-purple-500/20 text-purple-300 border-purple-400/30"
+                  <div
+                    className={`w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#5430f8] via-[#7c44ff] to-[#a253ff] flex items-center justify-center text-white shrink-0 shadow-md ${
+                      isLightTheme ? "ring-2 ring-purple-200/80" : "ring-2 ring-purple-500/30"
                     }`}
                   >
-                    Active Club
-                  </span>
+                    <span className="text-xl leading-none select-none">🏃</span>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <h4
+                        className={`text-xs sm:text-sm font-extrabold tracking-tight font-display ${
+                          isLightTheme ? "text-[#1e1239]" : "text-white"
+                        }`}
+                      >
+                        SUNDAY RUNNERS CLUB
+                      </h4>
+                      <span className="w-3.5 h-3.5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[8px] font-bold shrink-0 shadow-xs">
+                        ✓
+                      </span>
+                    </div>
+                    <p
+                      className={`text-[11px] font-semibold tracking-wide ${
+                        isLightTheme ? "text-[#675b83]" : "text-slate-300"
+                      }`}
+                    >
+                      1.2k runners · Run · Connect · Grow
+                    </p>
+                  </div>
                 </div>
 
                 {/* Mobile Horizontal Scrollable Segmented Tab Bar */}
