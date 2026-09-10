@@ -309,25 +309,8 @@ export default function Discovery() {
                 </div>
               </div>
 
-              {/* Nav icons */}
-              <div className="flex items-center justify-end gap-1.5 sm:gap-2 shrink-0">
-                <button
-                  type="button"
-                  onClick={() => goToSlide((currentSlide - 1 + SLIDE_COUNT) % SLIDE_COUNT)}
-                  className="w-6 h-6 flex items-center justify-center cursor-pointer hover:bg-slate-100 rounded text-slate-500 text-xs font-bold"
-                  aria-label="Previous Slide"
-                >
-                  ←
-                </button>
-                <button
-                  type="button"
-                  onClick={() => goToSlide((currentSlide + 1) % SLIDE_COUNT)}
-                  className="w-6 h-6 flex items-center justify-center cursor-pointer hover:bg-slate-100 rounded text-slate-500 text-xs font-bold"
-                  aria-label="Next Slide"
-                >
-                  →
-                </button>
-              </div>
+              {/* Right spacer to balance traffic lights and keep URL centered */}
+              <div className="w-8 sm:w-12 shrink-0" />
             </div>
 
             {/* App Content Slider with Swipe Support */}
