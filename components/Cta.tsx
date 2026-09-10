@@ -169,20 +169,6 @@ export default function Cta({ scrollTo }: CtaProps) {
           </span>
         </h2>
 
-        {/* MOBILE ONLY: Sleek Community Avatars Social Proof Pill */}
-        <div className="flex sm:hidden items-center justify-center gap-2.5 py-1">
-          <div className="flex items-center -space-x-2">
-            {creatorCards.slice(0, 5).map((c, i) => (
-              <div key={i} className="w-7 h-7 rounded-full overflow-hidden border-2 border-[#04040c] shadow-sm relative">
-                <Image src={c.img} alt={c.name} fill className="object-cover" unoptimized />
-              </div>
-            ))}
-          </div>
-          <span className="text-[11px] font-semibold text-purple-200">
-            10,000+ creators & founders
-          </span>
-        </div>
-
         {/* Subtext */}
         <p className="text-slate-300/90 text-xs sm:text-base font-normal leading-relaxed max-w-md">
           Join thousands of creators and businesses already growing with Happiest Team.
@@ -210,11 +196,15 @@ export default function Cta({ scrollTo }: CtaProps) {
             </button>
           </form>
 
-          {submitted && (
+          {submitted ? (
             <div className="mt-3 flex items-center justify-center gap-1.5 text-xs text-emerald-400 font-semibold">
               <CheckCircle2 className="w-4 h-4" />
               <span>You&apos;re on the list! Welcome to Happiest Team.</span>
             </div>
+          ) : (
+            <p className="text-[11px] sm:text-xs text-slate-400 font-medium mt-2.5">
+              Free 14-day trial · No credit card required
+            </p>
           )}
         </div>
 
