@@ -182,7 +182,7 @@ export default function Discovery() {
     const interval = setInterval(() => {
       setDirection(1);
       setCurrentSlide(s => (s + 1) % SLIDE_COUNT);
-    }, 7000);
+    }, 5500);
     return () => clearInterval(interval);
   }, [isHovered]);
 
@@ -193,6 +193,19 @@ export default function Discovery() {
       setDirection(-1);
     }
     setCurrentSlide(newSlide);
+  };
+
+  const handleDragEnd = (_e: any, { offset, velocity }: any) => {
+    const swipeConfidenceThreshold = 10000;
+    const swipePower = Math.abs(offset.x) * velocity.x;
+
+    if (swipePower < -swipeConfidenceThreshold || offset.x < -40) {
+      setDirection(1);
+      setCurrentSlide((s) => (s + 1) % SLIDE_COUNT);
+    } else if (swipePower > swipeConfidenceThreshold || offset.x > 40) {
+      setDirection(-1);
+      setCurrentSlide((s) => (s - 1 + SLIDE_COUNT) % SLIDE_COUNT);
+    }
   };
 
   const slideNames = [
@@ -206,10 +219,21 @@ export default function Discovery() {
     "/social-media"
   ];
 
+  const slideLabels = [
+    "Discover Clubs",
+    "Interactive Feed",
+    "HGPT AI Assistant",
+    "Online Courses",
+    "Instant Booking",
+    "Products & Store",
+    "Club Notifications",
+    "Social Media"
+  ];
+
   return (
     <section
       id="discover"
-      className="relative py-24 md:py-32 overflow-hidden z-20 font-sans bg-[#0B0F1A]"
+      className="relative py-16 sm:py-24 md:py-32 overflow-hidden z-20 font-sans bg-[#0B0F1A]"
     >
       {/* ── Glowing Top Section Divider Line ── */}
       <div className="absolute top-0 left-0 right-0 w-full flex items-center justify-center pointer-events-none z-30">
@@ -217,11 +241,11 @@ export default function Discovery() {
         <div className="absolute w-3/4 max-w-4xl h-px bg-gradient-to-r from-transparent via-[#7C5CFF]/70 to-transparent shadow-[0_0_15px_rgba(124,92,255,0.6)]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* ── Tab Bar Above Mockup ── */}
-        <div className="flex justify-center mb-6 sm:mb-10 relative z-30 max-w-full">
-          <div className="flex bg-[#121829]/90 backdrop-blur-md p-1 sm:p-1.5 rounded-2xl border border-white/10 shadow-xs overflow-x-auto no-scrollbar max-w-full">
+        {/* ── Tab Bar Above Mockup (Desktop & Tablet Only - Hidden on Mobile) ── */}
+        <div className="hidden md:flex justify-center mb-8 relative z-30 max-w-full">
+          <div className="flex bg-[#121829]/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-xs overflow-x-auto no-scrollbar max-w-full">
             {[
               { id: 0, label: "Discover Club", icon: Compass },
               { id: 1, label: "Feed", icon: Newspaper },
@@ -238,11 +262,11 @@ export default function Discovery() {
                 <button
                   key={tab.id}
                   onClick={() => goToSlide(tab.id)}
-                  className={`group relative flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-bold rounded-xl transition-all duration-300 cursor-pointer shrink-0 z-10 ${
+                  className={`group relative flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl transition-all duration-300 cursor-pointer shrink-0 z-10 ${
                     isActive ? "text-white" : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-colors ${isActive ? "text-white" : "text-slate-400 group-hover:text-slate-200"}`} />
+                  <Icon className={`w-4 h-4 transition-colors ${isActive ? "text-white" : "text-slate-400 group-hover:text-slate-200"}`} />
                   <span>{tab.label}</span>
                   {isActive && (
                     <motion.div
@@ -257,7 +281,7 @@ export default function Discovery() {
           </div>
         </div>
 
-        {/* -- Product card wrapper -- */}
+        {/* -- Product card wrapper with Mobile Touch Swipe -- */}
         <motion.div
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -274,11 +298,11 @@ export default function Discovery() {
 
           {/* Main card */}
           <div
-            className="relative rounded-[20px] overflow-hidden flex flex-col h-[460px] sm:h-[540px] md:h-[620px]"
+            className="relative rounded-[20px] overflow-hidden flex flex-col h-[480px] sm:h-[540px] md:h-[620px]"
             style={{ background: "#ffffff", boxShadow: "0 20px 60px rgba(0,0,0,0.05)" }}
           >
             {/* Window chrome bar */}
-            <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2.5 sm:py-3.5 shrink-0 z-20 relative"
+            <div className="flex items-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-2.5 sm:py-3.5 shrink-0 z-20 relative"
               style={{ background: "linear-gradient(180deg, #f8faff 0%, #f1f4fd 100%)", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
               {/* Traffic lights */}
               <div className="flex items-center gap-1.5 shrink-0">
@@ -297,22 +321,39 @@ export default function Discovery() {
               </div>
 
               {/* Nav icons */}
-              <div className="hidden sm:flex items-center justify-end gap-2 shrink-0 w-[80px]">
-                {["←","→","↻"].map(s => (
-                  <span key={s} className="text-[13px] text-slate-400 w-6 h-6 flex items-center justify-center cursor-pointer hover:bg-slate-100 rounded">{s}</span>
-                ))}
+              <div className="flex items-center justify-end gap-1.5 sm:gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => goToSlide((currentSlide - 1 + SLIDE_COUNT) % SLIDE_COUNT)}
+                  className="w-6 h-6 flex items-center justify-center cursor-pointer hover:bg-slate-100 rounded text-slate-500 text-xs font-bold"
+                  aria-label="Previous Slide"
+                >
+                  ←
+                </button>
+                <button
+                  type="button"
+                  onClick={() => goToSlide((currentSlide + 1) % SLIDE_COUNT)}
+                  className="w-6 h-6 flex items-center justify-center cursor-pointer hover:bg-slate-100 rounded text-slate-500 text-xs font-bold"
+                  aria-label="Next Slide"
+                >
+                  →
+                </button>
               </div>
             </div>
 
-            {/* App Content Slider */}
-            <div className="flex-1 relative overflow-hidden bg-white min-h-[340px] sm:min-h-[460px] md:min-h-[560px]">
+            {/* App Content Slider with Swipe Support */}
+            <div className="flex-1 relative overflow-hidden bg-white">
               <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                   key={currentSlide}
                   custom={direction}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={handleDragEnd}
                   variants={{
                     enter: (dir: number) => ({
-                      x: dir > 0 ? 120 : -120,
+                      x: dir > 0 ? "100%" : "-100%",
                       opacity: 0,
                     }),
                     center: {
@@ -320,15 +361,15 @@ export default function Discovery() {
                       opacity: 1,
                     },
                     exit: (dir: number) => ({
-                      x: dir > 0 ? -120 : 120,
+                      x: dir > 0 ? "-100%" : "100%",
                       opacity: 0,
                     }),
                   }}
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={{ duration: 0.28, ease: [0.25, 1, 0.5, 1] }}
-                  className="absolute inset-0"
+                  transition={{ duration: 0.32, ease: [0.25, 1, 0.5, 1] }}
+                  className="absolute inset-0 touch-pan-y cursor-grab active:cursor-grabbing"
                 >
                   {currentSlide === 0 && <DiscoverClubsPanel />}
                   {currentSlide === 1 && <FeedPanel />}
@@ -344,13 +385,34 @@ export default function Discovery() {
           </div>
         </motion.div>
 
+        {/* ── Mobile Slide Navigation & Dots (Shown on Mobile) ── */}
+        <div className="flex md:hidden flex-col items-center gap-2.5 mt-5">
+          <div className="flex items-center gap-1.5 bg-[#121829]/90 border border-white/10 px-3 py-1.5 rounded-full shadow-md">
+            {Array.from({ length: SLIDE_COUNT }).map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goToSlide(idx)}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${
+                  currentSlide === idx
+                    ? "w-6 h-2 bg-[#7C5CFF] shadow-[0_0_10px_rgba(124,92,255,0.8)]"
+                    : "w-2 h-2 bg-white/20 hover:bg-white/40"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+          <span className="text-[11px] font-bold text-purple-300/80 tracking-wide uppercase">
+            {slideLabels[currentSlide]} · Swipe to explore
+          </span>
+        </div>
+
         {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, ease }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-5 mt-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 mt-10 sm:mt-16"
         >
           <button
             className="flex items-center gap-2.5 px-8 py-4 rounded-full text-[13.5px] font-bold text-white cursor-pointer transition-all duration-300 hover:scale-[1.03] bg-[#6D4AFF] shadow-md hover:bg-[#5A38F0]"
