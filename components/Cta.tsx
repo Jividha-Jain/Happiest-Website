@@ -59,28 +59,6 @@ export default function Cta({ scrollTo }: CtaProps) {
     },
   ];
 
-  const [orbitAngle, setOrbitAngle] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    let animId: number;
-    let lastTime = performance.now();
-
-    const loop = (currentTime: number) => {
-      const delta = (currentTime - lastTime) / 1000;
-      lastTime = currentTime;
-
-      if (!isHovered) {
-        // Smooth 360-degree continuous revolution in 50 seconds (7.2 deg/sec)
-        setOrbitAngle((prev) => (prev + delta * 7.2) % 360);
-      }
-      animId = requestAnimationFrame(loop);
-    };
-
-    animId = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(animId);
-  }, [isHovered]);
-
   return (
     <section
       id="cta"
@@ -98,12 +76,12 @@ export default function Cta({ scrollTo }: CtaProps) {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[520px] sm:h-[520px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none z-0" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] bg-indigo-400/25 rounded-full blur-[70px] pointer-events-none z-0" />
 
-      {/* Orbiting creator cards (always 100% upright/straight with ZERO tilt) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] sm:w-[800px] sm:h-[800px] lg:w-[1080px] lg:h-[1080px] rounded-full pointer-events-none z-10">
+      {/* Orbiting creator cards (100% GPU-accelerated CSS, zero React re-renders) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] sm:w-[800px] sm:h-[800px] lg:w-[1080px] lg:h-[1080px] rounded-full pointer-events-none z-10 cta-orbit-container">
         {creatorCards.map((creator, idx) => {
-          const angle = (orbitAngle + (idx * 360) / creatorCards.length - 90) % 360;
+          const angle = ((idx * 360) / creatorCards.length - 90);
           const rad = (angle * Math.PI) / 180;
-          const radius = 37.5; // Positions all cards completely inside the outer circle
+          const radius = 37.5; // Positions all cards inside outer circle
           const x = 50 + radius * Math.cos(rad);
           const y = 50 + radius * Math.sin(rad);
 
@@ -116,29 +94,54 @@ export default function Cta({ scrollTo }: CtaProps) {
                 left: `${x}%`,
                 transform: "translate(-50%, -50%)",
               }}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
             >
-              <div
-                className="w-[62px] sm:w-[92px] md:w-[108px] h-[78px] sm:h-[116px] md:h-[138px] rounded-[14px] sm:rounded-[18px] overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_50px_rgba(124,92,255,0.5)] bg-slate-900"
-                style={{
-                  border: "1.5px solid rgba(255,255,255,0.18)",
-                  boxShadow: "0 10px 35px rgba(0,0,0,0.8)",
-                }}
-              >
-                <Image
-                  src={creator.img}
-                  alt={creator.name}
-                  fill
-                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                  unoptimized
-                />
-                <div className="absolute inset-0 rounded-[18px] ring-0 group-hover:ring-2 group-hover:ring-purple-400/60 transition-all duration-300 z-20 pointer-events-none" />
+              {/* Counter-rotating element keeps the card 100% upright */}
+              <div className="cta-counter-rotate">
+                <div
+                  className="w-[62px] sm:w-[92px] md:w-[108px] h-[78px] sm:h-[116px] md:h-[138px] rounded-[14px] sm:rounded-[18px] overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_50px_rgba(124,92,255,0.5)] bg-slate-900"
+                  style={{
+                    border: "1.5px solid rgba(255,255,255,0.18)",
+                    boxShadow: "0 10px 35px rgba(0,0,0,0.8)",
+                  }}
+                >
+                  <Image
+                    src={creator.img}
+                    alt={creator.name}
+                    fill
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    unoptimized
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 rounded-[18px] ring-0 group-hover:ring-2 group-hover:ring-purple-400/60 transition-all duration-300 z-20 pointer-events-none" />
+                </div>
               </div>
             </div>
           );
         })}
       </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes ctaOrbitRotate {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes ctaCounterRotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(-360deg); }
+        }
+        .cta-orbit-container {
+          animation: ctaOrbitRotate 50s linear infinite;
+          will-change: transform;
+        }
+        .cta-orbit-container:hover,
+        .cta-orbit-container:hover .cta-counter-rotate {
+          animation-play-state: paused;
+        }
+        .cta-counter-rotate {
+          animation: ctaCounterRotate 50s linear infinite;
+          will-change: transform;
+        }
+      `}} />
 
       {/* Center content */}
       <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 sm:px-6 max-w-3xl mx-auto gap-4 sm:gap-6">

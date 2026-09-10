@@ -166,29 +166,26 @@ export default function AppPromo() {
                       <ChevronDown className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-300 ${isActive ? "rotate-180 text-indigo-600" : ""}`} />
                     </div>
 
-                    {/* Accordion Image Dropdown Right Below Box */}
-                    <AnimatePresence>
-                      {isActive && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.32, ease: [0.25, 1, 0.5, 1] }}
-                          className="overflow-hidden pt-3 mt-3 border-t border-purple-100/80"
-                        >
-                          <div className="rounded-xl overflow-hidden bg-gradient-to-b from-purple-50/50 to-white p-1 border border-purple-100/50 shadow-xs">
-                            <Image
-                              src={pt.image}
-                              alt={pt.title}
-                              width={600}
-                              height={400}
-                              className="w-full h-auto object-contain rounded-lg"
-                              unoptimized
-                            />
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    {/* Accordion Image Dropdown Right Below Box with GPU CSS grid transition */}
+                    <div
+                      className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                        isActive ? "grid-rows-[1fr] opacity-100 mt-3 pt-3 border-t border-purple-100/80" : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="rounded-xl overflow-hidden bg-gradient-to-b from-purple-50/50 to-white p-1 border border-purple-100/50 shadow-xs">
+                          <Image
+                            src={pt.image}
+                            alt={pt.title}
+                            width={600}
+                            height={400}
+                            className="w-full h-auto object-contain rounded-lg"
+                            loading="lazy"
+                            unoptimized
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 );
               })}
