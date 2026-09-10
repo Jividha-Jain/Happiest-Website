@@ -41,7 +41,7 @@ const points = [
   { icon: BookOpen,    title: "Online Courses",       desc: "Create & sell courses to your community.",       iconBg: "bg-amber-50",    iconColor: "text-amber-600",  image: "/images/Online Courses.png" },
   { icon: Calendar,    title: "Events & Booking",     desc: "Run events, sessions & book appointments.",     iconBg: "bg-emerald-50",  iconColor: "text-emerald-600",image: "/images/Events & Bookings.png" },
   { icon: Hash,        title: "Private Channels",     desc: "Build private channels for deeper engagement.", iconBg: "bg-indigo-50",   iconColor: "text-indigo-600", image: "/images/private-channel.png" },
-  { icon: ShoppingBag, title: "Easy Monetization",    desc: "Monetize with memberships, products & ads.",    iconBg: "bg-pink-50",     iconColor: "text-pink-600",   image: "/images/Slide.png" },
+  { icon: ShoppingBag, title: "Easy Monetization",    desc: "Monetize with memberships, products & ads.",    iconBg: "bg-pink-50",     iconColor: "text-pink-600",   image: "/images/Easy Monetrization.png" },
   { icon: TrendingUp,  title: "Smart Analytics",      desc: "Track growth with real-time analytics.",        iconBg: "bg-teal-50",     iconColor: "text-teal-600",   image: "/images/Smart-analytics.png" },
 ];
 
