@@ -369,11 +369,11 @@ interface MemberItem {
             </div>
           </div>
 
-          {/* Window Body Grid (Left Sidebar + Right Dashboard Pane) */}
+          {/* Window Body Grid (Left Sidebar on Desktop + Mobile Top Tabs + Right Dashboard Pane) */}
           <div className="grid grid-cols-1 md:grid-cols-12 min-h-[520px]">
-            {/* LEFT SIDEBAR (LIGHT / DARK THEME) */}
+            {/* LEFT SIDEBAR (Desktop only: hidden md:flex) */}
             <div
-              className={`md:col-span-4 lg:col-span-4 p-5 sm:p-6 border-r flex flex-col justify-between transition-colors duration-300 ${
+              className={`hidden md:flex md:col-span-4 lg:col-span-4 p-5 sm:p-6 border-r flex-col justify-between transition-colors duration-300 ${
                 isLightTheme
                   ? "bg-[#f4f0f9] border-purple-100"
                   : "bg-[#0a051b] border-white/[0.08]"
@@ -454,12 +454,72 @@ interface MemberItem {
               </div>
             </div>
 
-            {/* RIGHT MAIN CONTENT PANEL */}
+            {/* MAIN CONTENT PANEL (Screen view + Mobile Top Tabs) */}
             <div
-              className={`md:col-span-8 lg:col-span-8 p-5 sm:p-7 flex flex-col gap-5 text-left transition-colors duration-300 ${
+              className={`md:col-span-8 lg:col-span-8 p-4 sm:p-7 flex flex-col gap-5 text-left transition-colors duration-300 ${
                 isLightTheme ? "bg-white" : "bg-[#070314]"
               }`}
             >
+              {/* MOBILE TOP HEADER & HORIZONTAL TABS (Mobile only: flex md:hidden) */}
+              <div
+                className={`flex md:hidden flex-col gap-3 pb-3.5 border-b transition-colors ${
+                  isLightTheme ? "border-purple-100" : "border-white/[0.08]"
+                }`}
+              >
+                {/* Mobile Club Identity Header */}
+                <div className="flex items-center gap-2.5">
+                  <div
+                    className={`w-9 h-9 rounded-full bg-gradient-to-tr from-[#5430f8] via-[#7c44ff] to-[#a253ff] flex items-center justify-center text-white shrink-0 ${
+                      isLightTheme ? "ring-2 ring-purple-200" : "ring-2 ring-purple-500/40"
+                    }`}
+                  >
+                    <span className="text-base leading-none select-none">🏃</span>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h4
+                      className={`text-xs font-extrabold tracking-tight truncate ${
+                        isLightTheme ? "text-[#1e1239]" : "text-white"
+                      }`}
+                    >
+                      SUNDAY RUNNERS CLUB
+                    </h4>
+                    <p
+                      className={`text-[10px] font-semibold truncate ${
+                        isLightTheme ? "text-[#675b83]" : "text-slate-400"
+                      }`}
+                    >
+                      Run · Connect · Grow
+                    </p>
+                  </div>
+                </div>
+
+                {/* Mobile Horizontal Scrollable Tabs */}
+                <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 -mx-1 px-1">
+                  {navItems.map((item) => {
+                    const IconComp = item.icon;
+                    const isActive = activeNav === item.name;
+                    return (
+                      <button
+                        key={item.name}
+                        onClick={() => setActiveNav(item.name)}
+                        className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
+                          isActive
+                            ? isLightTheme
+                              ? "bg-[#6b25c2] text-white shadow-sm"
+                              : "bg-[#7C5CFF] text-white shadow-[0_0_12px_rgba(124,92,255,0.4)]"
+                            : isLightTheme
+                            ? "bg-[#f3effa] text-[#4a3b6e] hover:bg-[#eae4f5]"
+                            : "bg-white/[0.06] text-slate-300 hover:bg-white/10"
+                        }`}
+                      >
+                        <IconComp className="w-3.5 h-3.5 shrink-0" />
+                        <span>{item.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
               {/* Dynamic View Switcher */}
               <AnimatePresence mode="wait">
                 {/* 1. MEMBERS VIEW */}
