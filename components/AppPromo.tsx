@@ -47,21 +47,6 @@ const points = [
 
 export default function AppPromo() {
   const [activeIdx, setActiveIdx] = useState(0);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  // Ensure inner scrolling works smoothly with trackpad and mouse wheel
-  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-
-    const canScrollDown = el.scrollTop < el.scrollHeight - el.clientHeight - 1;
-    const canScrollUp = el.scrollTop > 1;
-
-    if ((e.deltaY > 0 && canScrollDown) || (e.deltaY < 0 && canScrollUp)) {
-      e.stopPropagation();
-      el.scrollTop += e.deltaY;
-    }
-  };
 
   return (
     <section
@@ -90,7 +75,7 @@ export default function AppPromo() {
       <div className="relative max-w-[1360px] mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-[46%_54%] gap-8 lg:gap-14 items-center">
 
-          {/* ── LEFT: Features List with Inner Scroll ── */}
+          {/* ── LEFT: Features List with Smooth Hidden Scroll ── */}
           <div className="min-w-0 space-y-7">
 
             {/* Badge */}
@@ -147,15 +132,12 @@ export default function AppPromo() {
               Launch, grow and monetize your community — all from one powerful platform.
             </motion.p>
 
-            {/* Points — Scrollable 2-col bento grid */}
+            {/* Points — Scrollable 2-col bento grid without visible scrollbar */}
             <div className="relative">
               <div
-                ref={scrollContainerRef}
-                onWheel={handleWheel}
-                data-lenis-prevent
-                className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-h-[440px] sm:max-h-[490px] overflow-y-auto custom-scroll-area pr-2 pt-2 sm:pt-3 pb-8 px-1 text-left scroll-smooth touch-pan-y"
+                data-lenis-prevent="true"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-h-[440px] sm:max-h-[490px] overflow-y-auto no-scrollbar pr-1 pt-2 sm:pt-3 pb-8 px-1 text-left scroll-smooth touch-pan-y"
                 style={{
-                  overscrollBehavior: "contain",
                   WebkitOverflowScrolling: "touch",
                 }}
               >

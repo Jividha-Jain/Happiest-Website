@@ -9,14 +9,19 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   useEffect(() => {
     // Initialize Lenis smooth inertial scrolling
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.05,
-      touchMultiplier: 1.6,
-      infinite: false,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
+      prevent: (node: any) => {
+        return (
+          node?.hasAttribute?.("data-lenis-prevent") ||
+          Boolean(node?.closest?.("[data-lenis-prevent]"))
+        );
+      },
     });
 
     lenisRef.current = lenis;
