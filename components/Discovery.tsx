@@ -211,8 +211,11 @@ export default function Discovery() {
       id="discover"
       className="relative py-24 md:py-32 overflow-hidden z-20 font-sans bg-[#0B0F1A]"
     >
-      {/* Top Divider */}
-      <div className="absolute top-0 left-0 w-full h-px bg-white/10" />
+      {/* ── Glowing Top Section Divider Line ── */}
+      <div className="absolute top-0 left-0 right-0 w-full flex items-center justify-center pointer-events-none z-30">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="absolute w-3/4 max-w-4xl h-px bg-gradient-to-r from-transparent via-[#7C5CFF]/70 to-transparent shadow-[0_0_15px_rgba(124,92,255,0.6)]" />
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
 

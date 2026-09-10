@@ -1148,6 +1148,11 @@ interface MemberItem {
           </div>
         </motion.div>
       </div>
+
+      {/* Bottom Section Divider */}
+      <div className="absolute bottom-0 left-0 right-0 w-full flex items-center justify-center pointer-events-none z-30">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
+      </div>
     </section>
   );
 }
