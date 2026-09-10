@@ -4,7 +4,7 @@ import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Users, BookOpen, Radio, ShoppingBag,
-  Calendar, Hash, TrendingUp, Settings2, Video, Mic
+  Calendar, Hash, TrendingUp, Settings2, Video, Mic, ChevronDown
 } from "lucide-react";
 import Image from "next/image";
 
@@ -41,7 +41,7 @@ const points = [
   { icon: BookOpen,    title: "Online Courses",       desc: "Create & sell courses to your community.",       iconBg: "bg-amber-50",    iconColor: "text-amber-600",  image: "/images/Online Courses.png" },
   { icon: Calendar,    title: "Events & Booking",     desc: "Run events, sessions & book appointments.",     iconBg: "bg-emerald-50",  iconColor: "text-emerald-600",image: "/images/Events & Bookings.png" },
   { icon: Hash,        title: "Private Channels",     desc: "Build private channels for deeper engagement.", iconBg: "bg-indigo-50",   iconColor: "text-indigo-600", image: "/images/private-channel.png" },
-  { icon: ShoppingBag, title: "Easy Monetization",    desc: "Monetize with memberships, products & ads.",    iconBg: "bg-pink-50",     iconColor: "text-pink-600",   image: "/images/Product.png" },
+  { icon: ShoppingBag, title: "Easy Monetization",    desc: "Monetize with memberships, products & ads.",    iconBg: "bg-pink-50",     iconColor: "text-pink-600",   image: "/images/Slide.png" },
   { icon: TrendingUp,  title: "Smart Analytics",      desc: "Track growth with real-time analytics.",        iconBg: "bg-teal-50",     iconColor: "text-teal-600",   image: "/images/Smart-analytics.png" },
 ];
 
@@ -132,8 +132,70 @@ export default function AppPromo() {
               Launch, grow and monetize your community — all from one powerful platform.
             </motion.p>
 
-            {/* Points — Scrollable 2-col bento grid without visible scrollbar */}
-            <div className="relative">
+            {/* MOBILE ONLY: Accordion List (< lg) */}
+            <div className="flex lg:hidden flex-col gap-3 pt-2">
+              {points.map((pt, idx) => {
+                const Icon = pt.icon;
+                const isActive = activeIdx === idx;
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => setActiveIdx(activeIdx === idx ? -1 : idx)}
+                    className={`p-4 rounded-2xl border transition-all duration-300 cursor-pointer ${
+                      isActive
+                        ? "bg-white border-indigo-400/80 shadow-[0_16px_36px_rgba(99,102,241,0.14)] ring-2 ring-indigo-500/20"
+                        : "bg-white/85 border-white/90 hover:bg-white hover:border-indigo-200 shadow-xs"
+                    }`}
+                  >
+                    {/* Card Header */}
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${pt.iconBg}`}>
+                          <Icon className={pt.iconColor} style={{ width: 19, height: 19 }} />
+                        </div>
+                        <div className="text-left min-w-0">
+                          <h4 className={`text-sm font-extrabold tracking-tight ${isActive ? "text-indigo-600 font-black" : "text-slate-900"}`}>
+                            {pt.title}
+                          </h4>
+                          <p className="text-xs text-slate-500 font-medium">
+                            {pt.desc}
+                          </p>
+                        </div>
+                      </div>
+
+                      <ChevronDown className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-300 ${isActive ? "rotate-180 text-indigo-600" : ""}`} />
+                    </div>
+
+                    {/* Accordion Image Dropdown Right Below Box */}
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.32, ease: [0.25, 1, 0.5, 1] }}
+                          className="overflow-hidden pt-3 mt-3 border-t border-purple-100/80"
+                        >
+                          <div className="rounded-xl overflow-hidden bg-gradient-to-b from-purple-50/50 to-white p-1 border border-purple-100/50 shadow-xs">
+                            <Image
+                              src={pt.image}
+                              alt={pt.title}
+                              width={600}
+                              height={400}
+                              className="w-full h-auto object-contain rounded-lg"
+                              unoptimized
+                            />
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* DESKTOP ONLY: Bento grid (hidden on mobile: hidden lg:block) */}
+            <div className="relative hidden lg:block">
               <div
                 data-lenis-prevent="true"
                 className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-h-[440px] sm:max-h-[490px] overflow-y-auto no-scrollbar pr-1 pt-2 sm:pt-3 pb-8 px-1 text-left scroll-smooth touch-pan-y"
@@ -182,8 +244,8 @@ export default function AppPromo() {
             </div>
           </div>
 
-          {/* ── RIGHT — Sticky Dynamic App Image with Seamless Background Integration ── */}
-          <div className="lg:sticky lg:top-28 w-full self-start flex items-center justify-center lg:justify-end">
+          {/* ── RIGHT — Desktop Sticky Dynamic App Image (Desktop only: hidden lg:flex) ── */}
+          <div className="hidden lg:flex lg:sticky lg:top-28 w-full self-start items-center justify-center lg:justify-end">
             <div className="relative w-full max-w-[640px] sm:max-w-[680px] mx-auto">
               
               {/* Background Glow Aura for Seamless Integration */}
@@ -206,8 +268,8 @@ export default function AppPromo() {
                     transition={{ duration: 0.3 }}
                   >
                     <Image
-                      src={points[activeIdx].image}
-                      alt={points[activeIdx].title}
+                      src={points[activeIdx >= 0 ? activeIdx : 0].image}
+                      alt={points[activeIdx >= 0 ? activeIdx : 0].title}
                       width={720}
                       height={860}
                       className="w-full h-auto object-contain mx-auto border-none outline-none select-none"
