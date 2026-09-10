@@ -462,39 +462,68 @@ interface MemberItem {
             >
               {/* MOBILE TOP HEADER & HORIZONTAL TABS (Mobile only: flex md:hidden) */}
               <div
-                className={`flex md:hidden flex-col gap-3 pb-3.5 border-b transition-colors ${
+                className={`flex md:hidden flex-col gap-3.5 pb-4 border-b transition-colors ${
                   isLightTheme ? "border-purple-100" : "border-white/[0.08]"
                 }`}
               >
-                {/* Mobile Club Identity Header */}
-                <div className="flex items-center gap-2.5">
-                  <div
-                    className={`w-9 h-9 rounded-full bg-gradient-to-tr from-[#5430f8] via-[#7c44ff] to-[#a253ff] flex items-center justify-center text-white shrink-0 ${
-                      isLightTheme ? "ring-2 ring-purple-200" : "ring-2 ring-purple-500/40"
+                {/* Mobile Club Identity Card */}
+                <div
+                  className={`flex items-center justify-between p-3 rounded-2xl border transition-all ${
+                    isLightTheme
+                      ? "bg-gradient-to-r from-purple-50/80 via-white to-purple-50/40 border-purple-200/70 shadow-xs"
+                      : "bg-gradient-to-r from-[#160d32]/90 via-[#0e0724] to-[#160d32]/60 border-purple-500/20 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+                  }`}
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div
+                      className={`w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#5430f8] via-[#7c44ff] to-[#a253ff] flex items-center justify-center text-white shrink-0 shadow-md ${
+                        isLightTheme ? "ring-2 ring-purple-200/80" : "ring-2 ring-purple-500/30"
+                      }`}
+                    >
+                      <span className="text-xl leading-none select-none">🏃</span>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <h4
+                          className={`text-xs sm:text-sm font-extrabold tracking-tight truncate font-display ${
+                            isLightTheme ? "text-[#1e1239]" : "text-white"
+                          }`}
+                        >
+                          SUNDAY RUNNERS CLUB
+                        </h4>
+                        <span className="w-3.5 h-3.5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[8px] font-bold shrink-0 shadow-xs">
+                          ✓
+                        </span>
+                      </div>
+                      <p
+                        className={`text-[10.5px] font-semibold tracking-wide truncate ${
+                          isLightTheme ? "text-[#675b83]" : "text-slate-300"
+                        }`}
+                      >
+                        1.2k runners · Run · Connect · Grow
+                      </p>
+                    </div>
+                  </div>
+
+                  <span
+                    className={`text-[10px] font-bold px-2.5 py-1 rounded-full border shrink-0 ${
+                      isLightTheme
+                        ? "bg-purple-100/90 text-purple-900 border-purple-300/80"
+                        : "bg-purple-500/20 text-purple-300 border-purple-400/30"
                     }`}
                   >
-                    <span className="text-base leading-none select-none">🏃</span>
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h4
-                      className={`text-xs font-extrabold tracking-tight truncate ${
-                        isLightTheme ? "text-[#1e1239]" : "text-white"
-                      }`}
-                    >
-                      SUNDAY RUNNERS CLUB
-                    </h4>
-                    <p
-                      className={`text-[10px] font-semibold truncate ${
-                        isLightTheme ? "text-[#675b83]" : "text-slate-400"
-                      }`}
-                    >
-                      Run · Connect · Grow
-                    </p>
-                  </div>
+                    Active Club
+                  </span>
                 </div>
 
-                {/* Mobile Horizontal Scrollable Tabs */}
-                <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 -mx-1 px-1">
+                {/* Mobile Horizontal Scrollable Segmented Tab Bar */}
+                <div
+                  className={`flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1.5 rounded-2xl border ${
+                    isLightTheme
+                      ? "bg-[#f3effa]/90 border-purple-100"
+                      : "bg-[#0c0520] border-white/[0.08]"
+                  }`}
+                >
                   {navItems.map((item) => {
                     const IconComp = item.icon;
                     const isActive = activeNav === item.name;
@@ -502,17 +531,21 @@ interface MemberItem {
                       <button
                         key={item.name}
                         onClick={() => setActiveNav(item.name)}
-                        className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
+                        className={`group relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shrink-0 transition-all duration-200 cursor-pointer active:scale-95 ${
                           isActive
                             ? isLightTheme
-                              ? "bg-[#6b25c2] text-white shadow-sm"
-                              : "bg-[#7C5CFF] text-white shadow-[0_0_12px_rgba(124,92,255,0.4)]"
+                              ? "bg-gradient-to-r from-[#6b25c2] to-[#8233e8] text-white shadow-md"
+                              : "bg-gradient-to-r from-[#7C5CFF] to-[#9369FF] text-white shadow-[0_0_15px_rgba(124,92,255,0.45)]"
                             : isLightTheme
-                            ? "bg-[#f3effa] text-[#4a3b6e] hover:bg-[#eae4f5]"
-                            : "bg-white/[0.06] text-slate-300 hover:bg-white/10"
+                            ? "text-[#4a3b6e] hover:text-[#1e1239] hover:bg-white/70"
+                            : "text-slate-300 hover:text-white hover:bg-white/[0.06]"
                         }`}
                       >
-                        <IconComp className="w-3.5 h-3.5 shrink-0" />
+                        <IconComp
+                          className={`w-3.5 h-3.5 shrink-0 transition-transform ${
+                            isActive ? "scale-110 text-white" : ""
+                          }`}
+                        />
                         <span>{item.name}</span>
                       </button>
                     );
@@ -968,7 +1001,7 @@ interface MemberItem {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.25 }}
-                    className="space-y-3.5 w-full"
+                    className="space-y-3 w-full"
                   >
                     {productsList.map((prod) => {
                       const IconComponent = prod.Icon;
@@ -976,28 +1009,28 @@ interface MemberItem {
                       return (
                         <div
                           key={prod.title}
-                          className={`rounded-2xl p-4 sm:p-5 border flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-200 ${
+                          className={`rounded-2xl p-3.5 sm:p-5 border flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4 transition-all duration-300 ${
                             isLightTheme
-                              ? "bg-white border-purple-100 shadow-xs hover:border-purple-200 hover:shadow-md"
-                              : "bg-[#120a28]/90 border-white/[0.08] hover:border-purple-500/40 hover:bg-[#160d32]"
+                              ? "bg-white border-purple-100/90 shadow-[0_2px_12px_rgba(100,50,200,0.04)] hover:border-purple-300 hover:shadow-md"
+                              : "bg-[#120a28]/90 border-white/[0.08] hover:border-purple-500/40 hover:bg-[#160d32] shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
                           }`}
                         >
-                          <div className="flex items-center gap-3.5">
+                          <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
                             <div
-                              className={`w-11 h-11 rounded-xl ${prod.iconBg} flex items-center justify-center shrink-0 shadow-sm`}
+                              className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl ${prod.iconBg} flex items-center justify-center shrink-0 shadow-sm`}
                             >
-                              <IconComponent className="w-5 h-5 stroke-[2]" />
+                              <IconComponent className="w-5 h-5 stroke-[2.2]" />
                             </div>
-                            <div>
+                            <div className="min-w-0">
                               <h4
-                                className={`text-sm font-bold leading-snug ${
+                                className={`text-xs sm:text-sm font-extrabold leading-snug truncate ${
                                   isLightTheme ? "text-[#1e1239]" : "text-white"
                                 }`}
                               >
                                 {prod.title}
                               </h4>
                               <p
-                                className={`text-xs font-medium ${
+                                className={`text-[11px] sm:text-xs font-semibold mt-0.5 truncate ${
                                   isLightTheme ? "text-[#675b83]" : "text-slate-400"
                                 }`}
                               >
@@ -1006,18 +1039,18 @@ interface MemberItem {
                             </div>
                           </div>
 
-                          <div className="flex items-center justify-between sm:justify-end gap-4 shrink-0">
+                          <div className="flex items-center justify-between sm:justify-end gap-4 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-purple-50 dark:border-white/[0.04]">
                             <div className="text-left sm:text-right">
                               <span
-                                className={`text-sm sm:text-base font-extrabold block ${
+                                className={`text-sm sm:text-base font-extrabold block tracking-tight ${
                                   isLightTheme ? "text-[#1e1239]" : "text-white"
                                 }`}
                               >
                                 {prod.price}
                               </span>
                               <span
-                                className={`text-[11px] font-medium block whitespace-nowrap ${
-                                  isLightTheme ? "text-[#675b83]" : "text-slate-400"
+                                className={`text-[10.5px] font-semibold block whitespace-nowrap ${
+                                  isLightTheme ? "text-purple-700/80" : "text-purple-300/80"
                                 }`}
                               >
                                 {prod.meta}
@@ -1033,10 +1066,10 @@ interface MemberItem {
                                     [prod.id]: !prev[prod.id],
                                   }))
                                 }
-                                className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer shadow-sm border whitespace-nowrap ${
+                                className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer shadow-md border whitespace-nowrap active:scale-95 ${
                                   isAdded
-                                    ? "bg-emerald-600 text-white border-emerald-400/40"
-                                    : "bg-indigo-600 hover:bg-indigo-500 text-white border-indigo-400/30"
+                                    ? "bg-emerald-600 text-white border-emerald-400/40 shadow-emerald-600/30"
+                                    : "bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white border-purple-400/30 shadow-purple-600/25"
                                 }`}
                               >
                                 {isAdded ? "✓ Added to Cart" : "Add to Cart"}
@@ -1051,10 +1084,10 @@ interface MemberItem {
                                     [prod.id]: !prev[prod.id],
                                   }))
                                 }
-                                className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer shadow-sm border whitespace-nowrap ${
+                                className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer shadow-md border whitespace-nowrap active:scale-95 ${
                                   isAdded
                                     ? "bg-purple-600 text-white border-purple-400/40"
-                                    : "bg-emerald-600 hover:bg-emerald-500 text-white border-emerald-400/30"
+                                    : "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white border-emerald-400/30 shadow-emerald-600/25"
                                 }`}
                               >
                                 {isAdded ? "✓ Purchased!" : "Buy Now"}
@@ -1063,9 +1096,9 @@ interface MemberItem {
 
                             {prod.actionType === "out_of_stock" && (
                               <span
-                                className={`px-4 py-2 rounded-full text-xs font-bold border cursor-not-allowed whitespace-nowrap ${
+                                className={`px-4 py-2 sm:px-4.5 sm:py-2 rounded-xl text-xs font-bold border cursor-not-allowed whitespace-nowrap ${
                                   isLightTheme
-                                    ? "bg-rose-100 text-rose-800 border-rose-200"
+                                    ? "bg-rose-50 text-rose-700 border-rose-200"
                                     : "bg-rose-500/15 text-rose-300 border-rose-500/30"
                                 }`}
                               >
