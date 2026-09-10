@@ -469,17 +469,17 @@ interface MemberItem {
               >
                 {/* Mobile Club Community Card */}
                 <div
-                  className={`p-3.5 sm:p-4 rounded-3xl border transition-all ${
+                  className={`p-3 sm:p-4 rounded-3xl border transition-all ${
                     isLightTheme
                       ? "bg-white border-purple-100/90 shadow-[0_4px_20px_rgba(100,50,200,0.05)]"
                       : "bg-[#100828] border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
                   }`}
                 >
-                  <div className="flex items-start gap-3.5">
+                  <div className="flex items-center gap-3">
                     {/* Left Running Woman Thumbnail */}
-                    <div className="w-18 h-18 sm:w-22 sm:h-22 rounded-2xl overflow-hidden shrink-0 shadow-sm border border-purple-100 dark:border-white/10 relative">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shrink-0 shadow-sm border border-purple-100 dark:border-white/10 relative">
                       <img
-                        src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=300&q=80"
+                        src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=300&q=80"
                         alt="Sunday Runners Club"
                         className="w-full h-full object-cover"
                       />
@@ -488,17 +488,17 @@ interface MemberItem {
                     {/* Middle Info */}
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold text-purple-700 bg-purple-50 dark:bg-purple-950/60 dark:text-purple-300 px-2 py-0.5 rounded-full">
+                        <span className="text-[9.5px] font-bold text-purple-700 bg-purple-50 dark:bg-purple-950/60 dark:text-purple-300 px-2 py-0.5 rounded-full">
                           Community
                         </span>
                         <button className="text-slate-400 hover:text-purple-900 p-0.5">
-                          <MoreVertical className="w-4 h-4" />
+                          <MoreVertical className="w-3.5 h-3.5" />
                         </button>
                       </div>
 
                       <div className="flex items-center gap-1.5 mt-1">
                         <h4
-                          className={`text-sm sm:text-base font-extrabold tracking-tight truncate font-display ${
+                          className={`text-xs sm:text-sm font-extrabold tracking-tight font-display ${
                             isLightTheme ? "text-[#1e1239]" : "text-white"
                           }`}
                         >
@@ -510,7 +510,7 @@ interface MemberItem {
                       </div>
 
                       <p
-                        className={`text-[11px] font-semibold mt-0.5 tracking-wide truncate ${
+                        className={`text-[10px] sm:text-[11px] font-semibold mt-0.5 tracking-wide ${
                           isLightTheme ? "text-[#675b83]" : "text-slate-400"
                         }`}
                       >
@@ -518,7 +518,7 @@ interface MemberItem {
                       </p>
 
                       {/* Avatar Overlap Stack + View Community Button */}
-                      <div className="flex items-center justify-between mt-2 pt-0.5">
+                      <div className="flex items-center justify-between mt-1.5 pt-0.5">
                         <div className="flex items-center">
                           <div className="flex items-center -space-x-1.5">
                             <img
@@ -542,12 +542,12 @@ interface MemberItem {
                               className="w-5 h-5 rounded-full border border-white dark:border-[#100828] object-cover"
                             />
                           </div>
-                          <span className="text-[9.5px] font-bold text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/60 px-1.5 py-0.5 rounded-full ml-1">
+                          <span className="text-[9px] font-bold text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/60 px-1.5 py-0.5 rounded-full ml-1">
                             +1.2k
                           </span>
                         </div>
 
-                        <button className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-purple-50 hover:bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 transition-all cursor-pointer">
+                        <button className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-purple-50 hover:bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 transition-all cursor-pointer whitespace-nowrap shrink-0">
                           <span>View Community</span>
                           <span className="text-xs leading-none">→</span>
                         </button>
