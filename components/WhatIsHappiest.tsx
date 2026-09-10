@@ -453,7 +453,15 @@ interface MemberItem {
                   })}
                 </div>
               </div>
-{/* MOBILE TOP HEADER & HORIZONTAL TABS (Mobile only: flex md:hidden) */}
+            </div>
+
+            {/* MAIN CONTENT PANEL (Screen view + Mobile Top Tabs) */}
+            <div
+              className={`md:col-span-8 lg:col-span-8 p-4 sm:p-7 flex flex-col gap-5 text-left transition-colors duration-300 ${
+                isLightTheme ? "bg-white" : "bg-[#070314]"
+              }`}
+            >
+              {/* MOBILE TOP HEADER & HORIZONTAL TABS (Mobile only: flex md:hidden) */}
               <div
                 className={`flex md:hidden flex-col gap-3.5 pb-4 border-b transition-colors ${
                   isLightTheme ? "border-purple-100" : "border-white/[0.08]"
