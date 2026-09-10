@@ -23,10 +23,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${font.variable} h-full antialiased`}
+      className={`${font.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col font-[var(--font-primary)] bg-white text-slate-900 selection:bg-indigo-100 selection:text-indigo-900">
+      <body className="min-h-screen flex flex-col font-[var(--font-primary)] bg-white text-slate-900 selection:bg-indigo-100 selection:text-indigo-900">
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

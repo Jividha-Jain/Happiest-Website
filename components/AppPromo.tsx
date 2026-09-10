@@ -73,9 +73,9 @@ export default function AppPromo() {
       />
 
       <div className="relative max-w-[1360px] mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-[42%_58%] gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[46%_54%] gap-8 lg:gap-14 items-start">
 
-          {/* ── LEFT ── */}
+          {/* ── LEFT: Features List ── */}
           <div className="min-w-0 space-y-7">
 
             {/* Badge */}
@@ -132,11 +132,8 @@ export default function AppPromo() {
               Launch, grow and monetize your community — all from one powerful platform.
             </motion.p>
 
-            {/* Points — 2-col bento grid */}
-            <div 
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-h-[420px] sm:max-h-[490px] overflow-y-auto no-scrollbar pr-1 sm:pr-2 pt-2 sm:pt-3 pb-3 px-1 text-left"
-              style={{ scrollSnapType: "y mandatory", scrollBehavior: "smooth" }}
-            >
+            {/* Points — 2-col bento grid without any inner scroll trapping */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2 sm:pt-3 pb-2 text-left">
               {points.map((pt, idx) => {
                 const Icon = pt.icon;
                 const isActive = activeIdx === idx;
@@ -144,14 +141,15 @@ export default function AppPromo() {
                   <motion.div
                     key={idx}
                     onClick={() => setActiveIdx(idx)}
+                    onMouseEnter={() => setActiveIdx(idx)}
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.35, delay: 0.1 + idx * 0.05 }}
+                    transition={{ duration: 0.35, delay: 0.05 + (idx % 4) * 0.04 }}
                     className={`group relative flex flex-col gap-3.5 p-5.5 rounded-[24px] border backdrop-blur-md cursor-pointer transition-all duration-300 ${
                       isActive
-                        ? "bg-white border-indigo-400/80 shadow-[0_24px_48px_rgba(99,102,241,0.15)] ring-2 ring-indigo-500/20 -translate-y-1.5"
-                        : "border-white/90 bg-gradient-to-br from-white/95 to-white/50 hover:-translate-y-1.5 hover:from-white hover:to-white hover:border-indigo-200/60 hover:shadow-[0_24px_48px_rgba(99,102,241,0.08)]"
+                        ? "bg-white border-indigo-400/80 shadow-[0_24px_48px_rgba(99,102,241,0.15)] ring-2 ring-indigo-500/20 -translate-y-1"
+                        : "border-white/90 bg-gradient-to-br from-white/95 to-white/50 hover:-translate-y-1 hover:from-white hover:to-white hover:border-indigo-200/60 hover:shadow-[0_24px_48px_rgba(99,102,241,0.08)]"
                     }`}
                   >
                     {/* Icon Container */}
@@ -171,28 +169,10 @@ export default function AppPromo() {
                 );
               })}
             </div>
-
-            {/* Badges (Commented out) */}
-            {/* <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="flex flex-wrap items-center gap-3 pt-1"
-            >
-              <GooglePlayBadge />
-              <AppStoreBadge />
-            </motion.div> */}
           </div>
 
-          {/* ── RIGHT — Dynamic App Image with Seamless Background Integration ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 32 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="flex items-center justify-center lg:justify-end w-full"
-          >
+          {/* ── RIGHT — Sticky Dynamic App Image with Seamless Background Integration ── */}
+          <div className="lg:sticky lg:top-28 w-full self-start flex items-center justify-center lg:justify-end">
             <div className="relative w-full max-w-[640px] sm:max-w-[680px] mx-auto">
               
               {/* Background Glow Aura for Seamless Integration */}
@@ -227,7 +207,7 @@ export default function AppPromo() {
               </div>
 
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>

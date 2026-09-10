@@ -177,6 +177,7 @@ export default function BuiltForEveryone() {
 
           <div
             ref={tabsRef}
+            data-lenis-prevent
             className="flex items-center overflow-x-auto no-scrollbar py-2 px-3 scroll-smooth w-full touch-pan-x"
           >
             <div className="flex items-center gap-2 min-w-max mx-auto">
