@@ -11,8 +11,6 @@ export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const hasPlayedOnceRef = useRef(false);
-  const hasScrolledAwayRef = useRef(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -22,27 +20,23 @@ export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
-            // Only autoplay on the very first time entering the view
-            if (!hasScrolledAwayRef.current && !hasPlayedOnceRef.current) {
-              video.play().then(() => {
-                setIsPlaying(true);
-                hasPlayedOnceRef.current = true;
-              }).catch(() => {
-                setIsPlaying(false);
-              });
-            }
-          } else if (!entry.isIntersecting || entry.intersectionRatio < 0.15) {
-            // When user scrolls down/away past the video, stop it and mark scrolled away
-            if (hasPlayedOnceRef.current) {
-              hasScrolledAwayRef.current = true;
-              video.pause();
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+            // Every time section enters the screen, reset to beginning and play
+            video.currentTime = 0;
+            video.play().then(() => {
+              setIsPlaying(true);
+            }).catch(() => {
               setIsPlaying(false);
-            }
+            });
+          } else if (!entry.isIntersecting || entry.intersectionRatio < 0.1) {
+            // When leaving screen, pause and reset time to 0
+            video.pause();
+            video.currentTime = 0;
+            setIsPlaying(false);
           }
         });
       },
-      { threshold: [0, 0.2, 0.4, 0.8] }
+      { threshold: [0, 0.15, 0.3, 0.7] }
     );
 
     observer.observe(section);
@@ -125,7 +119,7 @@ export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
             <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900 group/vid">
               <video
                 ref={videoRef}
-                src="/images/Video/Final-V1.mp4"
+                src="/images/Video/Final-HT.mp4"
                 poster="/images/Product.png"
                 muted
                 playsInline
@@ -134,7 +128,6 @@ export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
                 onPause={() => setIsPlaying(false)}
                 onEnded={() => {
                   setIsPlaying(false);
-                  hasScrolledAwayRef.current = true;
                 }}
                 className="w-full h-full object-cover cursor-pointer"
                 onClick={handlePlayToggle}
