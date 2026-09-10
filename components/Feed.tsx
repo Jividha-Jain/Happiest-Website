@@ -297,8 +297,9 @@ export default function Feed() {
   }, []);
 
   const openStep = (step: FlowStep, element: HTMLElement) => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) return;
     const rect = element.getBoundingClientRect();
-    const cardWidth = window.innerWidth >= 640 ? 275 : 250;
+    const cardWidth = 275;
     const cardHeight = 185;
     const GAP = 14;
     let style: React.CSSProperties = { position: "fixed", zIndex: 9999 };
@@ -345,46 +346,47 @@ export default function Feed() {
     <section
       id="feed"
       ref={containerRef}
-      className="relative py-24 md:py-32 z-20 font-sans overflow-x-hidden"
+      className="relative py-14 sm:py-24 md:py-32 z-20 font-sans overflow-hidden"
       style={{ background: "linear-gradient(160deg, #181735 0%, #0e1029 45%, #090d22 100%)" }}
     >
       {/* Subtle top ambient glow for smooth color harmony */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-32 bg-purple-500/10 blur-[100px] pointer-events-none" />
 
-      <div className="relative max-w-[1300px] mx-auto px-6 sm:px-20 lg:px-24">
+      <div className="relative max-w-[1300px] mx-auto px-4 sm:px-12 lg:px-24">
 
         {/* -- Header -- */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease }}
-          className="text-center space-y-4 mb-12"
+          transition={{ duration: 0.6, ease }}
+          className="text-center space-y-3.5 mb-8 sm:mb-12"
         >
           {/* Top label pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-bold tracking-wide uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-[10.5px] sm:text-xs font-bold tracking-wide uppercase">
             <Layers className="w-3.5 h-3.5 text-purple-400" />
             One Relationship Graph
           </div>
 
           <h2
-            className="text-[34px] sm:text-[46px] font-black tracking-tight text-white leading-tight font-display"
+            className="text-[26px] sm:text-[38px] md:text-[46px] font-black tracking-tight text-white leading-tight font-display px-2"
           >
             How Happiest.team Compounds Your Business
           </h2>
 
           {/* Highlight Tagline */}
-          <p className="text-purple-300 text-[17px] md:text-[18.5px] font-bold tracking-wide">
+          <p className="text-purple-300 text-sm sm:text-[17px] md:text-[18.5px] font-bold tracking-wide px-2">
             One member record. Every interaction. No silos.
           </p>
 
           {/* Subtitle Body Text */}
-          <p className="text-slate-300 text-[15.5px] font-normal max-w-2xl mx-auto leading-relaxed"
+          <p className="text-slate-300 text-xs sm:text-[15.5px] font-normal max-w-2xl mx-auto leading-relaxed px-2"
             style={{ fontFamily: "'Inter', sans-serif" }}>
             Each capability feeds the next stage of the same loop. A visitor becomes a member, a member becomes a buyer, and a buyer comes back, without leaving your community or costing you ad spend.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-2 text-purple-300 text-xs font-semibold bg-purple-500/10 border border-purple-500/20 px-4.5 py-2 rounded-full w-max mx-auto shadow-xs">
+          {/* Desktop Only: Hint Badge */}
+          <div className="hidden md:flex pt-2 items-center justify-center gap-2 text-purple-300 text-xs font-semibold bg-purple-500/10 border border-purple-500/20 px-4.5 py-2 rounded-full w-max mx-auto shadow-xs">
             <MousePointerClick className="w-4 h-4 text-purple-400 animate-bounce" />
             <span>Click any step to explore what&apos;s inside</span>
           </div>
@@ -394,18 +396,17 @@ export default function Feed() {
 
       {/* -- Flow Diagram Showcase (full width, outside content wrapper) -- */}
       <motion.div
-        initial={{ opacity: 0, y: 32 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, ease }}
-        className="w-full flex justify-center py-4"
+        transition={{ duration: 0.7, ease }}
+        className="w-full flex justify-center py-2 sm:py-4 px-2 sm:px-4"
       >
-        <div className="relative w-full max-w-[980px] mx-auto px-4 flex items-center justify-center">
+        <div className="relative w-full max-w-[980px] mx-auto flex items-center justify-center">
 
           {/* Layered Ambient Halos */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[480px] bg-purple-700/20 rounded-full blur-[120px] pointer-events-none z-0 animate-halo-pulse" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] bg-indigo-500/25 rounded-full blur-[90px] pointer-events-none z-0" />
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[300px] h-[200px] bg-violet-500/15 rounded-full blur-[70px] pointer-events-none z-0" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] sm:w-[720px] h-[320px] sm:h-[480px] bg-purple-700/20 rounded-full blur-[90px] sm:blur-[120px] pointer-events-none z-0 animate-halo-pulse" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] sm:w-[500px] h-[240px] sm:h-[350px] bg-indigo-500/25 rounded-full blur-[70px] sm:blur-[90px] pointer-events-none z-0" />
 
           {/* Main Diagram Container */}
           <div className="relative w-full z-10 animate-gentle-float">
@@ -417,44 +418,47 @@ export default function Feed() {
                 alt="Features Flow Diagram"
                 width={1680}
                 height={1120}
-                className="w-full h-auto object-contain block"
+                className="w-full h-auto object-contain block mx-auto"
                 unoptimized
+                priority
               />
             </div>
 
-            {/* Clickable Hotspots overlayed on each box */}
-            {FLOW_STEPS.map((step) => {
-              const isSelected = selectedStep?.id === step.id;
-              return (
-                <button
-                  key={step.id}
-                  onMouseEnter={(e) => {
-                    clearCloseTimer();
-                    openStep(step, e.currentTarget);
-                  }}
-                  onMouseLeave={() => {
-                    scheduleAutoClose(600);
-                  }}
-                  onClick={(e) => {
-                    if (isSelected) {
+            {/* Desktop Only Clickable Hotspots (hidden on mobile so no popups open on phone) */}
+            <div className="hidden md:block">
+              {FLOW_STEPS.map((step) => {
+                const isSelected = selectedStep?.id === step.id;
+                return (
+                  <button
+                    key={step.id}
+                    onMouseEnter={(e) => {
                       clearCloseTimer();
-                      setSelectedStep(null);
-                      setPopoverStyle({});
-                    } else {
                       openStep(step, e.currentTarget);
-                    }
-                  }}
-                  style={{
-                    top: step.position.top,
-                    left: step.position.left,
-                    width: step.position.width,
-                    height: step.position.height,
-                  }}
-                  className="absolute z-30 cursor-pointer focus:outline-none bg-transparent border-none"
-                  aria-label={`Explore ${step.title}`}
-                />
-              );
-            })}
+                    }}
+                    onMouseLeave={() => {
+                      scheduleAutoClose(600);
+                    }}
+                    onClick={(e) => {
+                      if (isSelected) {
+                        clearCloseTimer();
+                        setSelectedStep(null);
+                        setPopoverStyle({});
+                      } else {
+                        openStep(step, e.currentTarget);
+                      }
+                    }}
+                    style={{
+                      top: step.position.top,
+                      left: step.position.left,
+                      width: step.position.width,
+                      height: step.position.height,
+                    }}
+                    className="absolute z-30 cursor-pointer focus:outline-none bg-transparent border-none"
+                    aria-label={`Explore ${step.title}`}
+                  />
+                );
+              })}
+            </div>
 
             {/* Subtle shimmer sweep */}
             <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden rounded-3xl">
@@ -465,7 +469,7 @@ export default function Feed() {
         </div>
       </motion.div>
 
-      {/* Popover card — compact, elegant, auto-dismissing */}
+      {/* Popover card — Desktop only */}
       <AnimatePresence mode="wait">
         {selectedStep && (
           <motion.div
@@ -477,7 +481,7 @@ export default function Feed() {
             onMouseEnter={clearCloseTimer}
             onMouseLeave={() => scheduleAutoClose(800)}
             style={popoverStyle}
-            className="w-[260px] sm:w-[275px] bg-white text-slate-900 border border-slate-100 rounded-[22px] shadow-[0_20px_45px_-10px_rgba(15,10,40,0.2),0_4px_16px_rgba(0,0,0,0.06)] p-4 sm:p-4.5 font-sans pointer-events-auto"
+            className="hidden md:block w-[275px] bg-white text-slate-900 border border-slate-100 rounded-[22px] shadow-[0_20px_45px_-10px_rgba(15,10,40,0.2),0_4px_16px_rgba(0,0,0,0.06)] p-4 sm:p-4.5 font-sans pointer-events-auto"
           >
             {/* Top row: Icon + Step Badge & Close button */}
             <div className="flex items-center justify-between">
