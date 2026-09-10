@@ -37,11 +37,11 @@ const points = [
   { icon: Users,       title: "Audience Growth",      desc: "Invite members & share with your audience.",     iconBg: "bg-sky-50",      iconColor: "text-sky-600",    image: "/images/Audience-growth.png" },
   { icon: Mic,         title: "Audio Rooms & Calls",  desc: "Host voice huddles, audio lounges & podcasts.", iconBg: "bg-purple-50",  iconColor: "text-purple-600", image: "/images/Audio.png" },
   { icon: Video,       title: "Video Calls & Streams",desc: "Host 1-on-1 video calls & HD live streams.",    iconBg: "bg-fuchsia-50", iconColor: "text-fuchsia-600",image: "/images/Video.png" },
-  { icon: Radio,       title: "Interactive Feeds",    desc: "Post updates, host discussions & go live.",     iconBg: "bg-rose-50",     iconColor: "text-rose-600",   image: "/images/Interactive-Feeds.png" },
+  { icon: Radio,       title: "Interactive Feeds",    desc: "Post updates, host discussions & go live.",     iconBg: "bg-rose-50",     iconColor: "text-rose-600",   image: "/images/Slide-2.png" },
   { icon: BookOpen,    title: "Online Courses",       desc: "Create & sell courses to your community.",       iconBg: "bg-amber-50",    iconColor: "text-amber-600",  image: "/images/Online Courses.png" },
   { icon: Calendar,    title: "Events & Booking",     desc: "Run events, sessions & book appointments.",     iconBg: "bg-emerald-50",  iconColor: "text-emerald-600",image: "/images/Events & Bookings.png" },
   { icon: Hash,        title: "Private Channels",     desc: "Build private channels for deeper engagement.", iconBg: "bg-indigo-50",   iconColor: "text-indigo-600", image: "/images/private-channel.png" },
-  { icon: ShoppingBag, title: "Easy Monetization",    desc: "Monetize with memberships, products & ads.",    iconBg: "bg-pink-50",     iconColor: "text-pink-600",   image: "/images/Easy Monetrization.png" },
+  { icon: ShoppingBag, title: "Easy Monetization",    desc: "Monetize with memberships, products & ads.",    iconBg: "bg-pink-50",     iconColor: "text-pink-600",   image: "/images/Product.png" },
   { icon: TrendingUp,  title: "Smart Analytics",      desc: "Track growth with real-time analytics.",        iconBg: "bg-teal-50",     iconColor: "text-teal-600",   image: "/images/Smart-analytics.png" },
 ];
 

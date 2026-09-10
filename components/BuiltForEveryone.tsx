@@ -10,6 +10,10 @@ import {
   Music,
   Flower2,
   Coffee,
+  Sparkles,
+  Palette,
+  Shirt,
+  BookOpen,
   Search,
   Calendar,
   Users,
@@ -40,6 +44,33 @@ const CATEGORIES: Category[] = [
     title: "Turn your passion into a thriving global business",
     desc: "Get discovered, offer consultations, manage bookings, and build a loyal community — all under $20/month.",
     image: "/images/categories/all.jpg",
+  },
+  {
+    id: "ai",
+    name: "AI & Tech",
+    icon: Sparkles,
+    tag: "FOR AI CREATORS & TECH EXPERTS",
+    title: "Host workshops, mentorship & build tech communities",
+    desc: "Sell AI prompt bundles, host coding bootcamps, schedule 1:1 tech mentorship, and grow your subscriber base.",
+    image: "/images/categories/ai.jpg",
+  },
+  {
+    id: "arts",
+    name: "Art & Design",
+    icon: Palette,
+    tag: "FOR ARTISTS & DESIGNERS",
+    title: "Showcase creative portfolios & teach art masterclasses",
+    desc: "Sell custom artwork, host live painting sessions, offer design portfolio reviews, and build a patron community.",
+    image: "/images/categories/arts.jpg",
+  },
+  {
+    id: "fashion",
+    name: "Fashion & Apparel",
+    icon: Shirt,
+    tag: "FOR FASHION CREATORS & APPAREL",
+    title: "Launch style drops, styling sessions & boutique clubs",
+    desc: "Sell exclusive apparel collections, book personal styling consultations, and host VIP launch events.",
+    image: "/images/categories/fashion.jpg",
   },
   {
     id: "fitness",
@@ -94,6 +125,15 @@ const CATEGORIES: Category[] = [
     title: "Turn your knowledge into a growing business",
     desc: "Get discovered, offer consultations, manage bookings, and build a loyal community — all under $20.",
     image: "/images/categories/astrology.jpg",
+  },
+  {
+    id: "education",
+    name: "Education & Coaching",
+    icon: BookOpen,
+    tag: "FOR EDUCATORS & COACHES",
+    title: "Conduct masterclasses & 1-on-1 coaching cohorts",
+    desc: "Host interactive cohorts, distribute digital workbooks, schedule office hours, and monetize your expertise.",
+    image: "/images/categories/education.jpg",
   }
 ];
 
@@ -129,7 +169,7 @@ export default function BuiltForEveryone() {
         <div className="flex items-center justify-between gap-2 max-w-5xl mx-auto px-2">
           <button
             onClick={() => scrollTabs("left")}
-            className="w-8 h-8 rounded-full bg-[#12142b] border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors shrink-0 cursor-pointer z-10"
+            className="w-8 h-8 rounded-full bg-[#12152e] flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#1a1e40] transition-colors shrink-0 cursor-pointer z-10"
             aria-label="Scroll Left"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -141,19 +181,17 @@ export default function BuiltForEveryone() {
           >
             <div className="flex items-center gap-2 min-w-max mx-auto">
               {CATEGORIES.map((cat, idx) => {
-                const Icon = cat.icon;
                 const isActive = activeIdx === idx;
                 return (
                   <button
                     key={cat.id}
                     onClick={() => setActiveIdx(idx)}
-                    className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-xs font-bold shrink-0 transition-all cursor-pointer ${
+                    className={`px-4 sm:px-5 py-2.5 rounded-full text-xs font-bold shrink-0 transition-all cursor-pointer ${
                       isActive
-                        ? "bg-[#2E1065] text-white shadow-[0_0_25px_rgba(46,16,101,0.45)] border border-purple-700/60"
-                        : "bg-[#111328] text-slate-300 border border-white/[0.08] hover:text-white hover:bg-[#191b38]"
+                        ? "bg-[#6D4AFF] text-white shadow-[0_4px_20px_rgba(109,74,255,0.4)]"
+                        : "bg-[#12152e] text-slate-400 hover:text-white hover:bg-[#1a1e40]"
                     }`}
                   >
-                    <Icon className="w-3.5 h-3.5" />
                     <span>{cat.name}</span>
                   </button>
                 );
@@ -163,7 +201,7 @@ export default function BuiltForEveryone() {
 
           <button
             onClick={() => scrollTabs("right")}
-            className="w-8 h-8 rounded-full bg-[#12142b] border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors shrink-0 cursor-pointer z-10"
+            className="w-8 h-8 rounded-full bg-[#12152e] flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#1a1e40] transition-colors shrink-0 cursor-pointer z-10"
             aria-label="Scroll Right"
           >
             <ChevronRight className="w-4 h-4" />
@@ -182,87 +220,102 @@ export default function BuiltForEveryone() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white rounded-[28px] border border-purple-100 p-6 sm:p-7 flex flex-col md:flex-row items-stretch gap-6 lg:gap-8 text-left shadow-[0_8px_40px_rgba(100,60,220,0.10)] relative overflow-visible h-full"
+                className="bg-white rounded-[28px] border border-purple-100 p-6 sm:p-7 flex flex-col justify-between gap-6 text-left shadow-[0_8px_40px_rgba(100,60,220,0.10)] relative overflow-visible h-full"
               >
-                {/* Text Left Column */}
-                <div className="w-full md:w-1/2 flex flex-col justify-start py-1 sm:py-2 gap-5 z-10">
-                  <div className="space-y-3 sm:space-y-4">
-                    <span className="text-[10px] sm:text-[11px] font-black tracking-widest text-[#2E1065] uppercase font-display block">
-                      {activeCategory.tag}
-                    </span>
-                    <h3 className="text-2xl sm:text-3xl font-black text-[#2E1065] leading-[1.2] font-display">
-                      {activeCategory.title}
-                    </h3>
-                    <p className="text-slate-500 text-xs sm:text-sm font-normal leading-relaxed">
-                      {activeCategory.desc}
-                    </p>
+                {/* ── FULL WIDESCREEN LAYOUT FOR ALL CATEGORIES ── */}
+                <div className="flex flex-col gap-6 w-full h-full justify-between">
+                  {/* Top Row: Title, Tag & CTA */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="space-y-1.5 max-w-lg">
+                      <span className="text-[10px] sm:text-[11px] font-black tracking-widest text-[#2E1065] uppercase font-display block">
+                        {activeCategory.tag}
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-black text-[#2E1065] leading-tight font-display">
+                        {activeCategory.title}
+                      </h3>
+                      <p className="text-slate-500 text-xs sm:text-sm font-normal leading-relaxed">
+                        {activeCategory.desc}
+                      </p>
+                    </div>
+
+                    <div className="shrink-0 self-start sm:self-center">
+                      <button className="bg-gradient-to-r from-[#2E1065] via-[#3B137E] to-[#4C1D95] hover:from-[#1e0a45] hover:to-[#3B137E] text-white font-extrabold text-xs px-5 py-2.5 rounded-full transition-all flex items-center gap-2 cursor-pointer shadow-[0_6px_20px_rgba(46,16,101,0.35)] hover:scale-[1.02]">
+                        <span>Start growing</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="pt-2">
-                    <button className="bg-gradient-to-r from-[#2E1065] via-[#3B137E] to-[#4C1D95] hover:from-[#1e0a45] hover:to-[#3B137E] text-white font-extrabold text-xs px-6 py-3 rounded-full transition-all flex items-center gap-2 cursor-pointer shadow-[0_6px_25px_rgba(46,16,101,0.4)] hover:scale-[1.02]">
-                      <span>Start growing</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Image Right Column with Border/Stroke & Floating White Cards */}
-                <div className="w-full md:w-1/2 shrink-0 flex items-center justify-center">
-                  
-                  {/* Inner tight wrapper — cards position relative to image frame only */}
-                  <div className="relative w-full">
-
-                    {/* Image Frame with Crisp Border/Stroke */}
-                    <div className="relative w-full h-[320px] sm:h-[350px] rounded-[22px] overflow-hidden border-2 border-purple-100 shadow-xl">
+                  {/* Bottom: Full 16:9 Image Showcase with Clean Floating Badges */}
+                  <div className="relative w-full overflow-visible">
+                    {/* Inner Image Frame */}
+                    <div className="relative w-full aspect-[16/9] rounded-[22px] overflow-hidden border-2 border-purple-100 shadow-xl bg-slate-900">
                       <Image
                         src={activeCategory.image}
                         alt={activeCategory.title}
                         fill
-                        className="object-cover object-top"
+                        className="object-cover object-center"
                         unoptimized
+                        priority
                       />
                     </div>
 
-                    {/* 1. Top-Left Member Stats White Card — straddles the border */}
-                    <div className="absolute -top-4 -left-4 sm:-top-5 sm:-left-5 bg-white backdrop-blur-md border border-white/80 rounded-2xl p-3 sm:p-3.5 shadow-[0_15px_30px_rgba(0,0,0,0.4)] flex flex-col justify-between z-30 min-w-[135px] sm:min-w-[150px] text-slate-900">
-                      <div className="flex items-center justify-between gap-2.5">
-                        <div className="w-6.5 h-6.5 rounded-lg bg-purple-100 text-[#7C5CFF] flex items-center justify-center shrink-0">
-                          <BarChart3 className="w-3.5 h-3.5" />
-                        </div>
-                        <span className="text-[10px] font-extrabold text-emerald-700 bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-0.5">
-                          ↑ 85%
-                        </span>
+                    {/* Top-Left Member Stats White Card — Straddling Stroke */}
+                    <div className="absolute -top-4 -left-3 sm:-top-5 sm:-left-4 bg-white backdrop-blur-md border border-white/90 rounded-2xl p-2.5 sm:p-3 shadow-[0_15px_35px_rgba(0,0,0,0.25)] flex items-center gap-3 z-20 text-slate-900">
+                      <div className="w-7 h-7 rounded-lg bg-purple-100 text-[#7C5CFF] flex items-center justify-center shrink-0">
+                        <BarChart3 className="w-4 h-4" />
                       </div>
-                      <div className="mt-2">
-                        <p className="text-xl sm:text-2xl font-black text-slate-900 leading-none font-display tracking-tight">850+</p>
-                        <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium mt-0.5">Active Members</p>
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <p className="text-sm sm:text-base font-black text-slate-900 leading-none font-display">850+</p>
+                          <span className="text-[9px] sm:text-[10px] font-extrabold text-emerald-700 bg-emerald-100 border border-emerald-200 px-1.5 py-0.2 rounded-full">
+                            ↑ 85%
+                          </span>
+                        </div>
+                        <p className="text-[9px] sm:text-[10px] text-slate-500 font-medium mt-0.5">Active Members</p>
                       </div>
                     </div>
 
-                    {/* 2. Bottom-Right New Booking White Card — straddles the border */}
-                    <div className="absolute -bottom-4 -right-4 sm:-bottom-5 sm:-right-5 bg-white backdrop-blur-md border border-white/80 rounded-2xl p-3 sm:p-3.5 shadow-[0_15px_30px_rgba(0,0,0,0.4)] flex flex-col justify-between z-30 min-w-[160px] sm:min-w-[180px] text-slate-900">
-                      <div className="flex items-center gap-2">
-                        <div className="w-7.5 h-7.5 rounded-xl bg-purple-100 text-[#7C5CFF] flex items-center justify-center shrink-0">
-                          <Calendar className="w-3.5 h-3.5" />
-                        </div>
-                        <div className="text-left">
-                          <p className="text-xs font-extrabold text-slate-900 leading-tight font-display">New Booking</p>
-                          <p className="text-[9.5px] sm:text-[10px] text-slate-500 font-medium mt-0.5">Yoga Session &bull; 10:00 AM</p>
-                        </div>
+                    {/* Bottom-Right New Booking White Card — Straddling Stroke */}
+                    <div className="absolute -bottom-4 -right-3 sm:-bottom-5 sm:-right-4 bg-white backdrop-blur-md border border-white/90 rounded-2xl p-2.5 sm:p-3 shadow-[0_15px_35px_rgba(0,0,0,0.25)] flex items-center gap-3 z-20 text-slate-900">
+                      <div className="w-7 h-7 rounded-lg bg-purple-100 text-[#7C5CFF] flex items-center justify-center shrink-0">
+                        <Calendar className="w-4 h-4" />
                       </div>
-                      <div className="mt-2">
-                        <span className="w-full bg-gradient-to-r from-[#6D4AFF] to-[#7C5CFF] text-white text-[11px] font-extrabold py-1 px-2.5 rounded-xl shadow-md text-center block tracking-wide">
+                      <div>
+                        <p className="text-[11px] sm:text-xs font-extrabold text-slate-900 leading-tight font-display">New Booking</p>
+                        <p className="text-[9px] sm:text-[10px] text-slate-500 font-medium">
+                          {activeCategory.id === "ai"
+                            ? "AI Workshop • 2:00 PM"
+                            : activeCategory.id === "arts"
+                            ? "Design Review • 4:30 PM"
+                            : activeCategory.id === "fashion"
+                            ? "Style Consultation • 1:00 PM"
+                            : activeCategory.id === "education"
+                            ? "1:1 Coaching • 11:00 AM"
+                            : activeCategory.id === "astrology"
+                            ? "Birth Chart • 3:00 PM"
+                            : activeCategory.id === "cafes"
+                            ? "Table Reservation • 6:30 PM"
+                            : activeCategory.id === "yoga"
+                            ? "Meditation Flow • 8:00 AM"
+                            : activeCategory.id === "music"
+                            ? "Guitar Session • 4:00 PM"
+                            : activeCategory.id === "sports"
+                            ? "Match Practice • 5:00 PM"
+                            : activeCategory.id === "fitness"
+                            ? "HIIT Session • 7:00 AM"
+                            : "Live Masterclass • 10:00 AM"}
+                        </p>
+                      </div>
+                        <span className="bg-gradient-to-r from-[#6D4AFF] to-[#7C5CFF] text-white text-[10px] sm:text-[10.5px] font-extrabold py-1 px-2.5 rounded-lg shadow-xs ml-1">
                           Confirmed
                         </span>
                       </div>
                     </div>
-
                   </div>
-                </div>
-
-              </motion.div>
-            </AnimatePresence>
-          </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
           {/* Right Feature Column: Everything You Need to Grow */}
           <div className="lg:col-span-5 bg-white rounded-[28px] border border-purple-100 p-6 sm:p-7 text-left flex flex-col justify-between shadow-[0_8px_40px_rgba(100,60,220,0.10)] space-y-6 h-full relative overflow-hidden">

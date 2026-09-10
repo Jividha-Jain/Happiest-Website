@@ -16,7 +16,7 @@ function DiscoverClubsPanel() {
   return (
     <div className="w-full h-full overflow-y-auto no-scrollbar bg-white">
       <img
-        src="/images/Slide.png"
+        src="/images/Club.png"
         alt="Discover Clubs Screenshot"
         className="w-full h-auto block" decoding="async"
         style={{ display: "block", maxWidth: "100%" }}

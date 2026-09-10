@@ -201,7 +201,7 @@ function DiscoveryMockup() {
     <MacWindowWrapper url="discover">
       <div className="flex-1 w-full relative bg-white">
         <Image 
-          src={`/images/slide1-discovery.png?v=1`} 
+          src={`/images/Club.png`} 
           alt="Discovery Screen" 
           fill 
           className="object-cover object-top" 

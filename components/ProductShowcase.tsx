@@ -126,6 +126,7 @@ export default function ProductShowcase({ scrollTo }: ProductShowcaseProps) {
               <video
                 ref={videoRef}
                 src="/images/Video/Final-V1.mp4"
+                poster="/images/Product.png"
                 muted
                 playsInline
                 controls={isPlaying}
