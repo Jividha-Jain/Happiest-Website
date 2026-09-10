@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { type Variants, motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { 
   Compass, CalendarDays, MessageSquare, Users, BrainCircuit,
   Search, MapPin, Ticket, Send, Sparkles
@@ -154,7 +154,7 @@ export default function StickyFeatures() {
    VISUAL MOCKUPS
    ════════════════════════════════════════════════ */
 
-const mockupVariants: any = {
+const mockupVariants: Variants = {
   initial: { opacity: 0, scale: 0.95, y: 30 },
   animate: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
   exit: { opacity: 0, scale: 0.95, y: -30, transition: { duration: 0.4 } }

@@ -140,7 +140,10 @@ export default function Discovery() {
     setCurrentSlide(newSlide);
   };
 
-  const handleDragEnd = (_e: any, { offset, velocity }: any) => {
+  const handleDragEnd = (
+    _e: MouseEvent | TouchEvent | PointerEvent,
+    { offset, velocity }: { offset: { x: number; y: number }; velocity: { x: number; y: number } }
+  ) => {
     const swipeConfidenceThreshold = 10000;
     const swipePower = Math.abs(offset.x) * velocity.x;
 

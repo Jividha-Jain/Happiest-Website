@@ -189,7 +189,7 @@ export default function Events() {
                         {isRsvped ? (
                           <>
                             <Check className="w-3.5 h-3.5" />
-                            <span>RSVP'd</span>
+                            <span>RSVP&apos;d</span>
                           </>
                         ) : (
                           <span>RSVP Event</span>

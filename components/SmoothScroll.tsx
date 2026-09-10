@@ -17,7 +17,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       wheelMultiplier: 1.0,
       touchMultiplier: 0,
       syncTouch: false,
-      prevent: (node: any) => {
+      prevent: (node: Element) => {
         return (
           node?.hasAttribute?.("data-lenis-prevent") ||
           Boolean(node?.closest?.("[data-lenis-prevent]"))
@@ -26,7 +26,8 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     });
 
     lenisRef.current = lenis;
-    (window as any).__lenis = lenis;
+    const win = window as unknown as { __lenis?: Lenis };
+    win.__lenis = lenis;
 
     // RAF loop
     let rafId: number;
@@ -59,7 +60,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       document.removeEventListener("click", handleAnchorClick);
       cancelAnimationFrame(rafId);
       lenis.destroy();
-      delete (window as any).__lenis;
+      delete win.__lenis;
     };
   }, []);
 
