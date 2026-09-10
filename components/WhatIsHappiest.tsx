@@ -250,8 +250,14 @@ interface MemberItem {
   return (
     <section
       id="what-is-happiest"
-      className="relative z-20 font-sans py-16 md:py-24 bg-[#050311] overflow-hidden select-none"
+      className="relative z-20 font-sans pt-12 pb-16 md:pt-16 md:pb-24 bg-[#050311] overflow-hidden select-none"
     >
+      {/* ── Glowing Top Section Separator Line ── */}
+      <div className="absolute top-0 left-0 right-0 w-full flex items-center justify-center pointer-events-none z-30">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="absolute w-3/4 max-w-4xl h-px bg-gradient-to-r from-transparent via-[#7C5CFF]/70 to-transparent shadow-[0_0_18px_rgba(124,92,255,0.8)]" />
+      </div>
+
       {/* Subtle Grid Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
