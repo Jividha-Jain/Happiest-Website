@@ -14,12 +14,12 @@ const ease = [0.22, 1, 0.36, 1] as [number,number,number,number];
 
 function DiscoverClubsPanel() {
   return (
-    <div className="w-full h-full overflow-y-auto no-scrollbar bg-white">
+    <div className="w-full h-full overflow-hidden bg-white">
       <img
         src="/images/Club.png"
         alt="Discover Clubs Screenshot"
-        className="w-full h-auto block" decoding="async"
-        style={{ display: "block", maxWidth: "100%" }}
+        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        decoding="async"
       />
     </div>
   );
@@ -27,12 +27,12 @@ function DiscoverClubsPanel() {
 
 function CoursesPanel() {
   return (
-    <div className="w-full h-full overflow-y-auto no-scrollbar bg-white">
+    <div className="w-full h-full overflow-hidden bg-white">
       <img
         src="/images/Slide-4.png"
         alt="Courses Screenshot"
-        className="w-full h-auto block" decoding="async"
-        style={{ display: "block", maxWidth: "100%" }}
+        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        decoding="async"
       />
     </div>
   );
@@ -40,12 +40,12 @@ function CoursesPanel() {
 
 function ProductsPanel() {
   return (
-    <div className="w-full h-full overflow-y-auto no-scrollbar bg-white">
+    <div className="w-full h-full overflow-hidden bg-white">
       <img
         src="/images/Slide.png"
         alt="Products Screenshot"
-        className="w-full h-auto block" decoding="async"
-        style={{ display: "block", maxWidth: "100%" }}
+        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        decoding="async"
       />
     </div>
   );
@@ -53,12 +53,12 @@ function ProductsPanel() {
 
 function ChannelPanel() {
   return (
-    <div className="w-full h-full overflow-y-auto no-scrollbar bg-white">
+    <div className="w-full h-full overflow-hidden bg-white">
       <img
         src="/images/Slide-7.png"
         alt="Club Notifications Screenshot"
-        className="w-full h-auto block" decoding="async"
-        style={{ display: "block", maxWidth: "100%" }}
+        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        decoding="async"
       />
     </div>
   );
@@ -66,12 +66,12 @@ function ChannelPanel() {
 
 function MetaIntegrationPanel() {
   return (
-    <div className="w-full h-full overflow-y-auto no-scrollbar bg-white">
+    <div className="w-full h-full overflow-hidden bg-white">
       <img
         src="/images/Slide-6.png"
         alt="Social Media Screenshot"
-        className="w-full h-auto block" decoding="async"
-        style={{ display: "block", maxWidth: "100%" }}
+        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        decoding="async"
       />
     </div>
   );
@@ -79,12 +79,12 @@ function MetaIntegrationPanel() {
 
 function HgptAssistantPanel() {
   return (
-    <div className="w-full h-full overflow-y-auto no-scrollbar bg-white">
+    <div className="w-full h-full overflow-hidden bg-white">
       <img
         src="/images/Slide-3.png"
         alt="HGPT Screenshot"
-        className="w-full h-auto block" decoding="async"
-        style={{ display: "block", maxWidth: "100%" }}
+        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        decoding="async"
       />
     </div>
   );
@@ -160,12 +160,12 @@ function FeedPanel() {
 
 function BookNowPanel() {
   return (
-    <div className="w-full h-full overflow-y-auto no-scrollbar bg-white">
+    <div className="w-full h-full overflow-hidden bg-white">
       <img
         src="/images/Booking.png"
         alt="Booking Screenshot"
-        className="w-full h-auto block" decoding="async"
-        style={{ display: "block", maxWidth: "100%" }}
+        className="w-full h-full object-cover object-left-top sm:object-cover block"
+        decoding="async"
       />
     </div>
   );
