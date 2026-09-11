@@ -261,10 +261,10 @@ export default function Hero({ scrollTo }: HeroProps) {
         {/* ⑥ TRUST SIGNALS */}
         <motion.div
           {...fadeUp(0.82)}
-          className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mt-1"
+          className="flex flex-wrap items-center justify-center gap-x-3.5 sm:gap-x-5 gap-y-1.5 mt-2 px-2"
         >
           {["No credit card required", "Set up in minutes", "All-in-one platform"].map((item) => (
-            <span key={item} className="flex items-center gap-1.5 text-[12.5px] text-slate-400 font-medium">
+            <span key={item} className="flex items-center gap-1.5 text-[11.5px] sm:text-[12.5px] text-slate-400 font-medium whitespace-nowrap">
               <svg className="w-3.5 h-3.5 text-indigo-400 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
               {item}
             </span>
@@ -274,24 +274,24 @@ export default function Hero({ scrollTo }: HeroProps) {
         {/* ⑦ SOCIAL PROOF */}
         <motion.div
           {...fadeUp(0.9)}
-          className="flex items-center gap-3 mt-2"
+          className="flex flex-col sm:flex-row items-center text-center sm:text-left gap-2.5 sm:gap-3 mt-3"
         >
-          <div className="flex -space-x-2.5">
+          <div className="flex -space-x-2.5 shrink-0">
             {[
               "/images/creator-custom.png",
               "/images/creator-custom-2.png",
               "/images/creator-custom-3.png",
               "/images/creator-custom-4.png",
             ].map((src, i) => (
-              <div key={i} className="w-9 h-9 rounded-full border-2 border-[#0f1124] overflow-hidden relative bg-slate-800" style={{ zIndex: 4 - i }}>
+              <div key={i} className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-[#0f1124] overflow-hidden relative bg-slate-800" style={{ zIndex: 4 - i }}>
                 <Image src={src} alt="Creator" fill className="object-cover" unoptimized />
               </div>
             ))}
-            <div className="w-9 h-9 rounded-full bg-[#4a1c8c] text-white font-black text-[10px] flex items-center justify-center border-2 border-[#0f1124] shrink-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#4a1c8c] text-white font-black text-[9.5px] sm:text-[10px] flex items-center justify-center border-2 border-[#0f1124] shrink-0">
               +10K
             </div>
           </div>
-          <p className="text-[13px] text-slate-400 font-medium">
+          <p className="text-[12px] sm:text-[13px] text-slate-400 font-medium max-w-[280px] sm:max-w-none leading-tight sm:leading-normal">
             Join <span className="text-white font-bold">12,000+</span> creators and businesses already growing with Happiest.team
           </p>
         </motion.div>
