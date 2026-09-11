@@ -92,16 +92,17 @@ function HgptAssistantPanel() {
 
 function FeedPanel() {
   return (
-    <div className="w-full h-full overflow-hidden bg-white">
+    <div className="w-full min-h-full bg-white">
       <img
         src="/images/Slide-2.png"
         alt="Feeds Screenshot"
-        className="w-full h-full object-contain object-top block"
+        className="w-full h-auto block"
         decoding="async"
       />
     </div>
   );
 }
+
 
 function BookNowPanel() {
   return (
@@ -262,12 +263,15 @@ export default function Discovery() {
             </div>
 
             {/* App Content Slider with Swipe Support */}
-            <div className="flex-1 relative overflow-hidden bg-white">
+            <div
+              className={`flex-1 relative bg-white ${currentSlide === 1 ? 'overflow-y-auto' : 'overflow-hidden'}`}
+              {...(currentSlide === 1 ? { 'data-lenis-prevent': '' } : {})}
+            >
               <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                   key={currentSlide}
                   custom={direction}
-                  drag="x"
+                  drag={currentSlide === 1 ? false : "x"}
                   dragConstraints={{ left: 0, right: 0 }}
                   dragElastic={0.2}
                   onDragEnd={handleDragEnd}
@@ -289,7 +293,7 @@ export default function Discovery() {
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.32, ease: [0.25, 1, 0.5, 1] }}
-                  className="absolute inset-0 touch-pan-y cursor-grab active:cursor-grabbing"
+                  className={`${currentSlide === 1 ? 'relative w-full' : 'absolute inset-0 cursor-grab active:cursor-grabbing touch-pan-y'}`}
                 >
                   {currentSlide === 0 && <DiscoverClubsPanel />}
                   {currentSlide === 1 && <FeedPanel />}
@@ -301,6 +305,7 @@ export default function Discovery() {
                   {currentSlide === 7 && <MetaIntegrationPanel />}
                 </motion.div>
               </AnimatePresence>
+
             </div>
           </div>
         </motion.div>
