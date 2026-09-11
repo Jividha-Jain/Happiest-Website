@@ -63,8 +63,8 @@ export default function Hero({ scrollTo }: HeroProps) {
     return () => el.removeEventListener("mousemove", fn);
   }, [rawX, rawY]);
 
-  const h1 = ["Build", "Communities", "That", "People", "Love."];
-  const h2 = ["Manage.", "Engage.", "Grow."];
+  const h1 = ["Turn", "Your", "Community"];
+  const h2 = ["Into", "a", "Growing", "Business."];
 
   return (
     <section
@@ -127,7 +127,7 @@ export default function Hero({ scrollTo }: HeroProps) {
               border border-white/[0.10] bg-white/[0.035] backdrop-blur-sm
               hover:border-indigo-400/35 hover:bg-white/[0.065]
               transition-all duration-300"
-            aria-label="Discover Happiest AI"
+            aria-label="For Creators, Clubs & Community-Led Businesses"
           >
             {/* Icon pill */}
             <span
@@ -141,7 +141,7 @@ export default function Hero({ scrollTo }: HeroProps) {
             </span>
             <span className="text-[11.5px] font-semibold text-slate-300
               group-hover:text-white transition-colors duration-300 tracking-[0.025em]">
-              ✨ Meet Happiest AI — Communities, Events & Members
+              For Creators, Clubs &amp; Community-Led Businesses
             </span>
             <ArrowRight
               className="w-3.5 h-3.5 text-indigo-400 shrink-0
@@ -210,11 +210,11 @@ export default function Hero({ scrollTo }: HeroProps) {
         {/* ④ SUBHEADING */}
         <motion.p
           {...fadeUp(0.66)}
-          className="max-w-[620px] text-[17px] sm:text-[18.5px] leading-[1.8] font-medium text-slate-400 mt-8 tracking-wide drop-shadow-xs"
+          className="max-w-[620px] text-[17px] sm:text-[18.5px] leading-[1.8] font-medium text-slate-400 tracking-wide drop-shadow-xs"
           style={{ color: "#94a3b8" }}
         >
-          Create thriving communities with built-in events, bookings, memberships, chats, payments, and commerce —{" "}
-          <span className="text-slate-200 font-[500]">all from one platform.</span>
+          Build, engage, and monetize your community from one platform —{" "}
+          <span className="text-slate-200 font-[500]">with memberships, events, bookings, content, payments and commerce built in.</span>
         </motion.p>
 
         {/* ⑤ CTA ROW */}
@@ -236,9 +236,64 @@ export default function Hero({ scrollTo }: HeroProps) {
               boxShadow: "0 6px 26px rgba(46,16,101,0.60), inset 0 1px 0 rgba(255,255,255,0.18)",
             }}
           >
-            <span>Sign Up</span>
+            <span>Start Free</span>
             <ArrowRight className="w-4 h-4 text-white shrink-0 group-hover:translate-x-0.5 transition-transform duration-300" />
           </motion.button>
+
+          {/* Secondary Button */}
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => scrollTo("product-showcase")}
+            className="group flex items-center justify-center gap-2.5 cursor-pointer
+              text-slate-200 text-[15px] font-bold tracking-wide
+              px-8 py-3.5 rounded-full border border-white/[0.12] bg-white/[0.04]
+              hover:bg-white/[0.08] hover:border-white/[0.22]
+              transition-all duration-300 w-full sm:w-auto backdrop-blur-sm"
+          >
+            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 border border-white/20">
+              <svg className="w-2.5 h-2.5 text-white fill-white ml-0.5" viewBox="0 0 8 10"><path d="M1 1l6 4-6 4V1z"/></svg>
+            </span>
+            <span>See How It Works</span>
+          </motion.button>
+        </motion.div>
+
+        {/* ⑥ TRUST SIGNALS */}
+        <motion.div
+          {...fadeUp(0.82)}
+          className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mt-1"
+        >
+          {["No credit card required", "Set up in minutes", "All-in-one platform"].map((item) => (
+            <span key={item} className="flex items-center gap-1.5 text-[12.5px] text-slate-400 font-medium">
+              <svg className="w-3.5 h-3.5 text-indigo-400 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+              {item}
+            </span>
+          ))}
+        </motion.div>
+
+        {/* ⑦ SOCIAL PROOF */}
+        <motion.div
+          {...fadeUp(0.9)}
+          className="flex items-center gap-3 mt-2"
+        >
+          <div className="flex -space-x-2.5">
+            {[
+              "/images/creator-custom.png",
+              "/images/creator-custom-2.png",
+              "/images/creator-custom-3.png",
+              "/images/creator-custom-4.png",
+            ].map((src, i) => (
+              <div key={i} className="w-9 h-9 rounded-full border-2 border-[#0f1124] overflow-hidden relative bg-slate-800" style={{ zIndex: 4 - i }}>
+                <Image src={src} alt="Creator" fill className="object-cover" unoptimized />
+              </div>
+            ))}
+            <div className="w-9 h-9 rounded-full bg-[#4a1c8c] text-white font-black text-[10px] flex items-center justify-center border-2 border-[#0f1124] shrink-0">
+              +10K
+            </div>
+          </div>
+          <p className="text-[13px] text-slate-400 font-medium">
+            Join <span className="text-white font-bold">12,000+</span> creators and businesses already growing with Happiest.team
+          </p>
         </motion.div>
       </div>
 

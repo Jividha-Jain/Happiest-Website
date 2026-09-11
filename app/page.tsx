@@ -3,6 +3,8 @@
 import React, { useCallback } from "react";
 import Loader from "@/components/Loader";
 import Hero from "@/components/Hero";
+import Problem from "@/components/Problem";
+import Setup from "@/components/Setup";
 
 import Discovery from "@/components/Discovery";
 import WhatIsHappiest from "@/components/WhatIsHappiest";
@@ -50,7 +52,9 @@ export default function Home() {
       <main>
         <Hero scrollTo={scrollTo} />
         <WhatIsHappiest scrollTo={scrollTo} />
+        <Problem scrollTo={scrollTo} />
         <Discovery />
+        <Setup />
         <AppPromo />
         <Feed />
         <ProductShowcase scrollTo={scrollTo} />

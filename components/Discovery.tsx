@@ -1,16 +1,14 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Search, MapPin, Bell, ShoppingCart, ChevronDown, Users, ShieldCheck, ArrowRight,
-  Bot, Newspaper, Package, BookOpen, Plus, Crown, UserCircle, History, Send, Sparkles,
-  Heart, MessageCircle, Share2, MoreHorizontal, Check, Ticket, Calendar, Clock, Compass, ArrowUpRight,
-  Home, GraduationCap, ShoppingBag, Layout, Mail, Globe, Camera, Hash, CheckCircle2, Play, Star
+  Bell, ArrowRight,
+  Bot, Newspaper, ShoppingBag, GraduationCap,
+  Share2, Calendar, Compass
 } from "lucide-react";
-import Image from "next/image";
 
-const ease = [0.22, 1, 0.36, 1] as [number,number,number,number];
+const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 function DiscoverClubsPanel() {
   return (
@@ -103,7 +101,6 @@ function FeedPanel() {
   );
 }
 
-
 function BookNowPanel() {
   return (
     <div className="w-full h-full overflow-hidden bg-white">
@@ -127,7 +124,7 @@ export default function Discovery() {
     if (isHovered) return;
     const interval = setInterval(() => {
       setDirection(1);
-      setCurrentSlide(s => (s + 1) % SLIDE_COUNT);
+      setCurrentSlide((s) => (s + 1) % SLIDE_COUNT);
     }, 5500);
     return () => clearInterval(interval);
   }, [isHovered]);
@@ -310,6 +307,29 @@ export default function Discovery() {
           </div>
         </motion.div>
 
+        {/* ── Dots Pagination Bar Below Mockup Screen (Mobile Responsive Only) ── */}
+        <div className="flex md:hidden items-center justify-center gap-2.5 mt-6 sm:mt-8 relative z-30">
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((idx) => {
+            const isActive = currentSlide === idx;
+            return (
+              <button
+                key={idx}
+                onClick={() => goToSlide(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className="relative py-2 px-1 cursor-pointer transition-all focus:outline-none"
+              >
+                <div
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    isActive
+                      ? "w-8 bg-[#7C5CFF] shadow-[0_0_15px_rgba(124,92,255,0.8)]"
+                      : "w-2.5 bg-white/20 hover:bg-white/50"
+                  }`}
+                />
+              </button>
+            );
+          })}
+        </div>
+
         {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -319,10 +339,10 @@ export default function Discovery() {
           className="flex flex-col sm:flex-row items-center justify-center gap-5 mt-6 sm:mt-12"
         >
           <button
-            className="flex items-center gap-2.5 px-8 py-4 rounded-full text-[13.5px] font-bold text-white cursor-pointer transition-all duration-300 hover:scale-[1.03] bg-[#6D4AFF] shadow-md hover:bg-[#5A38F0]"
+            className="flex items-center gap-2 px-6 py-2.5 sm:px-8 sm:py-3.5 rounded-full text-xs sm:text-[13.5px] font-bold text-white cursor-pointer transition-all duration-300 hover:scale-[1.03] bg-[#6D4AFF] shadow-md hover:bg-[#5A38F0]"
           >
             Explore Communities
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
         </motion.div>
       </div>

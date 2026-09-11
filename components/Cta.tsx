@@ -103,7 +103,7 @@ export default function Cta({ scrollTo }: CtaProps) {
         {creatorCards.map((creator, idx) => {
           const angle = (orbitAngle + (idx * 360) / creatorCards.length - 90) % 360;
           const rad = (angle * Math.PI) / 180;
-          const radius = 37.5; // Positions all cards completely inside the outer circle
+          const radius = 37.5; // Original radius
           const x = 50 + radius * Math.cos(rad);
           const y = 50 + radius * Math.sin(rad);
 
@@ -140,31 +140,31 @@ export default function Cta({ scrollTo }: CtaProps) {
         })}
       </div>
 
-      {/* ═══════════════ DESKTOP ONLY VIEW (100% UNTOUCHED ORIGINAL) ═══════════════ */}
-      <div className="hidden md:flex relative z-20 flex-col items-center justify-center text-center px-6 max-w-3xl mx-auto gap-6">
+      {/* ═══════════════ DESKTOP ONLY VIEW ═══════════════ */}
+      <div className="hidden md:flex relative z-20 flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto gap-6">
         {/* Top Badge */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-400/20 text-purple-300 text-[11px] font-bold tracking-wider uppercase backdrop-blur-md">
           <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
-          Ready to launch?
+          YOUR COMMUNITY. YOUR GROWTH.
         </div>
 
         {/* Headline */}
-        <h2 className="text-5xl lg:text-[56px] font-black tracking-tight leading-[1.15] font-display">
+        <h2 className="text-3xl sm:text-4xl md:text-[44px] lg:text-[50px] font-black tracking-tight leading-[1.18] font-display max-w-2xl sm:max-w-3xl mx-auto">
           <span className="block text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-            Build your own community.
+            Your audience is already here.
           </span>
-          <span className="block mt-2 bg-gradient-to-r from-[#c4b5fd] via-[#a78bfa] to-[#818cf8] bg-clip-text text-transparent drop-shadow-[0_2px_20px_rgba(167,139,250,0.35)]">
-            Grow your business.
+          <span className="block mt-1.5 bg-gradient-to-r from-[#c4b5fd] via-[#a78bfa] to-[#818cf8] bg-clip-text text-transparent drop-shadow-[0_2px_20px_rgba(167,139,250,0.35)]">
+            Give them somewhere to belong.
           </span>
         </h2>
 
         {/* Subtext */}
         <p className="text-slate-300/90 text-base font-normal leading-relaxed max-w-md">
-          Join thousands of creators and businesses already growing with Happiest Team.
+          Join thousands of creators and businesses already growing with Happiest.team.
         </p>
 
         {/* Email form */}
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-md space-y-4">
           <form
             onSubmit={handleSubmit}
             className="flex items-center bg-white rounded-full p-1.5 shadow-[0_8px_40px_rgba(46,16,101,0.28)] border border-white/20"
@@ -179,16 +179,17 @@ export default function Cta({ scrollTo }: CtaProps) {
             />
             <button
               type="submit"
-              className="bg-gradient-to-r from-[#2E1065] via-[#3B137E] to-[#4C1D95] hover:from-[#1e0a45] hover:to-[#3B137E] border border-purple-700/50 text-white text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-200 shrink-0 cursor-pointer hover:scale-[1.02] shadow-[0_4px_20px_rgba(46,16,101,0.5)]"
+              className="bg-gradient-to-r from-[#7C5CFF] via-[#6B4AFF] to-[#5B36F5] hover:from-[#6B4AFF] hover:to-[#4C26E5] border border-purple-500/30 text-white text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-200 shrink-0 cursor-pointer hover:scale-[1.02] shadow-[0_4px_20px_rgba(109,74,255,0.4)] flex items-center gap-1.5"
             >
-              Start for free
+              <span>Start Free</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
           {submitted && (
             <div className="mt-3 flex items-center justify-center gap-1.5 text-xs text-emerald-400 font-semibold">
               <CheckCircle2 className="w-4 h-4" />
-              <span>You&apos;re on the list! Welcome to Happiest Team.</span>
+              <span>You&apos;re on the list! Welcome to Happiest.team.</span>
             </div>
           )}
         </div>
@@ -199,35 +200,25 @@ export default function Cta({ scrollTo }: CtaProps) {
         {/* Top Badge */}
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-purple-500/15 border border-purple-400/25 text-purple-300 text-[10px] font-bold tracking-wider uppercase backdrop-blur-md">
           <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
-          READY TO LAUNCH?
+          YOUR COMMUNITY. YOUR GROWTH.
         </div>
 
         {/* Headline */}
-        <div className="space-y-1">
-          <h2 className="text-[30px] font-black tracking-tight leading-[1.12] font-display text-white">
-            Build your own community.
+        <div className="space-y-1 max-w-xs mx-auto">
+          <h2 className="text-[25px] sm:text-[28px] font-black tracking-tight leading-[1.15] font-display text-white">
+            Your audience is already here.
           </h2>
-          <div className="relative inline-block">
-            <h2 className="text-[30px] font-black tracking-tight leading-[1.12] font-display bg-gradient-to-r from-[#d8b4fe] via-[#c084fc] to-[#a855f7] bg-clip-text text-transparent">
-              Grow your business.
-            </h2>
-            {/* Underline swoosh */}
-            <svg
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-44 h-2.5 text-[#a855f7]/70 pointer-events-none"
-              viewBox="0 0 200 12"
-              fill="none"
-            >
-              <path d="M2 9C50 3 150 3 198 9" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
-            </svg>
-          </div>
+          <h2 className="text-[25px] sm:text-[28px] font-black tracking-tight leading-[1.15] font-display bg-gradient-to-r from-[#d8b4fe] via-[#c084fc] to-[#a855f7] bg-clip-text text-transparent">
+            Give them somewhere to belong.
+          </h2>
         </div>
 
         {/* Subtext */}
         <p className="text-slate-300/90 text-xs font-normal leading-relaxed max-w-xs pt-1">
-          Join thousands of creators and businesses already growing with Happiest Team.
+          Join thousands of creators and businesses already growing with Happiest.team.
         </p>
 
-        {/* Creator Avatars Row (Uses same web images) */}
+        {/* Creator Avatars Row */}
         <div className="flex flex-col items-center justify-center gap-1.5 py-1">
           <div className="relative flex items-center justify-center">
             <div className="flex items-center -space-x-2.5">
@@ -239,15 +230,9 @@ export default function Cta({ scrollTo }: CtaProps) {
                   <Image src={c.img} alt={c.name} fill className="object-cover" unoptimized />
                 </div>
               ))}
-              {/* +10K Bubble */}
               <div className="w-10 h-10 rounded-full bg-[#4a1c8c] text-white font-black text-[11px] flex items-center justify-center border-2 border-[#04040c] shadow-md relative shrink-0">
                 +10K
               </div>
-            </div>
-
-            {/* Sparkle decorative lines next to +10K */}
-            <div className="absolute -right-5 -top-2 flex flex-col items-center pointer-events-none text-purple-300 opacity-90">
-              <span className="text-xs font-bold leading-none select-none">✨</span>
             </div>
           </div>
 
@@ -261,9 +246,6 @@ export default function Cta({ scrollTo }: CtaProps) {
           <form onSubmit={handleSubmit} className="flex flex-col gap-2">
             {/* Input Row */}
             <div className="flex items-center bg-[#f7f5fd] border border-purple-100/90 rounded-2xl px-3 py-2 text-left">
-              <div className="w-7 h-7 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 mr-2.5">
-                <Mail className="w-3.5 h-3.5" />
-              </div>
               <input
                 type="email"
                 required
@@ -277,9 +259,9 @@ export default function Cta({ scrollTo }: CtaProps) {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-[#4C1D95] via-[#5B21B6] to-[#6D28D9] hover:from-[#3B137E] hover:to-[#5B21B6] text-white font-extrabold text-xs py-3 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 shadow-[0_4px_18px_rgba(91,33,182,0.4)] hover:scale-[1.01]"
+              className="w-full bg-gradient-to-r from-[#6D4AFF] via-[#5B36F5] to-[#4C26E5] hover:from-[#5B36F5] hover:to-[#3B17C5] text-white font-extrabold text-xs py-3 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 shadow-[0_4px_18px_rgba(109,74,255,0.4)]"
             >
-              <span>Start for free</span>
+              <span>Start Free</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
@@ -287,7 +269,7 @@ export default function Cta({ scrollTo }: CtaProps) {
           {submitted && (
             <div className="mt-2 flex items-center justify-center gap-1.5 text-xs text-emerald-600 font-semibold py-1">
               <CheckCircle2 className="w-4 h-4" />
-              <span>You&apos;re on the list! Welcome to Happiest Team.</span>
+              <span>You&apos;re on the list! Welcome to Happiest.team.</span>
             </div>
           )}
         </div>

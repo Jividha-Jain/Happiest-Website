@@ -59,7 +59,7 @@ const FLOW_STEPS: FlowStep[] = [
     id: "discover",
     stepNum: "STEP 01",
     title: "1. Discover",
-    description: "Attract new members through an SEO-optimized club website, automated synchronization with Instagram, WhatsApp, and Facebook, and discoverability on our public marketplace.",
+    description: "Find new people. Attract new members through an SEO-optimized club website, automated sync with Instagram, WhatsApp, and Facebook, and discoverability on our public marketplace.",
     tags: [],
     icon: Sparkles,
     anchor: "top",
@@ -69,7 +69,7 @@ const FLOW_STEPS: FlowStep[] = [
     id: "join",
     stepNum: "STEP 02",
     title: "2. Join",
-    description: "Deliver a frictionless onboarding experience with customizable intake forms, comprehensive member profiles, and an integrated member CRM with custom tags.",
+    description: "Become a member. Deliver a frictionless onboarding experience with customizable intake forms, rich member profiles, and an integrated member CRM with custom tags.",
     tags: [],
     icon: UserPlus,
     anchor: "right",
@@ -79,7 +79,7 @@ const FLOW_STEPS: FlowStep[] = [
     id: "engage",
     stepNum: "STEP 03",
     title: "3. Engage",
-    description: "Foster active community interactions with engaging posts, polls, and discussions, dedicated channels for 1:1 and group chats, and vibrant live events and activities.",
+    description: "Converse & participate. Foster active interactions with posts, polls, discussions, dedicated channels for 1:1 and group chats, and vibrant live events and activities.",
     tags: [],
     icon: Zap,
     anchor: "right",
@@ -89,7 +89,7 @@ const FLOW_STEPS: FlowStep[] = [
     id: "transact",
     stepNum: "STEP 04",
     title: "4. Transact",
-    description: "Monetize your community seamlessly with digital products and courses, bookable services and 1:1 sessions, and flexible paid memberships and clubs.",
+    description: "Buy, book, or subscribe. Monetize your community seamlessly with digital products, bookable services, 1:1 sessions, and flexible paid memberships.",
     tags: [],
     icon: BadgeDollarSign,
     anchor: "bottom",
@@ -99,7 +99,7 @@ const FLOW_STEPS: FlowStep[] = [
     id: "support",
     stepNum: "STEP 05",
     title: "5. Support",
-    description: "Provide dedicated, responsive care with support tickets, high-quality 1:1 audio and video calls, and a 24/7 intelligent Club AI agent powered by HGPT.",
+    description: "Get help & stay connected. Provide responsive care with support tickets, high-quality 1:1 audio and video calls, and a 24/7 intelligent Club AI agent powered by HGPT.",
     tags: [],
     icon: ShieldCheck,
     anchor: "left",
@@ -109,7 +109,7 @@ const FLOW_STEPS: FlowStep[] = [
     id: "return",
     stepNum: "STEP 06",
     title: "6. Return",
-    description: "Keep members coming back with gamified loyalty programs and rewards, competitive leaderboards and recognition, and automated broadcast and scheduled notifications.",
+    description: "Come back for more. Keep members returning with gamified loyalty programs, competitive leaderboards, and automated broadcast and scheduled notifications.",
     tags: [],
     icon: Repeat,
     anchor: "left",
@@ -119,7 +119,7 @@ const FLOW_STEPS: FlowStep[] = [
     id: "center-hub",
     stepNum: "CORE ENGINE",
     title: "One Relationship Graph",
-    description: "Keep all member conversations, transactions, and behavioral signals seamlessly synchronized in real-time across your entire community ecosystem.",
+    description: "A complete view of every member. Every conversation, transaction, and behavioral signal — seamlessly synchronized in real-time across your entire community ecosystem.",
     tags: [],
     icon: Layers,
     anchor: "bottom",
@@ -365,24 +365,24 @@ export default function Feed() {
           {/* Top label pill */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-[10.5px] sm:text-xs font-bold tracking-wide uppercase">
             <Layers className="w-3.5 h-3.5 text-purple-400" />
-            One Relationship Graph
+            Our Differentiator
           </div>
 
           <h2
             className="text-[26px] sm:text-[38px] md:text-[46px] font-black tracking-tight text-white leading-tight font-display px-2"
           >
-            How Happiest.team Compounds Your Business
+            Every interaction makes your community smarter.
           </h2>
 
           {/* Highlight Tagline */}
           <p className="text-purple-300 text-sm sm:text-[17px] md:text-[18.5px] font-bold tracking-wide px-2">
-            One member record. Every interaction. No silos.
+            One Relationship Graph. A complete view of every member.
           </p>
 
           {/* Subtitle Body Text */}
           <p className="text-slate-300 text-xs sm:text-[15.5px] font-normal max-w-2xl mx-auto leading-relaxed px-2"
             style={{ fontFamily: "'Inter', sans-serif" }}>
-            Each capability feeds the next stage of the same loop. A visitor becomes a member, a member becomes a buyer, and a buyer comes back, without leaving your community or costing you ad spend.
+            Happiest.team&apos;s Relationship Graph connects every member, conversation, event, purchase and support interaction — so you can understand your audience and grow stronger relationships.
           </p>
 
           {/* Desktop Only: Hint Badge */}
@@ -460,10 +460,6 @@ export default function Feed() {
               })}
             </div>
 
-            {/* Subtle shimmer sweep */}
-            <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden rounded-3xl">
-              <div className="w-[35%] h-[250%] bg-gradient-to-r from-transparent via-white/[0.04] to-transparent transform -rotate-45 animate-shimmer-sweep pointer-events-none" />
-            </div>
           </div>
 
         </div>

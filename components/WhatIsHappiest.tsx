@@ -463,104 +463,74 @@ interface MemberItem {
             >
               {/* MOBILE TOP HEADER & HORIZONTAL TABS (Mobile only: flex md:hidden) */}
               <div
-                className={`flex md:hidden flex-col gap-3.5 pb-4 border-b transition-colors ${
-                  isLightTheme ? "border-purple-100" : "border-white/[0.08]"
+                className={`flex md:hidden flex-col gap-3 pb-3 border-b transition-colors ${
+                  isLightTheme ? "border-purple-100/80" : "border-white/[0.08]"
                 }`}
               >
-                {/* Mobile Club Community Card */}
+                {/* Mobile Club Community Card - Clean & Airy */}
                 <div
-                  className={`p-3 sm:p-4 rounded-3xl border transition-all ${
+                  className={`p-3 rounded-2xl border flex items-center justify-between gap-3 transition-all ${
                     isLightTheme
-                      ? "bg-white border-purple-100/90 shadow-[0_4px_20px_rgba(100,50,200,0.05)]"
-                      : "bg-[#100828] border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
+                      ? "bg-gradient-to-r from-purple-50/70 to-white border-purple-100/80 shadow-[0_2px_12px_rgba(100,50,200,0.03)]"
+                      : "bg-[#100828] border-white/[0.08] shadow-[0_2px_16px_rgba(0,0,0,0.3)]"
                   }`}
                 >
-                  <div className="flex items-center gap-3">
-                    {/* Left Running Woman Thumbnail */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shrink-0 shadow-sm border border-purple-100 dark:border-white/10 relative">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-11 h-11 rounded-xl overflow-hidden shrink-0 border border-purple-200/60 dark:border-white/10">
                       <img
                         src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=300&q=80"
                         alt="Sunday Runners Club"
                         className="w-full h-full object-cover"
                       />
                     </div>
-
-                    {/* Middle Info */}
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[9.5px] font-bold text-purple-700 bg-purple-50 dark:bg-purple-950/60 dark:text-purple-300 px-2 py-0.5 rounded-full">
-                          Community
-                        </span>
-                        <button className="text-slate-400 hover:text-purple-900 p-0.5">
-                          <MoreVertical className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 mt-1">
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
                         <h4
-                          className={`text-xs sm:text-sm font-extrabold tracking-tight font-display ${
+                          className={`text-xs font-extrabold tracking-tight font-display truncate ${
                             isLightTheme ? "text-[#1e1239]" : "text-white"
                           }`}
                         >
                           SUNDAY RUNNERS CLUB
                         </h4>
-                        <span className="w-3.5 h-3.5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[8px] font-bold shrink-0 shadow-xs">
+                        <span className="w-3.5 h-3.5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[8px] font-bold shrink-0">
                           ✓
                         </span>
                       </div>
-
                       <p
-                        className={`text-[10px] sm:text-[11px] font-semibold mt-0.5 tracking-wide ${
+                        className={`text-[10.5px] font-semibold mt-0.5 ${
                           isLightTheme ? "text-[#675b83]" : "text-slate-400"
                         }`}
                       >
-                        1.2k runners · Run · Connect · Grow
+                        1.2k members · Run · Connect
                       </p>
-
-                      {/* Avatar Overlap Stack + View Community Button */}
-                      <div className="flex items-center justify-between mt-1.5 pt-0.5">
-                        <div className="flex items-center">
-                          <div className="flex items-center -space-x-1.5">
-                            <img
-                              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
-                              alt=""
-                              className="w-5 h-5 rounded-full border border-white dark:border-[#100828] object-cover"
-                            />
-                            <img
-                              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
-                              alt=""
-                              className="w-5 h-5 rounded-full border border-white dark:border-[#100828] object-cover"
-                            />
-                            <img
-                              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"
-                              alt=""
-                              className="w-5 h-5 rounded-full border border-white dark:border-[#100828] object-cover"
-                            />
-                            <img
-                              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
-                              alt=""
-                              className="w-5 h-5 rounded-full border border-white dark:border-[#100828] object-cover"
-                            />
-                          </div>
-                          <span className="text-[9px] font-bold text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/60 px-1.5 py-0.5 rounded-full ml-1">
-                            +1.2k
-                          </span>
-                        </div>
-
-                        <button className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-purple-50 hover:bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 transition-all cursor-pointer whitespace-nowrap shrink-0">
-                          <span>View Community</span>
-                          <span className="text-xs leading-none">→</span>
-                        </button>
-                      </div>
                     </div>
+                  </div>
+
+                  {/* Right Avatar Stack */}
+                  <div className="flex items-center shrink-0">
+                    <div className="flex items-center -space-x-1.5">
+                      <img
+                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+                        alt=""
+                        className="w-5 h-5 rounded-full border border-white dark:border-[#100828] object-cover"
+                      />
+                      <img
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+                        alt=""
+                        className="w-5 h-5 rounded-full border border-white dark:border-[#100828] object-cover"
+                      />
+                    </div>
+                    <span className="text-[9px] font-bold text-purple-700 dark:text-purple-300 bg-purple-100/70 dark:bg-purple-950/80 px-1.5 py-0.5 rounded-full ml-1">
+                      +1.2k
+                    </span>
                   </div>
                 </div>
 
                 {/* Mobile Horizontal Scrollable Segmented Tab Bar */}
                 <div
-                  className={`flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1.5 rounded-2xl border ${
+                  className={`flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1.5 rounded-2xl border transition-colors ${
                     isLightTheme
-                      ? "bg-[#f5effb]/90 border-purple-100/80"
+                      ? "bg-[#faf7fd] border-purple-100/90 shadow-[0_2px_10px_rgba(100,50,200,0.02)]"
                       : "bg-[#0c0520] border-white/[0.08]"
                   }`}
                 >
@@ -571,9 +541,9 @@ interface MemberItem {
                       <button
                         key={item.name}
                         onClick={() => setActiveNav(item.name)}
-                        className={`group relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shrink-0 transition-all duration-200 cursor-pointer active:scale-95 ${
+                        className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shrink-0 transition-all duration-200 cursor-pointer active:scale-95 ${
                           isActive
-                            ? "bg-[#6b25c2] text-white shadow-md font-extrabold"
+                            ? "bg-[#6b25c2] text-white shadow-sm font-extrabold"
                             : isLightTheme
                             ? "text-[#4a3b6e] hover:text-[#1e1239] hover:bg-white/70"
                             : "text-slate-300 hover:text-white hover:bg-white/[0.06]"
@@ -597,111 +567,113 @@ interface MemberItem {
                 {activeNav === "Members" && (
                   <motion.div
                     key="members-view"
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.25 }}
-                    className="space-y-4 sm:space-y-5 w-full"
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.2 }}
+                    className="space-y-4 w-full"
                   >
                     {/* Header Row */}
                     <div className="flex items-center justify-between gap-3">
                       <div>
                         <h2
-                          className={`text-2xl sm:text-3xl font-extrabold tracking-tight font-display ${
+                          className={`text-xl sm:text-2xl font-extrabold tracking-tight font-display ${
                             isLightTheme ? "text-[#1e1239]" : "text-white"
                           }`}
                         >
                           Members
                         </h2>
                         <p
-                          className={`text-xs font-semibold mt-0.5 ${
+                          className={`text-xs font-medium mt-0.5 ${
                             isLightTheme ? "text-[#675b83]" : "text-slate-400"
                           }`}
                         >
-                          128 members · <span className="text-emerald-500 font-bold">12 new this week</span>
+                          128 total · <span className="text-emerald-600 dark:text-emerald-400 font-semibold">12 new this week</span>
                         </p>
                       </div>
 
-                      <button className="bg-[#6b25c2] hover:bg-[#7b32d6] text-white font-bold text-xs px-4 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-md flex items-center gap-1.5 transition-all cursor-pointer shrink-0">
+                      <button className="bg-[#6b25c2] hover:bg-[#7b32d6] text-white font-bold text-xs px-3.5 py-2 rounded-full shadow-xs flex items-center gap-1.5 transition-all cursor-pointer shrink-0">
                         <Plus className="w-3.5 h-3.5 stroke-[3]" />
-                        <span>Invite Members</span>
+                        <span>Invite</span>
                       </button>
                     </div>
 
-                    {/* Sub-Filter Tabs */}
-                    <div
-                      className={`flex items-center gap-6 text-xs font-semibold border-b pb-2 ${
-                        isLightTheme ? "border-purple-100" : "border-white/[0.08]"
-                      }`}
-                    >
-                      {["All Members", "Admins", "Volunteers"].map((subTab) => {
-                        const isSubActive = activeSubTab === subTab;
-                        return (
-                          <button
-                            key={subTab}
-                            onClick={() => setActiveSubTab(subTab)}
-                            className={`relative pb-2 transition-colors cursor-pointer ${
-                              isSubActive
-                                ? isLightTheme
-                                  ? "text-purple-900 font-extrabold"
-                                  : "text-white font-bold"
-                                : isLightTheme
-                                ? "text-[#675b83] hover:text-[#1e1239]"
-                                : "text-slate-400 hover:text-slate-200"
-                            }`}
-                          >
-                            <span>{subTab}</span>
-                            {isSubActive && (
-                              <motion.div
-                                layoutId="subTabUnderline"
-                                className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6b25c2] rounded-full"
-                              />
-                            )}
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {/* Search Input Bar + Filter Button */}
-                    <div className="flex items-center gap-2.5">
+                    {/* Sub-Filter Tabs & Search */}
+                    <div className="space-y-3">
                       <div
-                        className={`flex items-center gap-2.5 rounded-2xl px-3.5 py-2.5 text-xs flex-1 border transition-colors ${
-                          isLightTheme
-                            ? "bg-[#f8f6fc] border-purple-100/90 text-[#1e1239]"
-                            : "bg-[#120a2a] border-white/10 text-white"
+                        className={`flex items-center gap-5 text-xs font-semibold border-b pb-2 ${
+                          isLightTheme ? "border-purple-100/80" : "border-white/[0.08]"
                         }`}
                       >
-                        <Search className="w-4 h-4 text-purple-600 shrink-0 opacity-80" />
-                        <input
-                          type="text"
-                          placeholder="Search members..."
-                          value={memberSearchQuery}
-                          onChange={(e) => setMemberSearchQuery(e.target.value)}
-                          className="bg-transparent text-xs outline-none w-full placeholder:text-[#8274a5]"
-                        />
+                        {["All Members", "Admins", "Volunteers"].map((subTab) => {
+                          const isSubActive = activeSubTab === subTab;
+                          return (
+                            <button
+                              key={subTab}
+                              onClick={() => setActiveSubTab(subTab)}
+                              className={`relative pb-2 transition-colors cursor-pointer ${
+                                isSubActive
+                                  ? isLightTheme
+                                    ? "text-purple-950 font-extrabold"
+                                    : "text-white font-bold"
+                                  : isLightTheme
+                                  ? "text-[#675b83] hover:text-[#1e1239]"
+                                  : "text-slate-400 hover:text-slate-200"
+                              }`}
+                            >
+                              <span>{subTab}</span>
+                              {isSubActive && (
+                                <motion.div
+                                  layoutId="subTabUnderline"
+                                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6b25c2] rounded-full"
+                                />
+                              )}
+                            </button>
+                          );
+                        })}
                       </div>
 
-                      <button
-                        className={`w-10 h-10 rounded-2xl flex items-center justify-center border transition-colors shrink-0 ${
-                          isLightTheme
-                            ? "bg-[#f8f6fc] border-purple-100/90 text-purple-800 hover:bg-purple-100"
-                            : "bg-[#120a2a] border-white/10 text-slate-300 hover:bg-white/10"
-                        }`}
-                      >
-                        <SlidersHorizontal className="w-4 h-4" />
-                      </button>
+                      {/* Search Input Bar */}
+                      <div className="flex items-center gap-2">
+                        <div
+                          className={`flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs flex-1 border transition-colors ${
+                            isLightTheme
+                              ? "bg-[#f8f6fc]/80 border-purple-100 text-[#1e1239]"
+                              : "bg-[#120a2a] border-white/10 text-white"
+                          }`}
+                        >
+                          <Search className="w-3.5 h-3.5 text-purple-600 shrink-0 opacity-80" />
+                          <input
+                            type="text"
+                            placeholder="Search members..."
+                            value={memberSearchQuery}
+                            onChange={(e) => setMemberSearchQuery(e.target.value)}
+                            className="bg-transparent text-xs outline-none w-full placeholder:text-[#8274a5]"
+                          />
+                        </div>
+
+                        <button
+                          className={`w-8 h-8 rounded-xl flex items-center justify-center border transition-colors shrink-0 ${
+                            isLightTheme
+                              ? "bg-[#f8f6fc]/80 border-purple-100 text-purple-800 hover:bg-purple-100"
+                              : "bg-[#120a2a] border-white/10 text-slate-300 hover:bg-white/10"
+                          }`}
+                        >
+                          <SlidersHorizontal className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
 
                     {/* Section Sub-header */}
                     <div className="flex items-center justify-between pt-1">
                       <h4
-                        className={`text-xs sm:text-sm font-extrabold ${
+                        className={`text-xs font-bold ${
                           isLightTheme ? "text-[#1e1239]" : "text-white"
                         }`}
                       >
                         New This Week (12)
                       </h4>
-                      <button className="text-xs font-bold text-purple-600 hover:text-purple-700 flex items-center gap-1">
+                      <button className="text-xs font-semibold text-purple-600 hover:text-purple-700 flex items-center gap-1">
                         <span>See all</span>
                         <span>→</span>
                       </button>

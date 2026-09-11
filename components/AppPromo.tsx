@@ -94,8 +94,7 @@ export default function AppPromo() {
                   backdropFilter: "blur(8px)",
                 }}
               >
-                <Settings2 className="w-3.5 h-3.5" />
-                How It Works
+                THE SOLUTION
               </span>
             </motion.div>
 
@@ -106,18 +105,18 @@ export default function AppPromo() {
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: 0.05 }}
             >
-              <h2 className="text-[28px] sm:text-[40px] md:text-[52px] font-black text-slate-900 tracking-tight leading-[1.1] mb-1">
-                Everything Your
+              <h2 className="text-[22px] sm:text-[32px] md:text-[38px] lg:text-[35px] xl:text-[42px] font-black text-slate-900 tracking-tight leading-[1.15] whitespace-nowrap mb-1">
+                Build. Engage. Monetize.
               </h2>
               <h2
-                className="text-[28px] sm:text-[40px] md:text-[52px] font-black tracking-tight leading-[1.1]"
+                className="text-[22px] sm:text-[32px] md:text-[38px] lg:text-[35px] xl:text-[42px] font-black tracking-tight leading-[1.15] whitespace-nowrap"
                 style={{
                   background: "linear-gradient(90deg, #2E1065, #6D28D9)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Community Needs
+                All in One Place.
               </h2>
             </motion.div>
 
@@ -129,7 +128,7 @@ export default function AppPromo() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-slate-600 text-sm sm:text-[15.5px] font-medium leading-relaxed max-w-md"
             >
-              Launch, grow and monetize your community — all from one powerful platform.
+              Happiest.team gives you everything you need to run a thriving community — without stitching together multiple tools.
             </motion.p>
 
             {/* MOBILE ONLY: Accordion List (< lg) */}
@@ -284,3 +283,4 @@ export default function AppPromo() {
     </section>
   );
 }
+
