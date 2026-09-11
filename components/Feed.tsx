@@ -346,7 +346,7 @@ export default function Feed() {
     <section
       id="feed"
       ref={containerRef}
-      className="relative py-14 sm:py-24 md:py-32 z-20 font-sans overflow-hidden"
+      className="relative py-8 sm:py-24 md:py-32 z-20 font-sans overflow-hidden"
       style={{ background: "linear-gradient(160deg, #181735 0%, #0e1029 45%, #090d22 100%)" }}
     >
       {/* Subtle top ambient glow for smooth color harmony */}
@@ -360,7 +360,7 @@ export default function Feed() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease }}
-          className="text-center space-y-3.5 mb-8 sm:mb-12"
+          className="text-center space-y-2.5 sm:space-y-3.5 mb-6 sm:mb-12"
         >
           {/* Top label pill */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-[10.5px] sm:text-xs font-bold tracking-wide uppercase">
@@ -369,18 +369,18 @@ export default function Feed() {
           </div>
 
           <h2
-            className="text-[26px] sm:text-[38px] md:text-[46px] font-black tracking-tight text-white leading-tight font-display px-2"
+            className="text-[24px] sm:text-[38px] md:text-[46px] font-black tracking-tight text-white leading-tight font-display px-2"
           >
             Every interaction makes your community smarter.
           </h2>
 
           {/* Highlight Tagline */}
-          <p className="text-purple-300 text-sm sm:text-[17px] md:text-[18.5px] font-bold tracking-wide px-2">
+          <p className="text-purple-300 text-xs sm:text-[17px] md:text-[18.5px] font-bold tracking-wide px-2">
             One Relationship Graph. A complete view of every member.
           </p>
 
           {/* Subtitle Body Text */}
-          <p className="text-slate-300 text-xs sm:text-[15.5px] font-normal max-w-2xl mx-auto leading-relaxed px-2"
+          <p className="text-slate-300 text-[11.5px] sm:text-[15.5px] font-normal max-w-2xl mx-auto leading-relaxed px-2"
             style={{ fontFamily: "'Inter', sans-serif" }}>
             Happiest.team&apos;s Relationship Graph connects every member, conversation, event, purchase and support interaction — so you can understand your audience and grow stronger relationships.
           </p>
@@ -400,25 +400,25 @@ export default function Feed() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease }}
-        className="w-full flex justify-center py-2 sm:py-4 px-2 sm:px-4"
+        className="w-full flex justify-center py-0 sm:py-4 px-0 sm:px-4 overflow-hidden"
       >
-        <div className="relative w-full max-w-[980px] mx-auto flex items-center justify-center">
+        <div className="relative w-full max-w-[980px] mx-auto flex items-center justify-center px-1 sm:px-0">
 
           {/* Layered Ambient Halos */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] sm:w-[720px] h-[320px] sm:h-[480px] bg-purple-700/20 rounded-full blur-[90px] sm:blur-[120px] pointer-events-none z-0 animate-halo-pulse" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] sm:w-[500px] h-[240px] sm:h-[350px] bg-indigo-500/25 rounded-full blur-[70px] sm:blur-[90px] pointer-events-none z-0" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] sm:w-[720px] h-[300px] sm:h-[480px] bg-purple-700/20 rounded-full blur-[70px] sm:blur-[120px] pointer-events-none z-0 animate-halo-pulse" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] sm:w-[500px] h-[220px] sm:h-[350px] bg-indigo-500/25 rounded-full blur-[50px] sm:blur-[90px] pointer-events-none z-0" />
 
           {/* Main Diagram Container */}
-          <div className="relative w-full z-10 animate-gentle-float">
+          <div className="relative w-full z-10 sm:animate-gentle-float">
 
             {/* Diagram Image */}
-            <div className="relative w-full pointer-events-none">
+            <div className="relative w-full pointer-events-none py-2 sm:py-0">
               <Image
                 src="/images/Flow-Diagram.png"
                 alt="Features Flow Diagram"
                 width={1680}
                 height={1120}
-                className="w-full h-auto object-contain block mx-auto"
+                className="w-full h-auto object-contain block mx-auto scale-[1.12] sm:scale-100 origin-center transition-transform"
                 unoptimized
                 priority
               />
